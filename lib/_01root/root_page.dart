@@ -10,16 +10,16 @@ class TabbarItemController {
     required Widget icon,
     Widget? activeIcon,
     required Widget controller,
-  })  : _icon = icon,
-        _title = title,
-        _activeIcon = activeIcon,
-        controller = controller,
-        item = BottomNavigationBarItem(
-          label: title,
-          icon: icon,
-//          activeIcon: activeIcon,
-          backgroundColor: Colors.white,
-        );
+  }) : _icon = icon,
+       _title = title,
+       _activeIcon = activeIcon,
+       controller = controller,
+       item = BottomNavigationBarItem(
+         label: title,
+         icon: icon,
+         //          activeIcon: activeIcon,
+         backgroundColor: Colors.white,
+       );
 
   final String _title;
   final Widget _icon;
@@ -33,13 +33,15 @@ class RootPage extends StatefulWidget {
   _01rootController createState() => _01rootController();
 }
 
-class _01rootController extends State<RootPage> //    with SingleTickerProviderStateMixin
-{
+class _01rootController
+    extends
+        State<RootPage> //    with SingleTickerProviderStateMixin
+        {
   //TabController + tabview组合动画不好控制,
-//  TabController _tabController;
+  //  TabController _tabController;
 
   // PageView 嵌套 PageController+BottomNavigationBarItem 手动点击事件,好控制动画
-//  PageController _pageController;
+  //  PageController _pageController;
 
   //PageController 没有记录index,所以自定义
   int _tabItemCurrentIndex = 0;
@@ -61,7 +63,6 @@ class _01rootController extends State<RootPage> //    with SingleTickerProviderS
       //   ),
       //   controller: HomePage(),
       // ),
-
       TabbarItemController(
         title: "测试页面",
         icon: const Icon(Icons.desktop_mac),
@@ -89,7 +90,7 @@ class _01rootController extends State<RootPage> //    with SingleTickerProviderS
 
   @override
   void dispose() {
-//    _tabController.dispose();
+    //    _tabController.dispose();
     super.dispose();
   }
 
@@ -98,35 +99,36 @@ class _01rootController extends State<RootPage> //    with SingleTickerProviderS
     _initPageList();
 
     return Scaffold(
+      /// 子页面保持状态数据,不会每次刷新
+      body: IndexedStack(
+        index: _tabItemCurrentIndex,
+        children: _tabbarItemControllerList!.map((item) {
+          return item.controller;
+        }).toList(),
+      ),
 
-        /// 子页面保持状态数据,不会每次刷新
-        body: IndexedStack(
-          index: _tabItemCurrentIndex,
-          children: _tabbarItemControllerList!.map((item) {
-            return item.controller;
-          }).toList(),
-        ),
+      // body: _tabbarItemControllerList[_tabItemCurrentIndex].controller,
+      bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: Colors.orange,
+        /**选中颜色*/
+        fixedColor: Colors.blue,
 
-        // body: _tabbarItemControllerList[_tabItemCurrentIndex].controller,
-        bottomNavigationBar: BottomNavigationBar(
-            backgroundColor: Colors.orange,
-            /**选中颜色*/
-            fixedColor: Colors.blue,
+        //            selectedItemColor: Colors.red,
+        //            unselectedItemColor: Colors.black12,
 
-//            selectedItemColor: Colors.red,
-//            unselectedItemColor: Colors.black12,
-
-            //选中,非选中颜色
-            type: BottomNavigationBarType.fixed,
-            //fixedColor 才起作用
-            items: _tabbarItemControllerList!.map((item) {
-              return item.item;
-            }).toList(),
-            currentIndex: _tabItemCurrentIndex,
-            onTap: (int index) {
-              setState(() {
-                _tabItemCurrentIndex = index;
-              });
-            }));
+        //选中,非选中颜色
+        type: BottomNavigationBarType.fixed,
+        //fixedColor 才起作用
+        items: _tabbarItemControllerList!.map((item) {
+          return item.item;
+        }).toList(),
+        currentIndex: _tabItemCurrentIndex,
+        onTap: (int index) {
+          setState(() {
+            _tabItemCurrentIndex = index;
+          });
+        },
+      ),
+    );
   }
 }

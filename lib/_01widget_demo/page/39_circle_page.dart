@@ -9,9 +9,7 @@ class _P39CirclePageState extends State<P39CirclePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('圆形'),
-      ),
+      appBar: AppBar(title: Text('圆形')),
       body: Column(
         children: <Widget>[
           ///图片裁剪
@@ -53,9 +51,7 @@ class _P39CirclePageState extends State<P39CirclePage> {
               shape: BoxShape.rectangle,
               borderRadius: BorderRadius.circular(6.0),
               image: DecorationImage(
-                image: AssetImage(
-                  'assets/image/headIcon.png',
-                ),
+                image: AssetImage('assets/image/headIcon.png'),
               ),
             ),
           ),

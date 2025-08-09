@@ -15,93 +15,71 @@ class P57CustomRoute extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.blue,
       appBar: AppBar(
-        title: Text(
-          'Firstpage',
-          style: TextStyle(fontSize: 36.0),
-        ),
+        title: Text('Firstpage', style: TextStyle(fontSize: 36.0)),
         elevation: 4,
       ),
       body: Center(
-          child: Column(
-        children: <Widget>[
-          MaterialButton(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Text(
-                  "渐变",
-                  style: styles,
-                ),
-                Icon(
-                  Icons.navigate_next,
-                  color: Colors.white,
-                  size: 64.0,
-                ),
-              ],
+        child: Column(
+          children: <Widget>[
+            MaterialButton(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Text("渐变", style: styles),
+                  Icon(Icons.navigate_next, color: Colors.white, size: 64.0),
+                ],
+              ),
+              onPressed: () {
+                Navigator.of(
+                  context,
+                ).push(GradualChangeRoute(P57CustomRouteSecondPage()));
+              },
             ),
-            onPressed: () {
-              Navigator.of(context).push(GradualChangeRoute(P57CustomRouteSecondPage()));
-            },
-          ),
-          MaterialButton(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Text(
-                  "缩放",
-                  style: styles,
-                ),
-                Icon(
-                  Icons.navigate_next,
-                  color: Colors.white,
-                  size: 64.0,
-                ),
-              ],
+            MaterialButton(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Text("缩放", style: styles),
+                  Icon(Icons.navigate_next, color: Colors.white, size: 64.0),
+                ],
+              ),
+              onPressed: () {
+                Navigator.of(
+                  context,
+                ).push(ZoomRoute(P57CustomRouteSecondPage()));
+              },
             ),
-            onPressed: () {
-              Navigator.of(context).push(ZoomRoute(P57CustomRouteSecondPage()));
-            },
-          ),
-          MaterialButton(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Text(
-                  "缩放并旋转",
-                  style: styles,
-                ),
-                Icon(
-                  Icons.navigate_next,
-                  color: Colors.white,
-                  size: 64.0,
-                ),
-              ],
+            MaterialButton(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Text("缩放并旋转", style: styles),
+                  Icon(Icons.navigate_next, color: Colors.white, size: 64.0),
+                ],
+              ),
+              onPressed: () {
+                Navigator.of(
+                  context,
+                ).push(RotateAndZoomRoute(P57CustomRouteSecondPage()));
+              },
             ),
-            onPressed: () {
-              Navigator.of(context).push(RotateAndZoomRoute(P57CustomRouteSecondPage()));
-            },
-          ),
-          MaterialButton(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Text(
-                  "左右滑动",
-                  style: styles,
-                ),
-                Icon(
-                  Icons.navigate_next,
-                  color: Colors.white,
-                  size: 64.0,
-                ),
-              ],
+            MaterialButton(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Text("左右滑动", style: styles),
+                  Icon(Icons.navigate_next, color: Colors.white, size: 64.0),
+                ],
+              ),
+              onPressed: () {
+                Navigator.of(
+                  context,
+                ).push(SlidingAroundRoute(P57CustomRouteSecondPage()));
+              },
             ),
-            onPressed: () {
-              Navigator.of(context).push(SlidingAroundRoute(P57CustomRouteSecondPage()));
-            },
-          ),
-        ],
-      )),
+          ],
+        ),
+      ),
     );
   }
 }

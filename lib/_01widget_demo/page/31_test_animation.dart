@@ -15,7 +15,8 @@ class P31TestAnimation extends StatefulWidget {
   }
 }
 
-class _TestAnimationState extends State<P31TestAnimation> with SingleTickerProviderStateMixin {
+class _TestAnimationState extends State<P31TestAnimation>
+    with SingleTickerProviderStateMixin {
   //实例animation对象  和必要的控制和状态对象
   Animation<double>? animation;
   AnimationController? controller;
@@ -25,7 +26,10 @@ class _TestAnimationState extends State<P31TestAnimation> with SingleTickerProvi
   void initState() {
     super.initState();
     //初始化一个动画控制器 定义好动画的执行时长
-    controller = AnimationController(duration: const Duration(seconds: 3), vsync: this);
+    controller = AnimationController(
+      duration: const Duration(seconds: 3),
+      vsync: this,
+    );
     //初始化一个补间动画 实例化一个补间类动画的实例，明确需要变换的区间大小和作用的controller对象
     animation = Tween<double>(begin: 0, end: 300).animate(controller!);
     //提供方法 为动画添加监听
@@ -43,9 +47,7 @@ class _TestAnimationState extends State<P31TestAnimation> with SingleTickerProvi
   //build方法  返回页面的布局widget
   @override
   Widget build(BuildContext context) {
-    return AnimationLogo(
-      animation: animation!,
-    );
+    return AnimationLogo(animation: animation!);
   }
 }
 
@@ -67,8 +69,6 @@ class AnimationLogo extends AnimatedWidget {
     );
   }
 
-  AnimationLogo({
-    Key? key,
-    required this.animation,
-  }) : super(key: key, listenable: animation);
+  AnimationLogo({Key? key, required this.animation})
+    : super(key: key, listenable: animation);
 }

@@ -23,18 +23,18 @@ class _DemoGetXPageState extends State<DemoGetXPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text('getX 示例'),
-        ),
-        body: SafeArea(
-          child: SingleChildScrollView(
-            child: Wrap(
-                children: dataList.map((e) {
+      appBar: AppBar(title: Text('getX 示例')),
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Wrap(
+            children: dataList.map((e) {
               e.index = dataList.indexOf(e);
               return Cell(e);
-            }).toList()),
+            }).toList(),
           ),
-        ));
+        ),
+      ),
+    );
   }
 
   List<CellItem> get dataList {
@@ -65,7 +65,10 @@ class _DemoGetXPageState extends State<DemoGetXPage> {
         title: 'Get.rawSnackbar 安卓样式的底部通知栏',
         onTap: () {
           // Get.rawSnackbar(title: 'title', message: 'message', icon: Icon(Icons.check_box));
-          Get.rawSnackbar(titleText: Text('安卓样式的底部通知栏', style: TextStyle(color: Colors.red)), messageText: Container());
+          Get.rawSnackbar(
+            titleText: Text('安卓样式的底部通知栏', style: TextStyle(color: Colors.red)),
+            messageText: Container(),
+          );
         },
       ),
 
@@ -73,64 +76,75 @@ class _DemoGetXPageState extends State<DemoGetXPage> {
         title: 'Get.defaultDialog',
         onTap: () {
           Get.defaultDialog(
-              title: 'title',
-              middleText: 'middleText',
-              content: Text('AAA'),
-              textConfirm: '知道了',
-              backgroundColor: Colors.green,
-              onConfirm: () {
-                Get.back();
-              },
-              buttonColor: Colors.green,
-              confirmTextColor: Colors.black);
+            title: 'title',
+            middleText: 'middleText',
+            content: Text('AAA'),
+            textConfirm: '知道了',
+            backgroundColor: Colors.green,
+            onConfirm: () {
+              Get.back();
+            },
+            buttonColor: Colors.green,
+            confirmTextColor: Colors.black,
+          );
         },
       ),
       CellItem(
         title: '打开自定义的Dialog：',
         onTap: () {
-          Get.dialog(Center(
-            child: Container(
-              width: 400,
-              height: 400,
+          Get.dialog(
+            Center(
+              child: Container(
+                width: 400,
+                height: 400,
 
-              /// 内容自适应,很重要
-              alignment: Alignment.center,
-              color: Colors.red,
-              child: ElevatedButton(
-                onPressed: () {
-                  Get.back();
-                },
-                child: Text('知道了'),
-                style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all(Colors.orange),
-                  tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                  // maximumSize: MaterialStateProperty.all(Size(100, 50)),
-                  padding: MaterialStateProperty.all(EdgeInsets.symmetric(vertical: 10, horizontal: 40)),
+                /// 内容自适应,很重要
+                alignment: Alignment.center,
+                color: Colors.red,
+                child: ElevatedButton(
+                  onPressed: () {
+                    Get.back();
+                  },
+                  child: Text('知道了'),
+                  style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all(Colors.orange),
+                    tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                    // maximumSize: MaterialStateProperty.all(Size(100, 50)),
+                    padding: MaterialStateProperty.all(
+                      EdgeInsets.symmetric(vertical: 10, horizontal: 40),
+                    ),
+                  ),
                 ),
               ),
             ),
-          ));
+          );
         },
       ),
 
       CellItem(
         title: 'Get.bottomSheet类似于showModalBottomSheet',
         onTap: () {
-          Get.bottomSheet(Container(
-            color: Colors.green,
+          Get.bottomSheet(
+            Container(
+              color: Colors.green,
 
-            /// Wrap 类似最小的column
-            child: Wrap(
-              children: <Widget>[
-                ListTile(leading: Icon(Icons.music_note), title: Text('Music'), onTap: () => {}),
-                ListTile(
-                  leading: Icon(Icons.videocam),
-                  title: Text('Video'),
-                  onTap: () => {},
-                ),
-              ],
+              /// Wrap 类似最小的column
+              child: Wrap(
+                children: <Widget>[
+                  ListTile(
+                    leading: Icon(Icons.music_note),
+                    title: Text('Music'),
+                    onTap: () => {},
+                  ),
+                  ListTile(
+                    leading: Icon(Icons.videocam),
+                    title: Text('Video'),
+                    onTap: () => {},
+                  ),
+                ],
+              ),
             ),
-          ));
+          );
         },
       ),
 
@@ -140,10 +154,8 @@ class _DemoGetXPageState extends State<DemoGetXPage> {
           // Get.defaultDialog(custom: Text('222'),title: 'SSS',middleText:'');
           Get.dialog(
             Center(
-                child: Container(
-              child: Text('222'),
-              color: Colors.red,
-            )),
+              child: Container(child: Text('222'), color: Colors.red),
+            ),
             barrierColor: Colors.red,
           );
           // Get.showOverlay(asyncFunction: () {
@@ -223,7 +235,11 @@ class _DemoGetXPageState extends State<DemoGetXPage> {
       CellItem(
         title: '路由-方式2 parameters 只能是Map<String, String>? ',
         onTap: () {
-          Get.toNamed(AppRoutes.route_pages, arguments: {'name': 'jack'}, parameters: {'age': 'tom'});
+          Get.toNamed(
+            AppRoutes.route_pages,
+            arguments: {'name': 'jack'},
+            parameters: {'age': 'tom'},
+          );
         },
       ),
       CellItem(

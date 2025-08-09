@@ -25,32 +25,27 @@ class _TouchAuthDemoState extends State<P36TouchAuthDemoPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Touch auth"),
-        centerTitle: true,
-      ),
+      appBar: AppBar(title: Text("Touch auth"), centerTitle: true),
       body: Container(
         width: MediaQuery.of(context).size.width,
         child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: <Widget>[
-              Text('是否可以使用指纹？: $_canCheckBiometrics\n'),
-              ElevatedButton(
-                child: const Text('检查权限'),
-                onPressed: _checkBiometrics,
-              ),
-              Text('可用的识别类型？: $_availableBiometrics\n'),
-              ElevatedButton(
-                child: const Text('获取生物识别类型'),
-                onPressed: _getAvailableBiometrics,
-              ),
-              Text('认证结果: $_authorized\n'),
-              ElevatedButton(
-                child: Text('授权'),
-                onPressed: _authenticate,
-              ),
-            ]),
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            Text('是否可以使用指纹？: $_canCheckBiometrics\n'),
+            ElevatedButton(
+              child: const Text('检查权限'),
+              onPressed: _checkBiometrics,
+            ),
+            Text('可用的识别类型？: $_availableBiometrics\n'),
+            ElevatedButton(
+              child: const Text('获取生物识别类型'),
+              onPressed: _getAvailableBiometrics,
+            ),
+            Text('认证结果: $_authorized\n'),
+            ElevatedButton(child: Text('授权'), onPressed: _authenticate),
+          ],
+        ),
       ),
     );
   }
@@ -93,12 +88,12 @@ class _TouchAuthDemoState extends State<P36TouchAuthDemoPage> {
   }
 
   _authenticate() async {
-//    bool authenticated = false;
+    //    bool authenticated = false;
 
-//    setState(() {
-//      _isAuthenticating = true;
-//      _authorized = 'Authenticating';
-//    });
+    //    setState(() {
+    //      _isAuthenticating = true;
+    //      _authorized = 'Authenticating';
+    //    });
 
     try {
       _isAuthenticating = await auth.authenticate(

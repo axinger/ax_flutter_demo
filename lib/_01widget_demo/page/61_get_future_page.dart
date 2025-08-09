@@ -13,7 +13,8 @@ class _CounterController extends GetxController {
 }
 
 class P61CounterGetPage extends StatelessWidget {
-  _CounterController get controller => Get.put<_CounterController>(_CounterController());
+  _CounterController get controller =>
+      Get.put<_CounterController>(_CounterController());
 
   @override
   Widget build(BuildContext context) {
@@ -28,24 +29,25 @@ class P61CounterGetPage extends StatelessWidget {
       ),
       body: Obx(() {
         return ReorderableListView.builder(
-            header: Text('头视图'),
-            itemBuilder: (BuildContext context, int index) {
-              return Container(
-                key: ValueKey('custom key $index'),
-                color: Colors.orange,
-                height: 50, //高必须设置，否则长按排序页面会有错乱问题
-                child: Text("内容 = ${controller.dataList[index]}"),
-              );
-            },
-            itemCount: controller.dataList.length,
-            onReorder: (int oldIndex, int newIndex) {
-              if (oldIndex < newIndex) {
-                newIndex -= 1;
-              }
-              var child = controller.dataList.removeAt(oldIndex);
-              controller.dataList.insert(newIndex, child);
-              print('controller.dataList = ${controller.dataList}');
-            });
+          header: Text('头视图'),
+          itemBuilder: (BuildContext context, int index) {
+            return Container(
+              key: ValueKey('custom key $index'),
+              color: Colors.orange,
+              height: 50, //高必须设置，否则长按排序页面会有错乱问题
+              child: Text("内容 = ${controller.dataList[index]}"),
+            );
+          },
+          itemCount: controller.dataList.length,
+          onReorder: (int oldIndex, int newIndex) {
+            if (oldIndex < newIndex) {
+              newIndex -= 1;
+            }
+            var child = controller.dataList.removeAt(oldIndex);
+            controller.dataList.insert(newIndex, child);
+            print('controller.dataList = ${controller.dataList}');
+          },
+        );
       }),
     );
   }

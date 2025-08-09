@@ -38,13 +38,15 @@ class _P14AllBuilderPageState extends State<P14AllBuilderPage> {
 
   var listNotifier = ValueNotifier<List<String>>([]);
 
-//调用 //dynamic 类型自己定
+  //调用 //dynamic 类型自己定
   Future<List> _futureBuilderData() {
-    return Future.wait<dynamic>([demo1(), demo2(), demo3()]).then((e) {
-      print('e========== $e) '); //[true,true,false]
+    return Future.wait<dynamic>([demo1(), demo2(), demo3()])
+        .then((e) {
+          print('e========== $e) '); //[true,true,false]
 
-      return e;
-    }).catchError((e) {});
+          return e;
+        })
+        .catchError((e) {});
   }
 
   @override
@@ -66,150 +68,150 @@ class _P14AllBuilderPageState extends State<P14AllBuilderPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text("各种BuilderWidget"),
-        ),
-        body: AllContentBody(
-          children: [
-            AllContentBox(
-              title: 'list-ValueListenableBuilder',
-              child: Column(
-                children: <Widget>[
-                  TextButton(
-                    // color: Colors.grey,
-                    child: Text('listNotifier'),
-                    // 点击的时候用 ValueNotifier 来更新值
-                    onPressed: () {
-                      listNotifier.value.add(Random().nextInt(100).toString());
-                      print(listNotifier.value.hashCode);
+      appBar: AppBar(title: Text("各种BuilderWidget")),
+      body: AllContentBody(
+        children: [
+          AllContentBox(
+            title: 'list-ValueListenableBuilder',
+            child: Column(
+              children: <Widget>[
+                TextButton(
+                  // color: Colors.grey,
+                  child: Text('listNotifier'),
+                  // 点击的时候用 ValueNotifier 来更新值
+                  onPressed: () {
+                    listNotifier.value.add(Random().nextInt(100).toString());
+                    print(listNotifier.value.hashCode);
 
-                      listNotifier.value = [...listNotifier.value];
-                      print(listNotifier.value.hashCode);
-                    },
-                  ),
-                ],
-              ),
+                    listNotifier.value = [...listNotifier.value];
+                    print(listNotifier.value.hashCode);
+                  },
+                ),
+              ],
             ),
-            AllContentBox(
-              title: '数据监听-ValueListenableBuilder',
-              child: Column(
-                children: <Widget>[
-                  ValueListenableBuilder<int>(
-                    builder: (BuildContext context, value, Widget? child) {
-                      // 只有在更新计数器时才会调用此生成器。
-                      return Row(
-                        ///  spaceEvenly 左右中分布
-                        ///  spaceAround 左右分布
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: <Widget>[
-                          Text(
-                            '$value',
-                            style: TextStyle(backgroundColor: Colors.red),
-                          ),
-                          if (child != null) child,
-                          // child ?? Container(),
-                        ],
-                      );
-                    },
-                    valueListenable: _counterValueNotifier,
-                    // 如果child 的构建成本很高，并且不依赖于通知程序的值，则child参数非常有用。
-                    child: Text('并且不依赖于通知程序的值，则child参数非常有用。', style: TextStyle(backgroundColor: Colors.orange)),
+          ),
+          AllContentBox(
+            title: '数据监听-ValueListenableBuilder',
+            child: Column(
+              children: <Widget>[
+                ValueListenableBuilder<int>(
+                  builder: (BuildContext context, value, Widget? child) {
+                    // 只有在更新计数器时才会调用此生成器。
+                    return Row(
+                      ///  spaceEvenly 左右中分布
+                      ///  spaceAround 左右分布
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: <Widget>[
+                        Text(
+                          '$value',
+                          style: TextStyle(backgroundColor: Colors.red),
+                        ),
+                        if (child != null) child,
+                        // child ?? Container(),
+                      ],
+                    );
+                  },
+                  valueListenable: _counterValueNotifier,
+                  // 如果child 的构建成本很高，并且不依赖于通知程序的值，则child参数非常有用。
+                  child: Text(
+                    '并且不依赖于通知程序的值，则child参数非常有用。',
+                    style: TextStyle(backgroundColor: Colors.orange),
                   ),
-                  TextButton(
-                    // color: Colors.grey,
-                    child: Text('加1'),
-                    // 点击的时候用 ValueNotifier 来更新值
-                    onPressed: () => _counterValueNotifier.value += 1,
-                  ),
-                ],
-              ),
+                ),
+                TextButton(
+                  // color: Colors.grey,
+                  child: Text('加1'),
+                  // 点击的时候用 ValueNotifier 来更新值
+                  onPressed: () => _counterValueNotifier.value += 1,
+                ),
+              ],
             ),
-            AllContentBox(
-              title: '数据监听-StreamBuilder',
-              child: Column(
-                children: <Widget>[
-                  StreamBuilder<int>(
-                      // 监听Stream，每次值改变的时候，更新Text中的内容
-                      stream: _streamController.stream,
+          ),
+          AllContentBox(
+            title: '数据监听-StreamBuilder',
+            child: Column(
+              children: <Widget>[
+                StreamBuilder<int>(
+                  // 监听Stream，每次值改变的时候，更新Text中的内容
+                  stream: _streamController.stream,
 
-                      /// 第一次监听值
-                      initialData: streamInt,
-                      builder: (BuildContext context, AsyncSnapshot<int> snapshot) {
-                        print('snapshot.data = ${snapshot.data}');
-                        return Text('${snapshot.data ?? ''}');
-                      }),
-                  TextButton(
-                    child: Text('加1'),
-                    // 点击的时候用 ValueNotifier 来更新值
-                    onPressed: () {
-                      streamInt++;
-                      _streamController.sink.add(streamInt);
-                    },
-                  ),
-                ],
-              ),
+                  /// 第一次监听值
+                  initialData: streamInt,
+                  builder: (BuildContext context, AsyncSnapshot<int> snapshot) {
+                    print('snapshot.data = ${snapshot.data}');
+                    return Text('${snapshot.data ?? ''}');
+                  },
+                ),
+                TextButton(
+                  child: Text('加1'),
+                  // 点击的时候用 ValueNotifier 来更新值
+                  onPressed: () {
+                    streamInt++;
+                    _streamController.sink.add(streamInt);
+                  },
+                ),
+              ],
             ),
-            AllContentBox(
-              title: 'FutureBuilder',
-              child: FutureBuilder(
-                future: _futureBuilderData(),
-                builder: (context, AsyncSnapshot<List> snapshot) {
-                  if (snapshot.hasData) {
-                    print('hasData = ${snapshot.data}');
-                    return Center(
-                      child: Text("成功 ${snapshot.data} "),
-                    );
-                  } else if (snapshot.hasError) {
-                    return Center(
-                      child: Text("错误..."),
-                    );
-                  } else {
-                    return Center(
-                      child: Text("等待..."),
-                    );
-                  }
-                },
-              ),
+          ),
+          AllContentBox(
+            title: 'FutureBuilder',
+            child: FutureBuilder(
+              future: _futureBuilderData(),
+              builder: (context, AsyncSnapshot<List> snapshot) {
+                if (snapshot.hasData) {
+                  print('hasData = ${snapshot.data}');
+                  return Center(child: Text("成功 ${snapshot.data} "));
+                } else if (snapshot.hasError) {
+                  return Center(child: Text("错误..."));
+                } else {
+                  return Center(child: Text("等待..."));
+                }
+              },
             ),
-            AllContentBox(
-              title: 'rxdart - BehaviorSubject,当前页面add,下个页面listen 同样可以收到数据',
-              child: Column(
-                children: <Widget>[
-                  TextButton(
-                    child: Text('添加'),
-                    onPressed: () {
-                      _behaviorSubject = BehaviorSubject<String>(onListen: () {
+          ),
+          AllContentBox(
+            title: 'rxdart - BehaviorSubject,当前页面add,下个页面listen 同样可以收到数据',
+            child: Column(
+              children: <Widget>[
+                TextButton(
+                  child: Text('添加'),
+                  onPressed: () {
+                    _behaviorSubject = BehaviorSubject<String>(
+                      onListen: () {
                         print("被监听");
-                      });
+                      },
+                    );
 
-                      _behaviorSubject?.listen((data) {
-                        debugPrint("BehaviorSubject = $data");
-                      });
-                    },
-                  ),
-                  TextButton(
-                    child: Text('发送内容'),
-                    onPressed: () {
-                      _behaviorSubject?.add('jim');
-                    },
-                  ),
-                  TextButton(
-                    child: Text('下一页'),
-                    onPressed: () {
-
-                      Get.to(() => _TestPage(
+                    _behaviorSubject?.listen((data) {
+                      debugPrint("BehaviorSubject = $data");
+                    });
+                  },
+                ),
+                TextButton(
+                  child: Text('发送内容'),
+                  onPressed: () {
+                    _behaviorSubject?.add('jim');
+                  },
+                ),
+                TextButton(
+                  child: Text('下一页'),
+                  onPressed: () {
+                    Get.to(
+                      () => _TestPage(
                         behaviorSubject: _behaviorSubject!,
                         callBack: (str) {
                           _behaviorSubject?.add('$str >> ');
                         },
-                      ));
-                    },
-                  ),
-                ],
-              ),
+                      ),
+                    );
+                  },
+                ),
+              ],
             ),
-          ],
-        ));
+          ),
+        ],
+      ),
+    );
   }
 }
 
@@ -237,20 +239,19 @@ class __TestPageState extends State<_TestPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('下一页'),
-      ),
+      appBar: AppBar(title: Text('下一页')),
       body: Column(
         children: <Widget>[
           StreamBuilder<String>(
-              stream: widget.behaviorSubject.stream,
+            stream: widget.behaviorSubject.stream,
 
-              /// 第一次监听值
-//          initialData: streamInt,
-              builder: (BuildContext context, AsyncSnapshot<String> snapshot) {
-                print('snapshot.data = ${snapshot.data}');
-                return Text(snapshot.data ?? '');
-              }),
+            /// 第一次监听值
+            //          initialData: streamInt,
+            builder: (BuildContext context, AsyncSnapshot<String> snapshot) {
+              print('snapshot.data = ${snapshot.data}');
+              return Text(snapshot.data ?? '');
+            },
+          ),
           TextButton(
             child: Text('callBack'),
             onPressed: () {

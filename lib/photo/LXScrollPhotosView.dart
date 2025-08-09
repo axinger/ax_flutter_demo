@@ -27,7 +27,10 @@ class _LXScrollPhotosViewState extends State<LXScrollPhotosView> {
   void initState() {
     super.initState();
     _indexPage = widget.currentIndex;
-    _pageController = PageController(initialPage: _indexPage, viewportFraction: 1.06);
+    _pageController = PageController(
+      initialPage: _indexPage,
+      viewportFraction: 1.06,
+    );
   }
 
   @override
@@ -60,8 +63,8 @@ class _LXScrollPhotosViewState extends State<LXScrollPhotosView> {
             itemBuilder: (BuildContext context, int index) {
               return Container(
                 alignment: Alignment.center,
-//                  padding: EdgeInsets.symmetric(
-//                      horizontal: MediaQuery.of(context).size.width * 0.03),
+                //                  padding: EdgeInsets.symmetric(
+                //                      horizontal: MediaQuery.of(context).size.width * 0.03),
                 child: GestureDetector(
                   onTap: () {},
                   child: Container(

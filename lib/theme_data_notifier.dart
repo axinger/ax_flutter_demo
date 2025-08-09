@@ -13,21 +13,19 @@ class ThemeDataNotifier extends ChangeNotifier {
     textTheme: TextTheme(),
 
     /// 主要样品颜色 是 MaterialColor
-//        primarySwatch: Colors.lightBlue,
+    //        primarySwatch: Colors.lightBlue,
     highlightColor: Colors.grey,
-//bottomAppBarColor: Colors.orange,
-//        splashColor: Colors.orange,
 
+    //bottomAppBarColor: Colors.orange,
+    //        splashColor: Colors.orange,
     appBarTheme: AppBarTheme(
       ///导航按钮颜色
       iconTheme: IconThemeData(color: Colors.white),
     ),
 
     /// 容器默认背景色
-//        scaffoldBackgroundColor: ColorScheme().background,
-    buttonTheme: ButtonThemeData(
-      buttonColor: Colors.orange,
-    ),
+    //        scaffoldBackgroundColor: ColorScheme().background,
+    buttonTheme: ButtonThemeData(buttonColor: Colors.orange),
   );
 
   ThemeData get themeData {

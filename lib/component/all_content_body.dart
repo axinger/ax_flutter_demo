@@ -5,8 +5,9 @@ class AllContentBody extends StatefulWidget {
   final List<AllContentBox> children;
 
   ///初始化并执行方法
-  AllContentBody({List<AllContentBox> children = const <AllContentBox>[]}) : this.children = children {
-//    debugPrint(children.toString());
+  AllContentBody({List<AllContentBox> children = const <AllContentBox>[]})
+    : this.children = children {
+    //    debugPrint(children.toString());
   }
 
   @override
@@ -20,9 +21,7 @@ class _AllContentBodyState extends State<AllContentBody> {
     return CupertinoScrollbar(
       child: SingleChildScrollView(
         padding: EdgeInsets.only(bottom: 100),
-        child: Column(
-          children: widget.children,
-        ),
+        child: Column(children: widget.children),
       ),
     );
   }
@@ -33,7 +32,11 @@ class AllContentBox extends StatefulWidget {
   final Color bgColors;
   final Widget child;
 
-  AllContentBox({this.title = '', this.bgColors = Colors.green, required this.child});
+  AllContentBox({
+    this.title = '',
+    this.bgColors = Colors.green,
+    required this.child,
+  });
 
   @override
   _AllContentBoxState createState() => _AllContentBoxState();
@@ -44,9 +47,7 @@ class _AllContentBoxState extends State<AllContentBox> {
   Widget build(BuildContext context) {
     return Column(
       children: <Widget>[
-        SizedBox(
-          height: 20,
-        ),
+        SizedBox(height: 20),
         Text(widget.title),
         Container(
           color: widget.bgColors,

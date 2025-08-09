@@ -11,18 +11,16 @@ class _MaterialPage1 extends State<MaterialPageMoreText> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("多行文本"),
-      ),
+      appBar: AppBar(title: Text("多行文本")),
 
-//      Flexible和 Expanded
+      //      Flexible和 Expanded
       body: Column(
         children: <Widget>[
           Text("Flexible"),
           Row(
             children: <Widget>[
               Flexible(
-//                flex: 300,
+                //                flex: 300,
                 fit: FlexFit.loose,
                 child: Text(
                   "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAssssssssssss",
@@ -32,9 +30,9 @@ class _MaterialPage1 extends State<MaterialPageMoreText> {
                 ),
               ),
 
-//          SizedBox.fromSize(size: Size.fromWidth(10),),
+              //          SizedBox.fromSize(size: Size.fromWidth(10),),
               Flexible(
-//                flex: 2,
+                //                flex: 2,
                 fit: FlexFit.tight,
                 child: Text(
                   "BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB",
@@ -44,7 +42,7 @@ class _MaterialPage1 extends State<MaterialPageMoreText> {
               ),
 
               Flexible(
-//                flex: 1,
+                //                flex: 1,
                 child: Text(
                   "CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC",
                   overflow: TextOverflow.ellipsis,
@@ -52,9 +50,7 @@ class _MaterialPage1 extends State<MaterialPageMoreText> {
               ),
             ],
           ),
-          SizedBox.fromSize(
-            size: Size.fromHeight(50),
-          ),
+          SizedBox.fromSize(size: Size.fromHeight(50)),
           Text("Expanded"),
           Row(
             children: <Widget>[
@@ -66,7 +62,7 @@ class _MaterialPage1 extends State<MaterialPageMoreText> {
                 ),
               ),
 
-//          SizedBox.fromSize(size: Size.fromWidth(10),),
+              //          SizedBox.fromSize(size: Size.fromWidth(10),),
               Expanded(
                 flex: 1,
                 child: Text(
@@ -84,58 +80,62 @@ class _MaterialPage1 extends State<MaterialPageMoreText> {
               ),
             ],
           ),
-          Row(children: <Widget>[
-            new ElevatedButton(
-              onPressed: () {
-                print('点击红色按钮事件');
-              },
-              // color: const Color(0xffcc0000),
-              child: new Text('红色按钮'),
-            ),
-            new Expanded(
-              flex: 1,
-              child: new ElevatedButton(
+          Row(
+            children: <Widget>[
+              new ElevatedButton(
                 onPressed: () {
-                  print('点击黄色按钮事件');
+                  print('点击红色按钮事件');
                 },
-                // color: const Color(0xfff1c232),
-                child: new Text('黄色按钮'),
+                // color: const Color(0xffcc0000),
+                child: new Text('红色按钮'),
               ),
-            ),
-            new ElevatedButton(
-              onPressed: () {
-                print('点击粉色按钮事件');
-              },
-              // color: const Color(0xffea9999),
-              child: new Text('粉色按钮'),
-            ),
-          ]),
-          Row(children: <Widget>[
-            new ElevatedButton(
-              onPressed: () {
-                print('点击红色按钮事件');
-              },
-              // color: const Color(0xffcc0000),
-              child: new Text('红色按钮'),
-            ),
-            new Flexible(
-              flex: 1,
-              child: new ElevatedButton(
+              new Expanded(
+                flex: 1,
+                child: new ElevatedButton(
+                  onPressed: () {
+                    print('点击黄色按钮事件');
+                  },
+                  // color: const Color(0xfff1c232),
+                  child: new Text('黄色按钮'),
+                ),
+              ),
+              new ElevatedButton(
                 onPressed: () {
-                  print('点击黄色按钮事件');
+                  print('点击粉色按钮事件');
                 },
-                // color: const Color(0xfff1c232),
-                child: new Text('黄色按钮'),
+                // color: const Color(0xffea9999),
+                child: new Text('粉色按钮'),
               ),
-            ),
-            new ElevatedButton(
-              onPressed: () {
-                print('点击粉色按钮事件');
-              },
-              // color: const Color(0xffea9999),
-              child: new Text('粉色按钮'),
-            ),
-          ]),
+            ],
+          ),
+          Row(
+            children: <Widget>[
+              new ElevatedButton(
+                onPressed: () {
+                  print('点击红色按钮事件');
+                },
+                // color: const Color(0xffcc0000),
+                child: new Text('红色按钮'),
+              ),
+              new Flexible(
+                flex: 1,
+                child: new ElevatedButton(
+                  onPressed: () {
+                    print('点击黄色按钮事件');
+                  },
+                  // color: const Color(0xfff1c232),
+                  child: new Text('黄色按钮'),
+                ),
+              ),
+              new ElevatedButton(
+                onPressed: () {
+                  print('点击粉色按钮事件');
+                },
+                // color: const Color(0xffea9999),
+                child: new Text('粉色按钮'),
+              ),
+            ],
+          ),
         ],
       ),
     );

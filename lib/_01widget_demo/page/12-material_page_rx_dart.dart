@@ -18,15 +18,15 @@ class _MaterialPage1 extends State<MaterialPageRxDart> {
   void initState() {
     super.initState();
 
-//    Observable<String> _observable = Observable(Stream.fromIterable(['hello','你好']));
-//
-//
-//    _observable.listen((data){
-//
-//    });
+    //    Observable<String> _observable = Observable(Stream.fromIterable(['hello','你好']));
+    //
+    //
+    //    _observable.listen((data){
+    //
+    //    });
   }
 
-//  Observable Observable_periodic;
+  //  Observable Observable_periodic;
 
   @override
   void dispose() {
@@ -34,15 +34,13 @@ class _MaterialPage1 extends State<MaterialPageRxDart> {
     super.dispose();
     print("dispose = ");
 
-//    Observable_periodic = null;
+    //    Observable_periodic = null;
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("rxdart-Reactive Extensions"),
-      ),
+      appBar: AppBar(title: Text("rxdart-Reactive Extensions")),
       body: ListView(
         children: <Widget>[
           Column(
@@ -52,7 +50,10 @@ class _MaterialPage1 extends State<MaterialPageRxDart> {
               TextButton(
                 child: Text("Stream按钮"),
                 onPressed: () async {
-                  List<String> list = ["Stream 返回结果 ${Random().nextInt(100)}", "Stream 返回结果 ${Random().nextInt(100)}"];
+                  List<String> list = [
+                    "Stream 返回结果 ${Random().nextInt(100)}",
+                    "Stream 返回结果 ${Random().nextInt(100)}",
+                  ];
 
                   /// 应该就是异步
                   /* Stream<List> _stream = Stream.fromFuture(
@@ -65,7 +66,7 @@ class _MaterialPage1 extends State<MaterialPageRxDart> {
                   Observable<List> _observable = Observable(_stream);*/
 
                   /// fromIterable 放入一个list,listen 会根据list长度 多次订阅
-//                  Observable<String> _observable = Observable(Stream.fromIterable(['hello','你好']));
+                  //                  Observable<String> _observable = Observable(Stream.fromIterable(['hello','你好']));
 
                   /// fromFuture
                   /*    Observable _observable = Observable.fromFuture(
@@ -84,78 +85,72 @@ class _MaterialPage1 extends State<MaterialPageRxDart> {
 */
 
                   /// 只有一个数据 T
-//                  Observable _observable = Observable.just(list);
-//
-//                  _observable.listen((data) {
-//                    debugPrint("StreamData = $data");
-//                  });
+                  //                  Observable _observable = Observable.just(list);
+                  //
+                  //                  _observable.listen((data) {
+                  //                    debugPrint("StreamData = $data");
+                  //                  });
 
-//                  _observable = Observable.just("jim");
-//                  _observable.listen((data) {
-//                    debugPrint("StreamData2 = $data");
-//                  });
+                  //                  _observable = Observable.just("jim");
+                  //                  _observable.listen((data) {
+                  //                    debugPrint("StreamData2 = $data");
+                  //                  });
                 },
               ),
-              Divider(
-                color: Colors.red,
-              ),
+              Divider(color: Colors.red),
               TextButton(
                 child: Text("重复触发,根据内容关闭,不可以关闭"),
                 onPressed: () {
                   /// 重复触发
                   ///
-//                  Observable_periodic =
-//                      Observable.periodic(Duration(seconds: 1), (count) {
-//                    return "返回给: $count";
-//                  }).listen((data) {
-//                    debugPrint("StreamData = $data");
-//                  }) as Observable;
+                  //                  Observable_periodic =
+                  //                      Observable.periodic(Duration(seconds: 1), (count) {
+                  //                    return "返回给: $count";
+                  //                  }).listen((data) {
+                  //                    debugPrint("StreamData = $data");
+                  //                  }) as Observable;
 
                   /// 这个也是间隔,但
-//                  var obs = Observable(Stream.fromIterable([1, 2, 3, 4, 5]))
-//                      .interval(Duration(seconds: 1));
-//
-//                  obs.listen((data){
-//                    print("data = ${data}");
-//                  });
+                  //                  var obs = Observable(Stream.fromIterable([1, 2, 3, 4, 5]))
+                  //                      .interval(Duration(seconds: 1));
+                  //
+                  //                  obs.listen((data){
+                  //                    print("data = ${data}");
+                  //                  });
                 },
               ),
-              Divider(
-                color: Colors.red,
-              ),
+              Divider(color: Colors.red),
               TextButton(
                 child: Text("吐出数据”后间隔一段时间再吐下一个数据。"),
                 onPressed: () {
-//                  Stream stream  = Stream.fromIterable([1, 2, 3, 4, 5]);
+                  //                  Stream stream  = Stream.fromIterable([1, 2, 3, 4, 5]);
                   Stream stream = Stream.fromFuture(Future.value("jim"));
 
-//                  Stream stream  = Stream.fromFuture( Future.delayed(Duration(seconds: 1), () {
-//                    return "tom";
-//                  }));
+                  //                  Stream stream  = Stream.fromFuture( Future.delayed(Duration(seconds: 1), () {
+                  //                    return "tom";
+                  //                  }));
 
-//                  var obs = Observable(stream).interval(Duration(seconds: 1));
-//
-//                  obs.listen((data) {
-//                    print("data = ${data}");
-//                  });
+                  //                  var obs = Observable(stream).interval(Duration(seconds: 1));
+                  //
+                  //                  obs.listen((data) {
+                  //                    print("data = ${data}");
+                  //                  });
                 },
               ),
-              Divider(
-                color: Colors.red,
-              ),
+              Divider(color: Colors.red),
               TextButton(
                 child: Text("PublishSubject重复,且可关闭"),
                 onPressed: () async {
-//                  PublishSubject _subject = PublishSubject<String>().listen((data) {
-//                    debugPrint("StreamData2 = $data");
-//
-//                  }) as PublishSubject
-//                    ..interval(Duration(seconds: 1));
+                  //                  PublishSubject _subject = PublishSubject<String>().listen((data) {
+                  //                    debugPrint("StreamData2 = $data");
+                  //
+                  //                  }) as PublishSubject
+                  //                    ..interval(Duration(seconds: 1));
 
-//                  Observable observable = Observable(Stream.fromIterable([1, 2, 3, 4, 5]));
-//                  observable.startWith(9).listen(print);
+                  //                  Observable observable = Observable(Stream.fromIterable([1, 2, 3, 4, 5]));
+                  //                  observable.startWith(9).listen(print);
 
-//                  Observable ob =PublishSubject().interval(Duration(seconds: 1));
+                  //                  Observable ob =PublishSubject().interval(Duration(seconds: 1));
 
                   PublishSubject _subject = PublishSubject();
 
@@ -163,9 +158,9 @@ class _MaterialPage1 extends State<MaterialPageRxDart> {
                     debugPrint("StreamData1 = $data");
                   });
 
-//                  _subject.listen((data) {
-//                    debugPrint("StreamData2 = $data");
-//                  });
+                  //                  _subject.listen((data) {
+                  //                    debugPrint("StreamData2 = $data");
+                  //                  });
 
                   /// 放中间,后面的监听不到
                   _subject.add("jim");
@@ -177,9 +172,7 @@ class _MaterialPage1 extends State<MaterialPageRxDart> {
                   });
                 },
               ),
-              Divider(
-                color: Colors.red,
-              ),
+              Divider(color: Colors.red),
               TextButton(
                 child: Text("PublishSubject"),
                 onPressed: () {
@@ -199,15 +192,17 @@ class _MaterialPage1 extends State<MaterialPageRxDart> {
                   _subject.close();
                 },
               ),
-              Divider(
-                color: Colors.red,
-              ),
+              Divider(color: Colors.red),
               TextButton(
-                child: Text("5--BehaviorSubjec,add后listen 也可以监听,2个add,不同位置不同效果"),
+                child: Text(
+                  "5--BehaviorSubjec,add后listen 也可以监听,2个add,不同位置不同效果",
+                ),
                 onPressed: () {
-                  BehaviorSubject _subject = BehaviorSubject(onListen: () {
-                    print("被监听");
-                  });
+                  BehaviorSubject _subject = BehaviorSubject(
+                    onListen: () {
+                      print("被监听");
+                    },
+                  );
 
                   _subject.listen((data) {
                     debugPrint("StreamData1 = $data");
@@ -230,9 +225,7 @@ class _MaterialPage1 extends State<MaterialPageRxDart> {
                   _subject.close();
                 },
               ),
-              Divider(
-                color: Colors.red,
-              ),
+              Divider(color: Colors.red),
               TextButton(
                 child: Text("ReplaySubject,2个add后listen 也可以监听"),
                 onPressed: () {
@@ -255,19 +248,17 @@ class _MaterialPage1 extends State<MaterialPageRxDart> {
                   _subject.close();
                 },
               ),
-              Divider(
-                color: Colors.red,
-              ),
+              Divider(color: Colors.red),
               TextButton(
                 child: Text("转map-拦截一下"),
                 onPressed: () {
-//                  PublishSubject _subject = PublishSubject() ;
-//
-//                  _subject.map((item){
-//                  return "拦截一下 $item";
-//                  }).listen((data) {
-//                    debugPrint("StreamData = $data");
-//                  });
+                  //                  PublishSubject _subject = PublishSubject() ;
+                  //
+                  //                  _subject.map((item){
+                  //                  return "拦截一下 $item";
+                  //                  }).listen((data) {
+                  //                    debugPrint("StreamData = $data");
+                  //                  });
 
                   /// 语法
                   /* PublishSubject _subject1 = PublishSubject().map((item){
@@ -276,7 +267,7 @@ class _MaterialPage1 extends State<MaterialPageRxDart> {
                     debugPrint("StreamData = $data");
                   }) as PublishSubject;
                   _subject1.close();*/
-/*
+                  /*
 
                   PublishSubject _subject = PublishSubject()
                     ..map((item) {
@@ -311,8 +302,8 @@ class _MaterialPage1 extends State<MaterialPageRxDart> {
 
                   /// 这个放中间,不同位置不同效果
                   _subject.add("jim");
-//                  _subject.add("jim1");
-//                  _subject.(["jim1","jim1"]);
+                  //                  _subject.add("jim1");
+                  //                  _subject.(["jim1","jim1"]);
                   /// 需要关闭,不然有警告
                   _subject.close();
                 },

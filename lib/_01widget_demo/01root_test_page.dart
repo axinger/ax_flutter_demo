@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:ax_flutter_demo/_01widget_demo/page/01_button_view.dart';
 import 'package:ax_flutter_demo/_01widget_demo/page/01_text_field_view.dart';
 import 'package:ax_flutter_demo/_01widget_demo/page/06_table_page.dart';
-import 'package:ax_flutter_demo/_01widget_demo/page/63_bottom_up.dart';// import 'package:ax_flutter_util/ax_flutter_util.dart';
+import 'package:ax_flutter_demo/_01widget_demo/page/63_bottom_up.dart'; // import 'package:ax_flutter_util/ax_flutter_util.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

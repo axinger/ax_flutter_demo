@@ -18,10 +18,11 @@ class _BottomTabBarWidgetState extends State<P55BottomTabBarWidget> {
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       // 设置floating按钮
       floatingActionButton: FloatingActionButton(
-          child: Icon(Icons.add, color: Colors.white),
-          onPressed: () {
-            print("中间按钮事件");
-          }),
+        child: Icon(Icons.add, color: Colors.white),
+        onPressed: () {
+          print("中间按钮事件");
+        },
+      ),
       bottomNavigationBar: BottomAppBar(
         //悬浮按钮 与其他菜单栏的结合方式
         shape: CircularNotchedRectangle(),
@@ -32,10 +33,21 @@ class _BottomTabBarWidgetState extends State<P55BottomTabBarWidget> {
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
-            buildTabBarItem(selectedIndex, 0, selectedIcon: Icon(Icons.home, color: Colors.blue), icon: Icon(Icons.home, color: Colors.grey), title: "首页"),
+            buildTabBarItem(
+              selectedIndex,
+              0,
+              selectedIcon: Icon(Icons.home, color: Colors.blue),
+              icon: Icon(Icons.home, color: Colors.grey),
+              title: "首页",
+            ),
             //
-            buildTabBarItem(selectedIndex, 1,
-                selectedIcon: Icon(Icons.library_music, color: Colors.blue), icon: Icon(Icons.library_music, color: Colors.grey), title: "发现"),
+            buildTabBarItem(
+              selectedIndex,
+              1,
+              selectedIcon: Icon(Icons.library_music, color: Colors.blue),
+              icon: Icon(Icons.library_music, color: Colors.grey),
+              title: "发现",
+            ),
             //
             // buildTabBarItem(selectedIndex, 2, selectedIcon: Icon(Icons.email, color: Colors.blue), icon: Icon(Icons.email, color: Colors.grey), title: "消息"),
             //
@@ -71,12 +83,16 @@ class _BottomTabBarWidgetState extends State<P55BottomTabBarWidget> {
         child: SizedBox(
           height: 52,
           child: Container(
-              color: Colors.orange,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [rsIcon, Text("$title", style: textStyle)],
-              )),
+            color: Colors.orange,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                rsIcon,
+                Text("$title", style: textStyle),
+              ],
+            ),
+          ),
         ),
         onTap: () {
           if (flagIndex != currentIndex) {

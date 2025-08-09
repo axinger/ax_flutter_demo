@@ -73,8 +73,8 @@ class _P33DbHiveState extends State<P33DbHive> {
   Box<Person>? allPersonBox;
 
   void _db() async {
-//    Directory tempDir = await getApplicationDocumentsDirectory();
-//    String tempPath = tempDir.path;
+    //    Directory tempDir = await getApplicationDocumentsDirectory();
+    //    String tempPath = tempDir.path;
     await Hive.initFlutter('myDb');
     Hive.registerAdapter(PersonAdapter());
 
@@ -89,9 +89,7 @@ class _P33DbHiveState extends State<P33DbHive> {
     getApplicationDocumentsDirectory().then((value) => print('path = $value'));
 
     return Scaffold(
-      appBar: AppBar(
-        title: Text('db'),
-      ),
+      appBar: AppBar(title: Text('db')),
       body: ListView(
         children: [
           Column(
@@ -108,29 +106,29 @@ class _P33DbHiveState extends State<P33DbHive> {
               ),
               FutureBuilder<Box<bool>>(
                 future: Hive.openBox('do221'),
-                builder: (BuildContext context, AsyncSnapshot<Box<bool>> snapshot) {
-                  print('snapshot.hasData = ${snapshot.hasData}');
-                  if (!snapshot.hasData) {
-                    return SizedBox(
-                      height: 1,
-                    );
-                  }
-                  return ValueListenableBuilder(
-                    valueListenable: Hive.box<bool>('do221').listenable(),
-                    builder: (context, Box box, widget) {
-                      return Switch(
-                          value: box.get('darkMode') ?? true,
-                          onChanged: (val) {
-                            box.put('darkMode', val);
-                          });
+                builder:
+                    (BuildContext context, AsyncSnapshot<Box<bool>> snapshot) {
+                      print('snapshot.hasData = ${snapshot.hasData}');
+                      if (!snapshot.hasData) {
+                        return SizedBox(height: 1);
+                      }
+                      return ValueListenableBuilder(
+                        valueListenable: Hive.box<bool>('do221').listenable(),
+                        builder: (context, Box box, widget) {
+                          return Switch(
+                            value: box.get('darkMode') ?? true,
+                            onChanged: (val) {
+                              box.put('darkMode', val);
+                            },
+                          );
+                        },
+                      );
                     },
-                  );
-                },
               ),
               ElevatedButton(
                 child: Text('存数据_定义类'),
                 onPressed: () async {
-//                var box = allPersonBox;
+                  //                var box = allPersonBox;
 
                   Box<Person> box = await Hive.openBox<Person>('allPerson');
 
@@ -149,11 +147,11 @@ class _P33DbHiveState extends State<P33DbHive> {
               ElevatedButton(
                 child: Text('取数据'),
                 onPressed: () async {
-//                var person = allPersonBox.get('person');
-//                print(allPersonBox.get('person')); // Dave - 2
-//                person.age = 40;
-//                person.save();
-//                print(allPersonBox.get('person')); // Dave - 2
+                  //                var person = allPersonBox.get('person');
+                  //                print(allPersonBox.get('person')); // Dave - 2
+                  //                person.age = 40;
+                  //                person.save();
+                  //                print(allPersonBox.get('person')); // Dave - 2
 
                   var box1 = await Hive.openBox<Person>('allPerson');
 
@@ -192,7 +190,7 @@ class _P33DbHiveState extends State<P33DbHive> {
                 },
               ),
             ],
-          )
+          ),
         ],
       ),
     );

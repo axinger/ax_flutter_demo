@@ -7,9 +7,7 @@ class MyView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("我的"),
-      ),
+      appBar: AppBar(title: Text("我的")),
       body: ListTile(
         title: Text("进入这里表示已经登录过了"),
         subtitle: Text('ListTile 样式的有主副标题'),

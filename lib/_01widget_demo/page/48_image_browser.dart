@@ -40,7 +40,8 @@ class P47ImageBrowser extends StatefulWidget {
   });
 
   @override
-  _SurveyTasksImageBrowserState createState() => _SurveyTasksImageBrowserState();
+  _SurveyTasksImageBrowserState createState() =>
+      _SurveyTasksImageBrowserState();
 }
 
 class _SurveyTasksImageBrowserState extends State<P47ImageBrowser> {
@@ -99,10 +100,7 @@ class _SurveyTasksImageBrowserState extends State<P47ImageBrowser> {
               title: ValueListenableBuilder(
                 valueListenable: _titleNotifier,
                 builder: (BuildContext context, String value, Widget? child) {
-                  return Text(
-                    value,
-                    style: TextStyle(color: Colors.white),
-                  );
+                  return Text(value, style: TextStyle(color: Colors.white));
                 },
               ),
               backgroundColor: Colors.black,
@@ -120,9 +118,10 @@ class _SurveyTasksImageBrowserState extends State<P47ImageBrowser> {
                         scrollDirection: Axis.horizontal,
                         scrollPhysics: const BouncingScrollPhysics(),
                         // loadFailedChild: Text('加载失败'),
-                        loadingBuilder: (BuildContext context, ImageChunkEvent? event) {
-                          return Text('加载中');
-                        },
+                        loadingBuilder:
+                            (BuildContext context, ImageChunkEvent? event) {
+                              return Text('加载中');
+                            },
                         builder: (BuildContext context, int index) {
                           var item = _imageDataList[index];
                           return PhotoViewGalleryPageOptions(
@@ -146,7 +145,7 @@ class _SurveyTasksImageBrowserState extends State<P47ImageBrowser> {
                       Align(
                         alignment: Alignment.bottomCenter,
                         child: _showNameBtn,
-                      )
+                      ),
                     ],
                   ),
                 ),
@@ -163,10 +162,7 @@ class _SurveyTasksImageBrowserState extends State<P47ImageBrowser> {
   List<Widget> get _rightSelect {
     return [
       !widget.isShowSelect
-          ? Container(
-              width: 0,
-              height: 0,
-            )
+          ? Container(width: 0, height: 0)
           : ValueListenableBuilder<bool>(
               valueListenable: _isSelectedNotifier,
               builder: (BuildContext context, value, Widget? child) {
@@ -175,17 +171,22 @@ class _SurveyTasksImageBrowserState extends State<P47ImageBrowser> {
                     _isSelectedNotifier.value = !_isSelectedNotifier.value;
                     _currentInfo.isSelected = !_currentInfo.isSelected;
                     if (widget.selectCallback != null) {
-                      widget.selectCallback!(_currentIndex, _isSelectedNotifier.value);
+                      widget.selectCallback!(
+                        _currentIndex,
+                        _isSelectedNotifier.value,
+                      );
                     }
                   },
                   icon: Image.asset(
-                    value ? 'assets/image/album/selected.png' : 'assets/image/album/un_selected.png',
+                    value
+                        ? 'assets/image/album/selected.png'
+                        : 'assets/image/album/un_selected.png',
                     width: 25,
                     height: 25,
                   ),
                 );
               },
-            )
+            ),
     ];
   }
 
@@ -206,22 +207,24 @@ class _SurveyTasksImageBrowserState extends State<P47ImageBrowser> {
                     TextField(
                       controller: _nameController,
                       focusNode: _nameFocusNode,
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 16,
-                      ),
+                      style: TextStyle(color: Colors.white, fontSize: 16),
                       decoration: InputDecoration(
-                        contentPadding: EdgeInsets.only(top: 0, bottom: 0, left: 10, right: 10),
+                        contentPadding: EdgeInsets.only(
+                          top: 0,
+                          bottom: 0,
+                          left: 10,
+                          right: 10,
+                        ),
 
-                        fillColor: !value ? Colors.transparent : Color(0xff464647),
+                        fillColor: !value
+                            ? Colors.transparent
+                            : Color(0xff464647),
                         filled: true,
 
                         ///选中时外边框颜色
                         focusedBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(5),
-                          borderSide: BorderSide(
-                            color: Color(0xff828181),
-                          ),
+                          borderSide: BorderSide(color: Color(0xff828181)),
                         ),
 
                         ///未选中时候的颜色
@@ -262,31 +265,54 @@ class _SurveyTasksImageBrowserState extends State<P47ImageBrowser> {
                           GestureDetector(
                             child: Text(
                               '重命名',
-                              style: TextStyle(color: Colors.white, fontSize: 16),
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 16,
+                              ),
                             ),
                             onTap: () {
-                              FocusScope.of(context).requestFocus(_nameFocusNode);
+                              FocusScope.of(
+                                context,
+                              ).requestFocus(_nameFocusNode);
                               _isEditNotifier.value = true;
                             },
-                          )
+                          ),
                         ]
                       : [
                           GestureDetector(
-                            child: Text('取消', style: TextStyle(color: Colors.white, fontSize: 16)),
+                            child: Text(
+                              '取消',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 16,
+                              ),
+                            ),
                             onTap: () {
                               _isEditNotifier.value = false;
                               _nameFocusNode.unfocus();
-                              _nameController.text = _imageDataList[_currentIndex].fileNameNoSuffix;
+                              _nameController.text =
+                                  _imageDataList[_currentIndex]
+                                      .fileNameNoSuffix;
                             },
                           ),
                           GestureDetector(
-                            child: Text('完成', style: TextStyle(color: Colors.white, fontSize: 16)),
+                            child: Text(
+                              '完成',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 16,
+                              ),
+                            ),
                             onTap: () {
                               _isEditNotifier.value = false;
                               _nameFocusNode.unfocus();
-                              _currentInfo.fileNameNoSuffix = _nameController.text;
+                              _currentInfo.fileNameNoSuffix =
+                                  _nameController.text;
                               if (widget.renameCallback != null) {
-                                widget.renameCallback!(_currentIndex, _currentInfo.fileName);
+                                widget.renameCallback!(
+                                  _currentIndex,
+                                  _currentInfo.fileName,
+                                );
                               }
                             },
                           ),
@@ -305,12 +331,7 @@ enum ImageFileType {
   base64,
 }
 
-enum ImageFileUploadState {
-  none,
-  loading,
-  success,
-  fail,
-}
+enum ImageFileUploadState { none, loading, success, fail }
 
 T? asT<T>(dynamic value) {
   if (value is T) {
@@ -379,10 +400,10 @@ class TagList {
   String tagPropertyVal;
 
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'tagCode': tagCode,
-        'tagPropertyCode': tagPropertyCode,
-        'tagPropertyVal': tagPropertyVal,
-      };
+    'tagCode': tagCode,
+    'tagPropertyCode': tagPropertyCode,
+    'tagPropertyVal': tagPropertyVal,
+  };
 
   @override
   String toString() {
@@ -411,9 +432,7 @@ class LoadNetworkImage extends StatelessWidget {
 class ImageFileTypeView extends StatelessWidget {
   final ImageFileInfo? info;
 
-  ImageFileTypeView({
-    this.info,
-  });
+  ImageFileTypeView({this.info});
 
   @override
   Widget build(BuildContext context) {
@@ -427,7 +446,10 @@ class ImageFileTypeView extends StatelessWidget {
         child = LoadNetworkImage(url: info!.httpUrl);
         break;
       case ImageFileType.base64:
-        child = Image.memory(Base64Decoder().convert(info!.fileBase64), fit: BoxFit.fill);
+        child = Image.memory(
+          Base64Decoder().convert(info!.fileBase64),
+          fit: BoxFit.fill,
+        );
         break;
       default:
         child = Container();
@@ -438,11 +460,11 @@ class ImageFileTypeView extends StatelessWidget {
       clipBehavior: Clip.hardEdge,
       decoration: BoxDecoration(
         color: Colors.transparent,
-//        border: Border.all(color: Colors.red,width: 1),
-//        borderRadius: BorderRadius.all(Radius.circular(6)),
+        //        border: Border.all(color: Colors.red,width: 1),
+        //        borderRadius: BorderRadius.all(Radius.circular(6)),
       ),
       child: ClipRRect(
-//        borderRadius: BorderRadius.circular(5),
+        //        borderRadius: BorderRadius.circular(5),
         child: child,
       ),
     );

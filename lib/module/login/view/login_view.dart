@@ -21,38 +21,35 @@ class _LoginPage extends State<LoginView> {
 
   @override
   Widget build(BuildContext context) {
-//     return MaterialApp(
-//       title: 'Droid Sans',
-//
-//       ///点击空白隐藏键盘
-//       home: GestureDetector(
-//         behavior: HitTestBehavior.translucent,
-//         onTap: () {
-//           print("=============");
-//           FocusScope.of(context).requestFocus(FocusNode());
-//         },
-//         child: Scaffold(
-//           appBar: AppBar(
-//             title: Text(
-//               '登录',
-//               style: TextStyle(fontFamily: 'Droid Sans'),
-//             ),
-//             elevation: 0,
-//           ),
-//           backgroundColor: Colors.white,
-//           body: LoginViewFormTF(),
-//
-// //          body: ContainerTF(),
-//         ),
-//       ),
-//     );
+    //     return MaterialApp(
+    //       title: 'Droid Sans',
+    //
+    //       ///点击空白隐藏键盘
+    //       home: GestureDetector(
+    //         behavior: HitTestBehavior.translucent,
+    //         onTap: () {
+    //           print("=============");
+    //           FocusScope.of(context).requestFocus(FocusNode());
+    //         },
+    //         child: Scaffold(
+    //           appBar: AppBar(
+    //             title: Text(
+    //               '登录',
+    //               style: TextStyle(fontFamily: 'Droid Sans'),
+    //             ),
+    //             elevation: 0,
+    //           ),
+    //           backgroundColor: Colors.white,
+    //           body: LoginViewFormTF(),
+    //
+    // //          body: ContainerTF(),
+    //         ),
+    //       ),
+    //     );
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          '登录\n临时取消返回按钮',
-          textAlign: TextAlign.center,
-        ),
+        title: Text('登录\n临时取消返回按钮', textAlign: TextAlign.center),
         elevation: 0,
         centerTitle: true,
 
@@ -62,38 +59,38 @@ class _LoginPage extends State<LoginView> {
       backgroundColor: Colors.white,
       body: LoginViewFormTF(),
 
-//          body: ContainerTF(),
+      //          body: ContainerTF(),
     );
   }
 
-//   @override
-//   Widget build(BuildContext context) {
-//     return MaterialApp(
-//       title: 'Droid Sans',
-//
-//       ///点击空白隐藏键盘
-//       home: GestureDetector(
-//         behavior: HitTestBehavior.translucent,
-//         onTap: () {
-//           print("=============");
-//           FocusScope.of(context).requestFocus(FocusNode());
-//         },
-//         child: Scaffold(
-//           appBar: AppBar(
-//             title: Text(
-//               '登录',
-//               style: TextStyle(fontFamily: 'Droid Sans'),
-//             ),
-//             elevation: 0,
-//           ),
-//           backgroundColor: Colors.white,
-//           body: LoginViewFormTF(),
-//
-// //          body: ContainerTF(),
-//         ),
-//       ),
-//     );
-//   }
+  //   @override
+  //   Widget build(BuildContext context) {
+  //     return MaterialApp(
+  //       title: 'Droid Sans',
+  //
+  //       ///点击空白隐藏键盘
+  //       home: GestureDetector(
+  //         behavior: HitTestBehavior.translucent,
+  //         onTap: () {
+  //           print("=============");
+  //           FocusScope.of(context).requestFocus(FocusNode());
+  //         },
+  //         child: Scaffold(
+  //           appBar: AppBar(
+  //             title: Text(
+  //               '登录',
+  //               style: TextStyle(fontFamily: 'Droid Sans'),
+  //             ),
+  //             elevation: 0,
+  //           ),
+  //           backgroundColor: Colors.white,
+  //           body: LoginViewFormTF(),
+  //
+  // //          body: ContainerTF(),
+  //         ),
+  //       ),
+  //     );
+  //   }
 }
 
 class ContainerTF extends StatefulWidget {
@@ -126,12 +123,11 @@ class _ContainerTF extends State<ContainerTF> {
 
       /// TextField 很多属性 无效,包一层 Theme
       child: Theme(
-        data: Theme.of(context).copyWith(
-          primaryColor: Colors.orange,
-          hintColor: Colors.grey,
-        ),
+        data: Theme.of(
+          context,
+        ).copyWith(primaryColor: Colors.orange, hintColor: Colors.grey),
         child: Column(
-//              mainAxisAlignment: MainAxisAlignment.end,
+          //              mainAxisAlignment: MainAxisAlignment.end,
           children: <Widget>[
             /// 手机号
             TextField(
@@ -161,27 +157,22 @@ class _ContainerTF extends State<ContainerTF> {
 
               inputFormatters: <TextInputFormatter>[
                 // WhitelistingTextInputFormatter.digitsOnly, //只输入数字
-//                  PhoneTextInputFormatter.digitsOnly,
+                //                  PhoneTextInputFormatter.digitsOnly,
                 FilteringTextInputFormatter(RegExp(r"^[0-9]*$"), allow: true),
               ],
 
               ///输入文本的样式
-              style: TextStyle(
-                fontSize: 16.0,
-                color: Colors.black,
-              ),
+              style: TextStyle(fontSize: 16.0, color: Colors.black),
 
               decoration: InputDecoration(
                 /// 头部的图标
-                icon: Icon(
-                  Icons.phone,
-                ),
+                icon: Icon(Icons.phone),
                 hintText: "请输入手机号",
 
                 /// 左上角的标识
                 labelText: "手机号",
                 hintStyle: TextStyle(
-//                            fontSize: 16.0,
+                  //                            fontSize: 16.0,
                   color: Colors.black,
                 ),
 
@@ -197,9 +188,7 @@ class _ContainerTF extends State<ContainerTF> {
                 ///选中时外边框颜色
                 focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(10),
-                  borderSide: BorderSide(
-                    color: Colors.red,
-                  ),
+                  borderSide: BorderSide(color: Colors.red),
                 ),
 
                 ///未选中时候的颜色
@@ -211,32 +200,27 @@ class _ContainerTF extends State<ContainerTF> {
                 ),
 
                 /// right 小组件
-//                suffixIcon: MaterialButton(
-//                  child: Text(
-//                    "获取验证码",
-//                    style: TextStyle(fontSize: 14.0),
-//                  ),
-//                  textColor: Colors.black,
-//                  disabledTextColor: Colors.grey,
-//                  onPressed: (username.isEmpty) ? null : () {},
-//                ),
+                //                suffixIcon: MaterialButton(
+                //                  child: Text(
+                //                    "获取验证码",
+                //                    style: TextStyle(fontSize: 14.0),
+                //                  ),
+                //                  textColor: Colors.black,
+                //                  disabledTextColor: Colors.grey,
+                //                  onPressed: (username.isEmpty) ? null : () {},
+                //                ),
                 suffixIcon: OutlinedButton(
-                  child: Text(
-                    "获取验证码1",
-                    style: TextStyle(fontSize: 14.0),
-                  ),
+                  child: Text("获取验证码1", style: TextStyle(fontSize: 14.0)),
                   // textColor: Colors.black,
                   // disabledTextColor: Colors.grey,
-//                  onPressed: (username.isEmpty) ? null : () {},
+                  //                  onPressed: (username.isEmpty) ? null : () {},
                   onPressed: () {},
                 ),
               ),
             ),
 
             /// 间隔
-            SizedBox(
-              height: 20,
-            ),
+            SizedBox(height: 20),
 
             ///密码
             TextField(
@@ -265,35 +249,25 @@ class _ContainerTF extends State<ContainerTF> {
               },
 
               ///输入文本的样式
-              style: TextStyle(
-                fontSize: 16.0,
-                color: Colors.black,
-              ),
+              style: TextStyle(fontSize: 16.0, color: Colors.black),
 
               decoration: InputDecoration(
                 /// 头部的图标
-                icon: Icon(
-                  Icons.lock,
-                ),
+                icon: Icon(Icons.lock),
                 hintText: "请输入密码",
                 labelText: "密码",
-                hintStyle: TextStyle(
-                  fontSize: 16.0,
-                  color: Colors.red,
-                ),
+                hintStyle: TextStyle(fontSize: 16.0, color: Colors.red),
 
                 ///输入内容距离上下左右的距离 ，可通过这个属性来控制 TextField的高度
                 contentPadding: EdgeInsets.all(10.0),
                 border: OutlineInputBorder(
-//                    borderRadius: BorderRadius.circular(15),
-//                    borderSide: BorderSide.none,
-                    ),
+                  //                    borderRadius: BorderRadius.circular(15),
+                  //                    borderSide: BorderSide.none,
+                ),
               ),
             ),
 
-            SizedBox(
-              height: 20,
-            ),
+            SizedBox(height: 20),
 
             Container(
               width: double.infinity,
@@ -301,10 +275,7 @@ class _ContainerTF extends State<ContainerTF> {
               child: TextButton(
                 child: Text(
                   "登录",
-                  style: TextStyle(
-                    letterSpacing: 10,
-                    fontSize: 20,
-                  ),
+                  style: TextStyle(letterSpacing: 10, fontSize: 20),
                 ),
                 // textColor: Colors.white,
                 // disabledTextColor: Colors.grey,
@@ -315,10 +286,14 @@ class _ContainerTF extends State<ContainerTF> {
                     : () {
                         ///收起键盘
                         FocusScope.of(context).requestFocus(FocusNode());
-                        EVENT_BUS.fire(AuthenticationLoggedInEvent(
+                        EVENT_BUS.fire(
+                          AuthenticationLoggedInEvent(
                             user: UserRepository(
-                                username: phoneTextEditingController.text,
-                                password: pswTextEditingController.text)));
+                              username: phoneTextEditingController.text,
+                              password: pswTextEditingController.text,
+                            ),
+                          ),
+                        );
                       },
               ),
             ),

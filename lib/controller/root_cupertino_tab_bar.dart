@@ -13,13 +13,13 @@ class MyBottomItem {
     required Icon icon,
     Widget? activeIcon,
     required Widget content,
-  })  : content = content,
-        barItem = BottomNavigationBarItem(
-          icon: icon,
-          label: title,
-//          title: Padding(child: Text(title,style: TextStyle(fontSize: 16),),padding: EdgeInsets.only(top: 20),),
-//          backgroundColor: Colors.white,
-        );
+  }) : content = content,
+       barItem = BottomNavigationBarItem(
+         icon: icon,
+         label: title,
+         //          title: Padding(child: Text(title,style: TextStyle(fontSize: 16),),padding: EdgeInsets.only(top: 20),),
+         //          backgroundColor: Colors.white,
+       );
   final BottomNavigationBarItem barItem;
   final Widget content;
 }
@@ -60,7 +60,9 @@ class RootTabBar extends StatelessWidget {
     ),
   ];
 
-  CupertinoTabController tabController = CupertinoTabController(initialIndex: 3);
+  CupertinoTabController tabController = CupertinoTabController(
+    initialIndex: 3,
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -71,28 +73,29 @@ class RootTabBar extends StatelessWidget {
     }
 
     return CupertinoTabScaffold(
-        controller: tabController,
-        tabBar: CupertinoTabBar(
-          ///活动颜色
-          activeColor: Colors.redAccent,
+      controller: tabController,
+      tabBar: CupertinoTabBar(
+        ///活动颜色
+        activeColor: Colors.redAccent,
 
-          /// 不活动颜色
-          inactiveColor: Colors.white,
+        /// 不活动颜色
+        inactiveColor: Colors.white,
 
-          /// 背景色
-          backgroundColor: Colors.lightBlue,
-//          iconSize:40,
+        /// 背景色
+        backgroundColor: Colors.lightBlue,
 
-          items: _bottomItemList.map((value) {
-            return value.barItem;
-          }).toList(),
-        ),
-        tabBuilder: (context, index) {
-          return CupertinoTabView(
-            builder: (context) {
-              return _bottomItemList[index].content;
-            },
-          );
-        });
+        //          iconSize:40,
+        items: _bottomItemList.map((value) {
+          return value.barItem;
+        }).toList(),
+      ),
+      tabBuilder: (context, index) {
+        return CupertinoTabView(
+          builder: (context) {
+            return _bottomItemList[index].content;
+          },
+        );
+      },
+    );
   }
 }

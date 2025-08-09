@@ -16,21 +16,19 @@ class _P42NetTestPageState extends State<P42NetTestPage> {
       baseUrl: 'http://localhost:8080',
     );
 
-    Map<String, dynamic> params = {
-      'name': 'jim',
-    };
+    Map<String, dynamic> params = {'name': 'jim'};
 
     Dio dio = Dio(options); // 使用默认配置
 
-// return  await dio.post('/test6', data: params).then((value) {
-//      print('成功 = ${value}');
-//      return '成功';
-//    }).catchError((onError){
-//      print('失败 = $onError');
-//      return '失败12';
-//    });
-//     Duration duration = Duration(seconds: 2); // creates a new duration of 5 seconds
-//     return Future.delayed(duration, () {
+    // return  await dio.post('/test6', data: params).then((value) {
+    //      print('成功 = ${value}');
+    //      return '成功';
+    //    }).catchError((onError){
+    //      print('失败 = $onError');
+    //      return '失败12';
+    //    });
+    //     Duration duration = Duration(seconds: 2); // creates a new duration of 5 seconds
+    //     return Future.delayed(duration, () {
     // throw Exception('Expected at least 1 section');
     // throw FormatException('Expected at least 1 section');
     // return '成功';
@@ -43,9 +41,7 @@ class _P42NetTestPageState extends State<P42NetTestPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('自定义服务器请求'),
-      ),
+      appBar: AppBar(title: Text('自定义服务器请求')),
       body: Column(
         children: [
           TextButton(

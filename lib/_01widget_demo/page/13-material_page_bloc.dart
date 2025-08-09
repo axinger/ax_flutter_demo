@@ -15,9 +15,7 @@ class _MaterialPage1 extends State<MaterialPageBloc> {
   Widget build(BuildContext context) {
     return MyInheritedWidget(
       child: Scaffold(
-        appBar: AppBar(
-          title: Text("BLoC - Business Logic Component"),
-        ),
+        appBar: AppBar(title: Text("BLoC - Business Logic Component")),
         body: ConterHome(),
         floatingActionButton: ButtomHome(),
       ),
@@ -72,7 +70,7 @@ class _ButtomHome extends State<ButtomHome> {
     return FloatingActionButton(
       child: Icon(Icons.add),
       onPressed: () {
-//        bloc.log();
+        //        bloc.log();
         bloc?.sink.add(1);
       },
     );
@@ -83,14 +81,11 @@ class MyInheritedWidget extends InheritedWidget {
   final Widget child;
   final ConterBloc bloc;
 
-  MyInheritedWidget({
-    Key? key,
-    required this.child,
-    required this.bloc,
-  }) : super(key: key, child: child);
+  MyInheritedWidget({Key? key, required this.child, required this.bloc})
+    : super(key: key, child: child);
 
   static MyInheritedWidget? of(BuildContext context) {
-//    return context.inheritFromWidgetOfExactType(MyInheritedWidget);
+    //    return context.inheritFromWidgetOfExactType(MyInheritedWidget);
 
     return context.dependOnInheritedWidgetOfExactType<MyInheritedWidget>();
   }
@@ -98,7 +93,7 @@ class MyInheritedWidget extends InheritedWidget {
   //是否重建widget就取决于数据是否相同
   @override
   bool updateShouldNotify(MyInheritedWidget oldWidget) {
-//    return inheritedTestModel != oldWidget.inheritedTestModel;
+    //    return inheritedTestModel != oldWidget.inheritedTestModel;
     return true;
   }
 }

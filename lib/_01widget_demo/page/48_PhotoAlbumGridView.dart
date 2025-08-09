@@ -23,9 +23,7 @@ class _P48PhotoAlbumState extends State<P48PhotoAlbum> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('相册'),
-      ),
+      appBar: AppBar(title: Text('相册')),
       body: _meetingPhotos(context),
     );
   }
@@ -37,7 +35,7 @@ class _P48PhotoAlbumState extends State<P48PhotoAlbum> {
 
   Widget _meetingPhotos(BuildContext context) {
     return Container(
-//      padding: EdgeInsets.all(0),
+      //      padding: EdgeInsets.all(0),
       child: PhotoAlbumGridView(
         itemCount: photoDataList.length,
         itemBuilder: (BuildContext context, int index) {
@@ -78,11 +76,7 @@ class _PhotoAlbumCell extends StatefulWidget {
   /// 点击其他空白
   final Function()? onTap;
 
-  _PhotoAlbumCell({
-    this.imageItem,
-    this.selectCallBack,
-    this.onTap,
-  });
+  _PhotoAlbumCell({this.imageItem, this.selectCallBack, this.onTap});
 
   @override
   _PhotoAlbumCellState createState() => _PhotoAlbumCellState();
@@ -92,14 +86,13 @@ class _PhotoAlbumCellState extends State<_PhotoAlbumCell> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-        onTap: widget.onTap,
-        child: Stack(
-          alignment: Alignment.center,
-          fit: StackFit.expand,
-          children: <Widget>[
-            ImageFileTypeView(info: widget.imageItem!),
-          ],
-        ));
+      onTap: widget.onTap,
+      child: Stack(
+        alignment: Alignment.center,
+        fit: StackFit.expand,
+        children: <Widget>[ImageFileTypeView(info: widget.imageItem!)],
+      ),
+    );
   }
 }
 
@@ -108,10 +101,7 @@ class PhotoAlbumGridView extends StatefulWidget {
   final int itemCount;
   final Widget Function(BuildContext context, int index) itemBuilder;
 
-  PhotoAlbumGridView({
-    required this.itemCount,
-    required this.itemBuilder,
-  });
+  PhotoAlbumGridView({required this.itemCount, required this.itemBuilder});
 
   @override
   _PhotoAlbumGridViewState createState() => _PhotoAlbumGridViewState();

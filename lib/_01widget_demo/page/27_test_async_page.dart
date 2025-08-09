@@ -12,12 +12,12 @@ class P27AsyncPage extends StatefulWidget {
 
 class _MaterialPage extends State<P27AsyncPage> {
   Future<String> test1() {
-//    return Future<String>.delayed(Duration(seconds: 1)).then((value) => "jack");
-//    return Future<String>.delayed(Duration(seconds: 1),(){
-//      return "jak2";
-//    }).then((value){
-//      print("test1 = $value");
-//    });
+    //    return Future<String>.delayed(Duration(seconds: 1)).then((value) => "jack");
+    //    return Future<String>.delayed(Duration(seconds: 1),(){
+    //      return "jak2";
+    //    }).then((value){
+    //      print("test1 = $value");
+    //    });
     return Future<String>.delayed(Duration(seconds: 1), () {
       return "jak2";
     });
@@ -27,7 +27,7 @@ class _MaterialPage extends State<P27AsyncPage> {
     await Future.delayed(new Duration(seconds: 1));
 
     ///下面这2个返回值 方法效果一样的
-//   return Future.value("tom2");
+    //   return Future.value("tom2");
     return "tom3";
   }
 
@@ -56,7 +56,7 @@ class _MaterialPage extends State<P27AsyncPage> {
 
   Stream<int> getData() async* {
     for (int i = 1; i < 4; i++) {
-//      await Future.delayed(Duration(seconds: 1));
+      //      await Future.delayed(Duration(seconds: 1));
       sleep(Duration(seconds: 1));
       yield i * 2;
     }
@@ -100,13 +100,13 @@ class _MaterialPage extends State<P27AsyncPage> {
     yield 'tom';
   }
 
-//  Iterable<int> getData2() async* {
-//    for (int i = 0; i < 3; i++) {
-//      await Future.delayed(Duration(seconds: 1));
-//      print('getData = $i');
-//      yield i;
-//    }
-//  }
+  //  Iterable<int> getData2() async* {
+  //    for (int i = 0; i < 3; i++) {
+  //      await Future.delayed(Duration(seconds: 1));
+  //      print('getData = $i');
+  //      yield i;
+  //    }
+  //  }
 
   Iterator? syncIterator1;
 
@@ -125,9 +125,7 @@ class _MaterialPage extends State<P27AsyncPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("async和async*"),
-      ),
+      appBar: AppBar(title: Text("async和async*")),
       body: ListView(
         children: <Widget>[
           Text('FutureBuilder,多次回调'),
@@ -140,9 +138,7 @@ class _MaterialPage extends State<P27AsyncPage> {
                 if (snapshot.hasData) {
                   print('hasData22222 ${snapshot.data}');
                   return Column(
-                    children: <Widget>[
-                      Text('snapshot = ${snapshot.data}'),
-                    ],
+                    children: <Widget>[Text('snapshot = ${snapshot.data}')],
                   );
                 } else {
                   print('hasData22222');

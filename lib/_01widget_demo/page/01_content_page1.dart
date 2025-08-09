@@ -68,7 +68,7 @@ class _State extends State<P01ContentPage>
     backgroundColor: Colors.orange,
 
     ///形状,默认圆形
-//    shape: BeveledRectangleBorder(),
+    //    shape: BeveledRectangleBorder(),
 
     /// 阴影
     elevation: 0,
@@ -81,10 +81,7 @@ class _State extends State<P01ContentPage>
 
   Visibility abv = Visibility(
     visible: true,
-    child: Container(
-      color: Colors.lightGreen,
-      height: 50,
-    ),
+    child: Container(color: Colors.lightGreen, height: 50),
   );
 
   StreamController<bool> _streamController = StreamController<bool>();
@@ -170,25 +167,25 @@ class _State extends State<P01ContentPage>
           return true;
         }
 
-        Navigator.of(context).pushNamed('/sub2', arguments: {
-          'title': '透传title',
-          'name': 'postbird',
-          'passw': '123456'
-        });
+        Navigator.of(context).pushNamed(
+          '/sub2',
+          arguments: {
+            'title': '透传title',
+            'name': 'postbird',
+            'passw': '123456',
+          },
+        );
 
         return false;
-//        return await showAlert(
-//            context: context,
-//            title: '确定返回吗?',
-//            cancelCallback: () {},
-//            certainCallback: () {});
+        //        return await showAlert(
+        //            context: context,
+        //            title: '确定返回吗?',
+        //            cancelCallback: () {},
+        //            certainCallback: () {});
       },
       child: Scaffold(
         appBar: AppBar(
-          title: const Text(
-            '测试,状态栏颜色',
-            style: TextStyle(color: Colors.red),
-          ),
+          title: const Text('测试,状态栏颜色', style: TextStyle(color: Colors.red)),
           // backgroundColor: Colors.white,
           centerTitle: true,
           bottom: TabBar(
@@ -199,162 +196,153 @@ class _State extends State<P01ContentPage>
             isScrollable: true,
             indicatorColor: Colors.red,
             tabs: List.generate(10, (index) {
-              return const Tab(
-                text: "主页",
-                icon: Icon(Icons.local_florist),
-              );
+              return const Tab(text: "主页", icon: Icon(Icons.local_florist));
             }),
-          ), systemOverlayStyle: SystemUiOverlayStyle.light,
+          ),
+          systemOverlayStyle: SystemUiOverlayStyle.light,
         ),
 
         /// 悬浮按钮
         floatingActionButton: _floatingActionButton,
-//        floatingActionButton: _FloatingActionButton2,
+        //        floatingActionButton: _FloatingActionButton2,
         ///  悬浮按钮 位置 endDocked 有叠合效果 endFloat
         // floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
         bottomNavigationBar: StreamBuilder<bool>(
-            // 监听Stream，每次值改变的时候，更新Text中的内容
-            stream: _streamController.stream,
+          // 监听Stream，每次值改变的时候，更新Text中的内容
+          stream: _streamController.stream,
 
-            /// 第一次监听值
-            initialData: _isShow,
-            builder: (BuildContext context, AsyncSnapshot<bool> snapshot) {
-              print('snapshot.data = ${snapshot.data}');
+          /// 第一次监听值
+          initialData: _isShow,
+          builder: (BuildContext context, AsyncSnapshot<bool> snapshot) {
+            print('snapshot.data = ${snapshot.data}');
 
-              return BottomAppBar(
-                color: Colors.red,
+            return BottomAppBar(
+              color: Colors.red,
 
-                /// 直接用_isShow 方便控制,比snapshot?.data 不知道为什么
-                child: (!_isShow)
-                    ? null
-                    : SizedBox(
-                        height: 80,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          mainAxisSize: MainAxisSize.max,
+              /// 直接用_isShow 方便控制,比snapshot?.data 不知道为什么
+              child: (!_isShow)
+                  ? null
+                  : SizedBox(
+                      height: 80,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        mainAxisSize: MainAxisSize.max,
 
-                          ///交叉轴的布局方式，对于column来说就是水平方向的布局方式
-                          crossAxisAlignment: CrossAxisAlignment.end,
-                          verticalDirection: VerticalDirection.down,
-                          children: <Widget>[
-                            Expanded(
-                              flex: 1,
-                              child: Container(
-                                /// 充满 容器
-                                alignment: Alignment.center,
-                                color: Colors.orange,
-                                child: TextButton(
-                                  child: const Text('请求'),
-                                  onPressed: () async {
-                                    var options = BaseOptions(
-                                      connectTimeout: const Duration(seconds: 15),
-                                      receiveTimeout: const Duration(seconds: 15),
-//                                      responseType: ResponseType.plain,
-//                                      validateStatus: (status) {
-//                                        print('status = $status');
-//                                        // 不使用http状态码判断状态，使用AdapterInterceptor来处理（适用于标准REST风格）
-//                                        return false;
-//                                      },
-                                      baseUrl: 'http://localhost:8080',
-                                    );
+                        ///交叉轴的布局方式，对于column来说就是水平方向的布局方式
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        verticalDirection: VerticalDirection.down,
+                        children: <Widget>[
+                          Expanded(
+                            flex: 1,
+                            child: Container(
+                              /// 充满 容器
+                              alignment: Alignment.center,
+                              color: Colors.orange,
+                              child: TextButton(
+                                child: const Text('请求'),
+                                onPressed: () async {
+                                  var options = BaseOptions(
+                                    connectTimeout: const Duration(seconds: 15),
+                                    receiveTimeout: const Duration(seconds: 15),
+                                    //                                      responseType: ResponseType.plain,
+                                    //                                      validateStatus: (status) {
+                                    //                                        print('status = $status');
+                                    //                                        // 不使用http状态码判断状态，使用AdapterInterceptor来处理（适用于标准REST风格）
+                                    //                                        return false;
+                                    //                                      },
+                                    baseUrl: 'http://localhost:8080',
+                                  );
 
-                                    Map<String, dynamic> params = {
-                                      'name': 'jim',
-                                    };
+                                  Map<String, dynamic> params = {'name': 'jim'};
 
-                                    Dio _dio = Dio(options); // 使用默认配置
+                                  Dio _dio = Dio(options); // 使用默认配置
 
-                                    _dio
-                                        .post(
-                                      '/test6',
-                                      data: params,
-                                    )
-                                        .catchError((onError) {
-                                      print('onError = $onError');
-                                    }).then((value) {
-                                      print('response = ${value}');
-                                    });
+                                  _dio
+                                      .post('/test6', data: params)
+                                      .catchError((onError) {
+                                        print('onError = $onError');
+                                      })
+                                      .then((value) {
+                                        print('response = ${value}');
+                                      });
 
-//                                    try{
-//                                      Response response = await Dio().get(
-//                                          'http://127.0.0.1:8080//test4?name=jim'
-//                                      );
-//                                       print(response);
-//                                    }catch(e){
-//                                       print(e);
-//                                    }
-                                  },
-                                ),
+                                  //                                    try{
+                                  //                                      Response response = await Dio().get(
+                                  //                                          'http://127.0.0.1:8080//test4?name=jim'
+                                  //                                      );
+                                  //                                       print(response);
+                                  //                                    }catch(e){
+                                  //                                       print(e);
+                                  //                                    }
+                                },
                               ),
                             ),
-                            SizedBox(
-                              width: 1,
-                            ),
-                            Expanded(
-                              flex: 1,
-                              child: Container(
-                                /// 充满 容器
-                                alignment: Alignment.center,
-                                color: Colors.orange,
-                                child: TextButton(
-                                  onPressed: () {},
-                                  child: Text('按钮1'),
-                                ),
+                          ),
+                          SizedBox(width: 1),
+                          Expanded(
+                            flex: 1,
+                            child: Container(
+                              /// 充满 容器
+                              alignment: Alignment.center,
+                              color: Colors.orange,
+                              child: TextButton(
+                                onPressed: () {},
+                                child: Text('按钮1'),
                               ),
                             ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
+                    ),
 
-                /// 切形状 自动根据被 重叠部分
-//              shape: CircularNotchedRectangle(),
-              );
-            }),
-        persistentFooterButtons: [
-          Text('A'),
-          Text('B'),
-          Text('C'),
-        ],
+              /// 切形状 自动根据被 重叠部分
+              //              shape: CircularNotchedRectangle(),
+            );
+          },
+        ),
+        persistentFooterButtons: [Text('A'), Text('B'), Text('C')],
 
         body: Container(
-//        padding: EdgeInsets.all(12),
+          //        padding: EdgeInsets.all(12),
           decoration: BoxDecoration(
             image: DecorationImage(
               image: AssetImage('assets/image/IMG_3601.JPG'),
               fit: BoxFit.cover,
-//              repeat :ImageRepeat.repeatY
+              //              repeat :ImageRepeat.repeatY
             ),
             color: Colors.blue,
           ),
 
           child: ListView(
-//          padding: EdgeInsets.all(20),
+            //          padding: EdgeInsets.all(20),
             children: [
               TextButton(
                 child: Text('showModalBottomSheet 圆角'),
                 onPressed: () {
                   showModalBottomSheet(
-                      context: context,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(10),
-                          topRight: Radius.circular(10),
-                        ),
+                    context: context,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(10),
+                        topRight: Radius.circular(10),
                       ),
+                    ),
 
-                      /// 能否满屏显示,
-//                      isScrollControlled: true,
-                      builder: (context) {
-                        /// 不用高度,会给出一个默认高度
-                        return Container(
-//                            height: 200, //对话框高度就是此高度
-                            color: Colors.red,
-                            child: ListView(
-                              children: List.generate(20, (index) {
-                                return Text('title - $index');
-                              }).toList(),
-                            ));
-                      });
+                    /// 能否满屏显示,
+                    //                      isScrollControlled: true,
+                    builder: (context) {
+                      /// 不用高度,会给出一个默认高度
+                      return Container(
+                        //                            height: 200, //对话框高度就是此高度
+                        color: Colors.red,
+                        child: ListView(
+                          children: List.generate(20, (index) {
+                            return Text('title - $index');
+                          }).toList(),
+                        ),
+                      );
+                    },
+                  );
                 },
               ),
 
@@ -364,16 +352,10 @@ class _State extends State<P01ContentPage>
                   Get.to(InteractiveViewerDemo());
                 },
               ),
-              Image.asset(
-                assetsOfImagePath('/A171.jpg'),
-                fit: BoxFit.fill,
-              ),
+              Image.asset(assetsOfImagePath('/A171.jpg'), fit: BoxFit.fill),
               Text(
                 '黑白图片',
-                style: TextStyle(
-                  color: Colors.red,
-                  fontSize: 20,
-                ),
+                style: TextStyle(color: Colors.red, fontSize: 20),
                 textAlign: TextAlign.center,
               ),
               Image.asset(
@@ -384,9 +366,9 @@ class _State extends State<P01ContentPage>
                 color: Colors.black,
                 colorBlendMode: BlendMode.color,
               ),
-//            Row(
-//              children: <Widget>[
 
+              //            Row(
+              //              children: <Widget>[
               Text('Expanded 等比分布,撑满剩余空间'),
               Row(
                 children: <Widget>[
@@ -394,10 +376,7 @@ class _State extends State<P01ContentPage>
                   Expanded(
                     child: Container(
                       color: Colors.red,
-                      child: Text(
-                        'aa',
-                        maxLines: 1,
-                      ),
+                      child: Text('aa', maxLines: 1),
                     ),
                   ),
                   Text('尾部'),
@@ -405,45 +384,43 @@ class _State extends State<P01ContentPage>
                 ],
               ),
 
-              Row(children: <Widget>[
-                Container(
-                  width: 20,
-                  height: 100,
-                  color: Colors.orange,
-                ),
-                Expanded(
-                  flex: 1,
-                  child: GestureDetector(
-                    onTap: () {
-                      print('===========');
-                    },
-                    child: Container(
-                      child: Text('Text1', textAlign: TextAlign.center),
-                      height: 100,
-                      alignment: AlignmentDirectional.center,
-                      color: Colors.grey,
+              Row(
+                children: <Widget>[
+                  Container(width: 20, height: 100, color: Colors.orange),
+                  Expanded(
+                    flex: 1,
+                    child: GestureDetector(
+                      onTap: () {
+                        print('===========');
+                      },
+                      child: Container(
+                        child: Text('Text1', textAlign: TextAlign.center),
+                        height: 100,
+                        alignment: AlignmentDirectional.center,
+                        color: Colors.grey,
+                      ),
                     ),
                   ),
-                ),
-                Expanded(
-                  flex: 1,
-                  child: Container(
-                    child: Text('Text2', textAlign: TextAlign.center),
-                    height: 100,
-                    alignment: AlignmentDirectional.center,
-                    color: Colors.blue,
+                  Expanded(
+                    flex: 1,
+                    child: Container(
+                      child: Text('Text2', textAlign: TextAlign.center),
+                      height: 100,
+                      alignment: AlignmentDirectional.center,
+                      color: Colors.blue,
+                    ),
                   ),
-                ),
-                Expanded(
-                  flex: 1,
-                  child: Container(
-                    child: Text('Text3', textAlign: TextAlign.center),
-                    height: 100,
-                    alignment: AlignmentDirectional.center,
-                    color: Colors.cyan,
+                  Expanded(
+                    flex: 1,
+                    child: Container(
+                      child: Text('Text3', textAlign: TextAlign.center),
+                      height: 100,
+                      alignment: AlignmentDirectional.center,
+                      color: Colors.cyan,
+                    ),
                   ),
-                ),
-              ]),
+                ],
+              ),
 
               Row(
                 children: <Widget>[
@@ -467,9 +444,7 @@ class _State extends State<P01ContentPage>
                   isBack = !isBack;
                 },
               ),
-              SizedBox(
-                height: 20,
-              ),
+              SizedBox(height: 20),
               TextButton(
                 child: Text('显示隐藏-Visibility'),
                 // splashColor: Colors.red,
@@ -494,22 +469,13 @@ class _State extends State<P01ContentPage>
               ),
               Visibility(
                 visible: isVisibility,
-                child: Container(
-                  color: Colors.indigo,
-                  height: 50,
-                ),
+                child: Container(color: Colors.indigo, height: 50),
               ),
               Offstage(
                 offstage: isOffstage,
-                child: Container(
-                  color: Colors.orange,
-                  height: 50,
-                ),
+                child: Container(color: Colors.orange, height: 50),
               ),
-              Container(
-                color: Colors.red,
-                height: 50,
-              ),
+              Container(color: Colors.red, height: 50),
               TextButton(
                 child: Text('控制下面这个'),
                 // splashColor: Colors.red,
@@ -525,9 +491,7 @@ class _State extends State<P01ContentPage>
                 child: Text('ios DatePicker'),
                 onPressed: () {},
               ),
-              SizedBox(
-                height: 20,
-              ),
+              SizedBox(height: 20),
 
               Container(
                 color: Colors.orange,
@@ -541,13 +505,13 @@ class _State extends State<P01ContentPage>
                 ),
               ),
               Text('CalendarDateRangePicker 为公共文件'),
-//              Container(
-//                color: Colors.orange,
-//                child: CalendarDateRangePicker(
-//
-//                ),
-//              ),
 
+              //              Container(
+              //                color: Colors.orange,
+              //                child: CalendarDateRangePicker(
+              //
+              //                ),
+              //              ),
               TextButton(
                 child: Text('flutter日期选择'),
                 onPressed: () {
@@ -567,9 +531,7 @@ class _State extends State<P01ContentPage>
                   );
                 },
               ),
-              SizedBox(
-                height: 20,
-              ),
+              SizedBox(height: 20),
               CupertinoButton(
                 color: Colors.orange,
                 child: Text('ios TimerPicker'),
@@ -577,9 +539,7 @@ class _State extends State<P01ContentPage>
                   _showCupertinoTimerPicker(context);
                 },
               ),
-              SizedBox(
-                height: 20,
-              ),
+              SizedBox(height: 20),
               TextButton(
                 child: Text('flutter 时间选择'),
                 onPressed: () {
@@ -589,9 +549,7 @@ class _State extends State<P01ContentPage>
                 // color: Colors.green,
                 // textColor: Colors.white,
               ),
-              SizedBox(
-                height: 20,
-              ),
+              SizedBox(height: 20),
               Container(
                 color: Colors.red,
                 height: 300,
@@ -627,42 +585,38 @@ class _State extends State<P01ContentPage>
 
               Material(
                 shape: CircleBorder(
-                    side: BorderSide(
-                  color: Colors.green,
-                  width: 2,
-                  style: BorderStyle.solid,
-                )),
+                  side: BorderSide(
+                    color: Colors.green,
+                    width: 2,
+                    style: BorderStyle.solid,
+                  ),
+                ),
                 child: Container(
                   child: TextButton(
                     onPressed: () {},
-                    child: Text(
-                      '22222222222',
-                    ),
+                    child: Text('22222222222'),
                   ),
                 ),
 
-//                child: IconButton(
-//                    icon: Icon(Icons.play_arrow),
-//                    iconSize: 100,
-//                    onPressed: () {}),
+                //                child: IconButton(
+                //                    icon: Icon(Icons.play_arrow),
+                //                    iconSize: 100,
+                //                    onPressed: () {}),
               ),
 
               CircleAvatar(
                 child: Container(
                   child: TextButton(
                     onPressed: () {},
-                    child: Text(
-                      '22222222222',
-                    ),
+                    child: Text('22222222222'),
                   ),
                 ),
               ),
 
               FloatingActionButton(
-                  child: Text(
-                    '22222222222',
-                  ),
-                  onPressed: () {}),
+                child: Text('22222222222'),
+                onPressed: () {},
+              ),
               Container(
                 height: 80,
                 child: ElevatedButton(
@@ -676,19 +630,19 @@ class _State extends State<P01ContentPage>
               ),
 
               Container(
-//                width: 50,
+                //                width: 50,
                 height: 100,
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
-//                    shape:BoxShape.rectangle,
+                  //                    shape:BoxShape.rectangle,
                   border: Border.all(color: Colors.green, width: 1),
-//                 borderRadius: BorderRadius.circular(20.0),
+                  //                 borderRadius: BorderRadius.circular(20.0),
                   color: Colors.orange,
                 ),
                 child: IconButton(
                   icon: Icon(Icons.add),
-//                  iconSize: 100,
-//                iconSize: 50,
+                  //                  iconSize: 100,
+                  //                iconSize: 50,
                   onPressed: () {},
                 ),
               ),
@@ -696,46 +650,39 @@ class _State extends State<P01ContentPage>
                 width: 100,
                 height: 100,
                 child: FloatingActionButton(
-                    backgroundColor: Colors.orange,
-                    child: Icon(
-                      Icons.play_arrow,
-                      size: 60,
-                    ),
-                    onPressed: () {}),
+                  backgroundColor: Colors.orange,
+                  child: Icon(Icons.play_arrow, size: 60),
+                  onPressed: () {},
+                ),
               ),
 
               Material(
-                  color: Colors.orange,
-                  shape: CircleBorder(
-                      side: BorderSide(
+                color: Colors.orange,
+                shape: CircleBorder(
+                  side: BorderSide(
                     color: Colors.green,
                     width: 2,
                     style: BorderStyle.solid,
-                  )),
-                  child: IconButton(
-                      icon: Icon(Icons.play_arrow),
-                      iconSize: 100,
-                      onPressed: () {})),
+                  ),
+                ),
+                child: IconButton(
+                  icon: Icon(Icons.play_arrow),
+                  iconSize: 100,
+                  onPressed: () {},
+                ),
+              ),
 
               DropdownButton(
                 hint: Text('下拉选择你想要的数据'),
                 items: [
-                  DropdownMenuItem(
-                    child: Text('1'),
-                    value: '1',
-                  ),
-                  DropdownMenuItem(
-                    child: Text('2'),
-                    value: '2',
-                  ),
+                  DropdownMenuItem(child: Text('1'), value: '1'),
+                  DropdownMenuItem(child: Text('2'), value: '2'),
                 ],
                 onChanged: (T) {
                   //下拉菜单item点击之后的回调
                 },
               ),
-              SizedBox(
-                height: 20,
-              ),
+              SizedBox(height: 20),
               Text('长按预览'),
               Container(
                 color: Colors.greenAccent,
@@ -743,16 +690,16 @@ class _State extends State<P01ContentPage>
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     CupertinoContextMenu(
-//                       previewBuilder: (context, animation, child) {
-//                         return Container(
-//                           color: Colors.greenAccent,
-// //                    width: 400,
-// //                    height: 200,
-//                           child: Image.asset(
-//                             assetsOfImagePath('A171.jpg'),
-//                           ),
-//                         );
-//                       },
+                      //                       previewBuilder: (context, animation, child) {
+                      //                         return Container(
+                      //                           color: Colors.greenAccent,
+                      // //                    width: 400,
+                      // //                    height: 200,
+                      //                           child: Image.asset(
+                      //                             assetsOfImagePath('A171.jpg'),
+                      //                           ),
+                      //                         );
+                      //                       },
                       actions: <Widget>[
                         CupertinoContextMenuAction(
                           child: const Text('Action one'),
@@ -769,7 +716,7 @@ class _State extends State<P01ContentPage>
                       ],
                       child: Container(
                         alignment: Alignment.centerLeft,
-//                color: Colors.red,
+                        //                color: Colors.red,
                         width: 100,
                         height: 200,
                         child: Image.asset(
@@ -782,9 +729,7 @@ class _State extends State<P01ContentPage>
                   ],
                 ),
               ),
-              const SizedBox(
-                height: 20,
-              ),
+              const SizedBox(height: 20),
 
               TextButton(
                 child: const Text('控制AbsorbPointer'),
@@ -811,7 +756,6 @@ class _State extends State<P01ContentPage>
 
               TextButton(
                 // color: Colors.orange,
-
                 onPressed: () {
                   print('登陆');
                 },
@@ -819,22 +763,22 @@ class _State extends State<P01ContentPage>
                   padding: EdgeInsets.all((50)),
                   child: Text('Padding测试Buton的宽度'),
                 ),
-//                  ///圆角
-//                 shape: RoundedRectangleBorder(
-//                   side: BorderSide.none,
-// //                      borderRadius: BorderRadius.all(Radius.circular(double.minPositive)),
-//                   borderRadius: BorderRadius.circular(400),
-//                 ),
-//                  shape: CircleBorder(
-//                    side: BorderSide(),
-//                  ),
+                //                  ///圆角
+                //                 shape: RoundedRectangleBorder(
+                //                   side: BorderSide.none,
+                // //                      borderRadius: BorderRadius.all(Radius.circular(double.minPositive)),
+                //                   borderRadius: BorderRadius.circular(400),
+                //                 ),
+                //                  shape: CircleBorder(
+                //                    side: BorderSide(),
+                //                  ),
               ),
 
               Container(
-//            width: 200,
-//                  width: double.infinity,
+                //            width: 200,
+                //                  width: double.infinity,
                 alignment: Alignment.center,
-//            height: 20,
+                //            height: 20,
                 child: TextButton(
                   child: Text('TextButton 加宽'),
                   onPressed: () {},
@@ -865,9 +809,9 @@ class _State extends State<P01ContentPage>
               TextButton.icon(
                 ///
                 icon: Image.asset('assets/image/红包.png', width: 40, height: 40),
-                //ImageIcon(AssetImage('assets/image/红包.png')),
-//                  icon: ImageIcon(AssetImage('assets/image/红包.png'),color: Colors.red,),
 
+                //ImageIcon(AssetImage('assets/image/红包.png')),
+                //                  icon: ImageIcon(AssetImage('assets/image/红包.png'),color: Colors.red,),
                 label: Text('TextButton'),
                 onPressed: () {},
                 // splashColor: Colors.orange,
@@ -893,11 +837,11 @@ class _State extends State<P01ContentPage>
                 onPressed: () {},
 
                 /// 点击高亮颜色
-//              splashColor: Colors.orange,
-//                 color: Colors.red,
-//                 borderSide: BorderSide(
-//                   color: Colors.red,
-//                 ),
+                //              splashColor: Colors.orange,
+                //                 color: Colors.red,
+                //                 borderSide: BorderSide(
+                //                   color: Colors.red,
+                //                 ),
               ),
 
               /// 描边
@@ -906,11 +850,11 @@ class _State extends State<P01ContentPage>
                 onPressed: () {},
 
                 /// 点击高亮颜色
-//              splashColor: Colors.orange,
-//                 color: Colors.red,
-//                 borderSide: BorderSide(
-//                   color: Colors.red,
-//                 ),
+                //              splashColor: Colors.orange,
+                //                 color: Colors.red,
+                //                 borderSide: BorderSide(
+                //                   color: Colors.red,
+                //                 ),
               ),
 
               Row(
@@ -940,9 +884,7 @@ class _State extends State<P01ContentPage>
                     ),
                   ),
 
-                  SizedBox(
-                    width: 20,
-                  ),
+                  SizedBox(width: 20),
 
                   Expanded(
                     flex: 2,
@@ -993,14 +935,8 @@ class _State extends State<P01ContentPage>
                   print('value = $value');
                 },
                 itemBuilder: (BuildContext context) => [
-                  PopupMenuItem(
-                    value: 1,
-                    child: Text('1'),
-                  ),
-                  PopupMenuItem(
-                    value: 2,
-                    child: Text('2'),
-                  ),
+                  PopupMenuItem(value: 1, child: Text('1')),
+                  PopupMenuItem(value: 2, child: Text('2')),
                 ],
               ),
 
@@ -1009,8 +945,8 @@ class _State extends State<P01ContentPage>
               /// 自动换行的row
               Text('自动换行的row--Wrap'),
               Wrap(children: <Widget>[for (String item in tags) TagItem(item)]),
-//              ],
-//            )
+              //              ],
+              //            )
             ],
           ),
         ),
@@ -1021,7 +957,7 @@ class _State extends State<P01ContentPage>
   void _showCupertinoDatePicker(BuildContext cxt) async {
     /// 假如中文环境报错,配置 GlobalCupertinoLocalizations.delegate,
     final picker = CupertinoDatePicker(
-//      initialDateTime: DateTime(1995),
+      //      initialDateTime: DateTime(1995),
       initialDateTime: DateTime.now(),
       use24hFormat: true,
       mode: CupertinoDatePickerMode.date,
@@ -1031,14 +967,11 @@ class _State extends State<P01ContentPage>
     );
 
     showCupertinoModalPopup(
-        context: cxt,
-        builder: (cxt) {
-          return Container(
-            color: Colors.white,
-            height: 200,
-            child: picker,
-          );
-        });
+      context: cxt,
+      builder: (cxt) {
+        return Container(color: Colors.white, height: 200, child: picker);
+      },
+    );
   }
 
   void _showCupertinoTimerPicker(BuildContext cxt) {
@@ -1049,73 +982,60 @@ class _State extends State<P01ContentPage>
     );
 
     showCupertinoModalPopup(
-        context: cxt,
-        builder: (cxt) {
-          return Container(
-            color: Colors.white,
-            height: 200,
-            child: picker,
-          );
-        });
+      context: cxt,
+      builder: (cxt) {
+        return Container(color: Colors.white, height: 200, child: picker);
+      },
+    );
   }
 
   _cupertinoDatePicker(cxt) {
     CupertinoPicker picker = CupertinoPicker(
       /// 每行的高度
       itemExtent: 50,
-      children: const <Widget>[
-        Text('1'),
-        Text('2'),
-        Text('3'),
-      ],
+      children: const <Widget>[Text('1'), Text('2'), Text('3')],
       onSelectedItemChanged: (index) {},
     );
 
     showCupertinoModalPopup(
-        context: cxt,
-        builder: (cxt) {
-          return Container(
-            color: Colors.white,
-            height: 200,
-            child: picker,
-          );
-        });
+      context: cxt,
+      builder: (cxt) {
+        return Container(color: Colors.white, height: 200, child: picker);
+      },
+    );
   }
 
   _selectDateFunc() async {
     DateTime? dateTime = await showDatePicker(
-        context: context,
-//      firstDate: DateTime(1900),
-        /// 小于当前时间不选择
-        firstDate: DateTime.now(),
-        initialDate: DateTime.now(),
-        lastDate: DateTime(2100),
-        helpText: '选择日期',
-        errorFormatText: 'errorFormatText',
-        errorInvalidText: 'errorInvalidText',
-        fieldHintText: 'fieldHintText',
-        fieldLabelText: 'fieldLabelText',
+      context: context,
+      //      firstDate: DateTime(1900),
+      /// 小于当前时间不选择
+      firstDate: DateTime.now(),
+      initialDate: DateTime.now(),
+      lastDate: DateTime(2100),
+      helpText: '选择日期',
+      errorFormatText: 'errorFormatText',
+      errorInvalidText: 'errorInvalidText',
+      fieldHintText: 'fieldHintText',
+      fieldLabelText: 'fieldLabelText',
 
-        /// 主题
-        builder: (context, child) {
-          return Theme(
-            data: ThemeData.dark(),
-            child: child ?? Container(),
-          );
-        }
-//      selectableDayPredicate: (date) {
-//
-//        print('date = $date');
-//        /// 当前日期后,不可选择
-////        return date.difference(DateTime.now()).inMilliseconds < 0;
-//
-//
-//        /// 当前日期后,不可选择
-////        return DateTime.now().difference(date).inMilliseconds < 0;
-//
-//        return date.isBefore(DateTime.now());
-//      },
-        );
+      /// 主题
+      builder: (context, child) {
+        return Theme(data: ThemeData.dark(), child: child ?? Container());
+      },
+      //      selectableDayPredicate: (date) {
+      //
+      //        print('date = $date');
+      //        /// 当前日期后,不可选择
+      ////        return date.difference(DateTime.now()).inMilliseconds < 0;
+      //
+      //
+      //        /// 当前日期后,不可选择
+      ////        return DateTime.now().difference(date).inMilliseconds < 0;
+      //
+      //        return date.isBefore(DateTime.now());
+      //      },
+    );
   }
 
   _selectTimeFunc() async {
@@ -1124,11 +1044,11 @@ class _State extends State<P01ContentPage>
       initialTime: TimeOfDay.now(),
       builder: (BuildContext context, Widget? child) {
         /// 使用24小时
-//        return MediaQuery(
-//          data: MediaQuery.of(context)
-//              .copyWith(alwaysUse24HourFormat: true),
-//          child: child,
-//        );
+        //        return MediaQuery(
+        //          data: MediaQuery.of(context)
+        //              .copyWith(alwaysUse24HourFormat: true),
+        //          child: child,
+        //        );
 
         return Theme(
           data: ThemeData.dark(),
@@ -1156,12 +1076,10 @@ class TagItem extends StatelessWidget {
       height: 40,
       margin: EdgeInsets.symmetric(vertical: 5, horizontal: 5),
       decoration: BoxDecoration(
-          border: Border.all(color: Colors.orange, width: 1.0),
-          borderRadius: BorderRadius.all(Radius.circular(5))),
-      child: Container(
-        margin: EdgeInsets.all(8),
-        child: Text(text),
+        border: Border.all(color: Colors.orange, width: 1.0),
+        borderRadius: BorderRadius.all(Radius.circular(5)),
       ),
+      child: Container(margin: EdgeInsets.all(8), child: Text(text)),
     );
   }
 }
@@ -1178,7 +1096,7 @@ const List<String> tags = [
   '今年快结束了',
   '我累啊',
   '你写的什么代码',
-  '多多多'
+  '多多多',
 ];
 
 ///
@@ -1205,9 +1123,9 @@ class _InteractiveViewerDemoState extends State<InteractiveViewerDemo> {
             child: Center(
               child: InteractiveViewer(
                 ///alignPanAxis 参数表示是否只在水平和垂直方向上拖拽，默认为false，设置为true，无法沿着对角线（斜着）方向移动。
-//                alignPanAxis: true,
-//                maxScale: 2,
-//                minScale: 1,
+                //                alignPanAxis: true,
+                //                maxScale: 2,
+                //                minScale: 1,
                 scaleEnabled: true,
 
                 /// maxScale 、minScale、scaleEnabled 是缩放相关参数，分别表示最大缩放倍数、最小缩放倍数、是否可以缩放
@@ -1216,9 +1134,7 @@ class _InteractiveViewerDemoState extends State<InteractiveViewerDemo> {
               ),
             ),
           ),
-          Expanded(
-            child: Container(),
-          ),
+          Expanded(child: Container()),
           Row(
             children: [
               ElevatedButton(

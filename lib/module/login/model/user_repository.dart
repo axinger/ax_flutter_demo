@@ -7,10 +7,7 @@ class UserRepository {
   final String username;
   final String password;
 
-  UserRepository({
-    this.username = '',
-    this.password = '',
-  });
+  UserRepository({this.username = '', this.password = ''});
 
   Future<String> authenticate({
     required String username,
@@ -36,6 +33,6 @@ class UserRepository {
     /// read from keystore/keychain
     await Future.delayed(Duration(seconds: 1));
     return false;
-//    return true;
+    //    return true;
   }
 }

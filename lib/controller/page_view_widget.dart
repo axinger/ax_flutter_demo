@@ -18,12 +18,12 @@ class _PageViewWidget extends State<PageViewWidget> {
     this.dataList = PostEntity.dataList;
 
     return _GridView_builder();
-//    return _pageview();
+    //    return _pageview();
 
-//    return _pageviewbuilder();
+    //    return _pageviewbuilder();
 
     /// 网格视图 collectView
-//    return _GridView_count();
+    //    return _GridView_count();
     return _GridView_builder();
   }
 }
@@ -36,47 +36,47 @@ class _GridView_builder extends StatelessWidget {
     this.dataList = PostEntity.dataList;
 
     return GridView.builder(
+      /// 四周空隙
+      padding: EdgeInsets.all(10),
 
-        /// 四周空隙
-        padding: EdgeInsets.all(10),
+      /// 总数量
+      itemCount: dataList.length,
 
-        /// 总数量
-        itemCount: dataList.length,
+      /// 代理 按照个数来计算
+      ///SliverGridDelegateWithFixedCrossAxisCount 构建一个横轴固定数量Widget
+      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+        ///横轴元素个数
+        crossAxisCount: 3,
 
-        /// 代理 按照个数来计算
-        ///SliverGridDelegateWithFixedCrossAxisCount 构建一个横轴固定数量Widget
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          ///横轴元素个数
-          crossAxisCount: 3,
+        ///纵轴间距
+        mainAxisSpacing: 10.0,
 
-          ///纵轴间距
-          mainAxisSpacing: 10.0,
+        ///横轴间距
+        crossAxisSpacing: 10.0,
 
-          ///横轴间距
-          crossAxisSpacing: 10.0,
+        ///子组件宽高长度比例
+        //          childAspectRatio: 0.5,
+      ),
 
-          ///子组件宽高长度比例
-//          childAspectRatio: 0.5,
-        ),
-
-//    ///代理, 按照尺寸计算
-//        gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-//          ///横轴元素个数
-////          crossAxisCount: 3,
-//          maxCrossAxisExtent: 200,
-//
-//          ///纵轴间距
-//          mainAxisSpacing: 20.0,
-//
-//          ///横轴间距
-//          crossAxisSpacing: 10.0,
-//
-//          ///子组件宽高长度比例
-//          childAspectRatio: 1.0,
-//        ),
-        itemBuilder: (BuildContext context, int index) {
-          return StackView(dataList, index);
-        });
+      //    ///代理, 按照尺寸计算
+      //        gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+      //          ///横轴元素个数
+      ////          crossAxisCount: 3,
+      //          maxCrossAxisExtent: 200,
+      //
+      //          ///纵轴间距
+      //          mainAxisSpacing: 20.0,
+      //
+      //          ///横轴间距
+      //          crossAxisSpacing: 10.0,
+      //
+      //          ///子组件宽高长度比例
+      //          childAspectRatio: 1.0,
+      //        ),
+      itemBuilder: (BuildContext context, int index) {
+        return StackView(dataList, index);
+      },
+    );
   }
 }
 
@@ -93,10 +93,7 @@ class StackView extends StatelessWidget {
         ///SizedBox.expand 可以使SizedBox的大小充满parent的布局
         ///
         SizedBox.expand(
-          child: Image.network(
-            dataList[index].imageUrl,
-            fit: BoxFit.cover,
-          ),
+          child: Image.network(dataList[index].imageUrl, fit: BoxFit.cover),
         ),
 
         Positioned(
@@ -105,14 +102,8 @@ class StackView extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              Text(
-                dataList[index].title,
-                style: TextStyle(color: Colors.red),
-              ),
-              Text(
-                dataList[index].author,
-                style: TextStyle(color: Colors.red),
-              ),
+              Text(dataList[index].title, style: TextStyle(color: Colors.red)),
+              Text(dataList[index].author, style: TextStyle(color: Colors.red)),
             ],
           ),
         ),
@@ -173,10 +164,7 @@ class _pageviewbuilder extends StatelessWidget {
         原文链接：https://blog.csdn.net/weixin_33716154/article/details/88017225
         */
             SizedBox.expand(
-              child: Image.network(
-                dataList[index].imageUrl,
-                fit: BoxFit.cover,
-              ),
+              child: Image.network(dataList[index].imageUrl, fit: BoxFit.cover),
             ),
 
             Positioned(
@@ -199,9 +187,7 @@ class _pageviewbuilder extends StatelessWidget {
           ],
         );
       },
-      controller: PageController(
-        viewportFraction: 0.9,
-      ),
+      controller: PageController(viewportFraction: 0.9),
     );
   }
 }
@@ -212,9 +198,9 @@ class _pageview extends StatelessWidget {
     // TODO: implement build
     return PageView(
       /// 是否翻页,默认翻页
-//      pageSnapping: false,
+      //      pageSnapping: false,
       /// 滚动方向,默认水平
-//      scrollDirection: Axis.vertical,
+      //      scrollDirection: Axis.vertical,
       /// 事件
       onPageChanged: (index) {
         debugPrint("翻页下标 $index");
@@ -222,7 +208,7 @@ class _pageview extends StatelessWidget {
 
       controller: PageController(
         initialPage: 1,
-//        keepPage: false,
+        //        keepPage: false,
         /// 左右有边距的那种
         viewportFraction: 0.8,
       ),

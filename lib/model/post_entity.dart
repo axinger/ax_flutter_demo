@@ -26,14 +26,10 @@ class PostEntity extends Object {
 
   bool selected = false;
 
-  PostEntity(
-    this.title,
-    this.author,
-    this.imageUrl,
-    this.name,
-  );
+  PostEntity(this.title, this.author, this.imageUrl, this.name);
 
-  factory PostEntity.fromJson(Map<String, dynamic> srcJson) => _$PostEntityFromJson(srcJson);
+  factory PostEntity.fromJson(Map<String, dynamic> srcJson) =>
+      _$PostEntityFromJson(srcJson);
 
   Map<String, dynamic> toJson() => _$PostEntityToJson(this);
 

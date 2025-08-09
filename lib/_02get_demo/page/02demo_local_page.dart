@@ -7,25 +7,25 @@ class DemoLocalPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('国际化'),
-      ),
+      appBar: AppBar(title: Text('国际化')),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Text('hello'.tr, style: TextStyle(color: Colors.pink, fontSize: 30)),
+            Text(
+              'hello'.tr,
+              style: TextStyle(color: Colors.pink, fontSize: 30),
+            ),
             Text('ElevatedButton ,TextButton 区别 '),
             ElevatedButton(
-                onPressed: () {
-                  var locale = Locale('zh', 'CN');
-                  Get.updateLocale(locale);
-                },
-                child: Text("切换到中文")),
-            SizedBox(
-              height: 20,
+              onPressed: () {
+                var locale = Locale('zh', 'CN');
+                Get.updateLocale(locale);
+              },
+              child: Text("切换到中文"),
             ),
+            SizedBox(height: 20),
             TextButton(
               onPressed: () {
                 var locale = Locale('en', 'US');

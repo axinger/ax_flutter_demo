@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 class MaterialPagePlugin extends StatefulWidget {
@@ -20,9 +19,7 @@ class _MaterialPage extends State<MaterialPagePlugin> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('插件-测试'),
-      ),
+      appBar: AppBar(title: Text('插件-测试')),
       // 设置key处理SnackBar，这里一定要设置，否则弹窗不显示
       key: _scaffoldkey,
       body: Column(

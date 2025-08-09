@@ -39,13 +39,13 @@ class CameraDemoPageState extends State<CameraDemoPage> {
 
   /// 获取权限
   Future<void> getCameras() async {
-// Fetch the available cameras before initializing the app.
+    // Fetch the available cameras before initializing the app.
     try {
       cameras = await availableCameras();
 
       /// TODO同时只能选择一个，可以提供切换按钮，传入参数控制是否展示切换按钮
       onNewCameraSelected(cameras![0]); // 后置摄像头
-// onNewCameraSelected(cameras[1]);// 前置摄像头
+      // onNewCameraSelected(cameras[1]);// 前置摄像头
     } on CameraException catch (e) {
       print(e.toString());
     }
@@ -54,27 +54,28 @@ class CameraDemoPageState extends State<CameraDemoPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        key: _scaffoldKey,
-        appBar: AppBar(
-          backgroundColor: Colors.black,
-        ),
-        body: Container(
-          color: Colors.black,
-          child: Column(
-            children: <Widget>[
-              Expanded(
-                flex: 5, //flex用来设置当前可用空间的占优比
-                child: Stack(children: <Widget>[
+      key: _scaffoldKey,
+      appBar: AppBar(backgroundColor: Colors.black),
+      body: Container(
+        color: Colors.black,
+        child: Column(
+          children: <Widget>[
+            Expanded(
+              flex: 5, //flex用来设置当前可用空间的占优比
+              child: Stack(
+                children: <Widget>[
                   _cameraPreviewWidget(), //相机视图
-                ]),
+                ],
               ),
-              Expanded(
-                flex: 1,
-                child: _takePictureLayout(), //拍照操作区域布局
-              ),
-            ],
-          ),
-        ));
+            ),
+            Expanded(
+              flex: 1,
+              child: _takePictureLayout(), //拍照操作区域布局
+            ),
+          ],
+        ),
+      ),
+    );
   }
 
   Widget _takePictureLayout() {
@@ -129,15 +130,13 @@ class CameraDemoPageState extends State<CameraDemoPage> {
           alignment: Alignment.center,
           child: IconButton(
             iconSize: 50.0,
-            onPressed: controller != null &&
+            onPressed:
+                controller != null &&
                     controller!.value.isInitialized &&
                     !controller!.value.isRecordingVideo
                 ? onTakePictureButtonPressed
                 : null,
-            icon: Icon(
-              Icons.camera_alt,
-              color: Colors.white,
-            ),
+            icon: Icon(Icons.camera_alt, color: Colors.white),
           ),
         ),
         Container(
@@ -174,11 +173,7 @@ class CameraDemoPageState extends State<CameraDemoPage> {
   Widget getPhotoPreview() {
     /// TODO 可以在这里添加预览图片
     /// 比如判断是否有图片地址，有就展示，没有就不展示
-    return Container(
-      height: 1.0,
-      width: 1.0,
-      alignment: Alignment.bottomLeft,
-    );
+    return Container(height: 1.0, width: 1.0, alignment: Alignment.bottomLeft);
   }
 
   String timestamp() => DateTime.now().millisecondsSinceEpoch.toString();
@@ -207,7 +202,7 @@ class CameraDemoPageState extends State<CameraDemoPage> {
       if (mounted && filePath != null) {
         if (filePath != null) {
           setState(() {
-//            photoPath = filePath;
+            //            photoPath = filePath;
 
             photoPathList.add(filePath);
           });
@@ -235,7 +230,7 @@ class CameraDemoPageState extends State<CameraDemoPage> {
     return filePath;
   }
 
-// 根据图片名字获取图片文件
+  // 根据图片名字获取图片文件
   Future<XFile?> getCompressImage(File file, String targetPath) async {
     var path = file.absolute.path;
     var result = await FlutterImageCompress.compressAndGetFile(

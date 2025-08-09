@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -21,9 +20,7 @@ class _MaterialPage1 extends State<MaterialPageSql> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("按钮组件"),
-      ),
+      appBar: AppBar(title: Text("按钮组件")),
       // 设置key处理SnackBar，这里一定要设置，否则弹窗不显示
       key: _scaffoldkey,
       body: Column(
@@ -38,16 +35,20 @@ class _MaterialPage1 extends State<MaterialPageSql> {
                     onPressed: () {
                       Future<SharedPreferences> prefs =
                           SharedPreferences.getInstance();
-                      prefs.then((onValue) {
-                        onValue.setString("name", "小明");
-                      }).whenComplete(() {
-                        ScaffoldMessengerState().showSnackBar(SnackBar(
-                          content: Text('set succssed'),
-                          duration: Duration(milliseconds: 100),
-                        ));
-                        // 下面这种方法是不可用的(当BuildContext在Scaffold之前时，调用Scaffold.of(context)会报错)
-                        // Scaffold.of(context).showSnackBar(snackBar);
-                      });
+                      prefs
+                          .then((onValue) {
+                            onValue.setString("name", "小明");
+                          })
+                          .whenComplete(() {
+                            ScaffoldMessengerState().showSnackBar(
+                              SnackBar(
+                                content: Text('set succssed'),
+                                duration: Duration(milliseconds: 100),
+                              ),
+                            );
+                            // 下面这种方法是不可用的(当BuildContext在Scaffold之前时，调用Scaffold.of(context)会报错)
+                            // Scaffold.of(context).showSnackBar(snackBar);
+                          });
                     },
                   ),
                   TextButton(
@@ -55,7 +56,8 @@ class _MaterialPage1 extends State<MaterialPageSql> {
                     onPressed: () {
                       SharedPreferences.getInstance().then((onValue) {
                         print(
-                            "onValue.getString(mUserName)=   ${onValue.getString("name")}");
+                          "onValue.getString(mUserName)=   ${onValue.getString("name")}",
+                        );
                         setState(() {
                           name = onValue.getString('name') ?? '';
                         });
@@ -67,7 +69,7 @@ class _MaterialPage1 extends State<MaterialPageSql> {
                     onPressed: () {
                       SharedPreferences.getInstance().then((onValue) {
                         onValue.remove("name");
-//                onValue.clear();///清除所有
+                        //                onValue.clear();///清除所有
                         setState(() {
                           name = onValue.getString("name") ?? '';
                         });
@@ -96,9 +98,9 @@ class _MaterialPage1 extends State<MaterialPageSql> {
                         print("读取所有数据 = ${onValue.getKeys()}");
                         List<String> list = <String>[];
 
-                        onValue.getKeys().forEach((key) => {
-                              list.add(onValue.getString(key) ?? ''),
-                            });
+                        onValue.getKeys().forEach(
+                          (key) => {list.add(onValue.getString(key) ?? '')},
+                        );
 
                         print("list = ${list}");
 

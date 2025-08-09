@@ -89,7 +89,8 @@ class MaterialPageInheritedWidget extends StatefulWidget {
   }
 }
 
-class _InheritedWidgetTestContainerState extends State<MaterialPageInheritedWidget> {
+class _InheritedWidgetTestContainerState
+    extends State<MaterialPageInheritedWidget> {
   MyInheritedTestModel inheritedTestModel = MyInheritedTestModel(0);
 
   _initData() {
@@ -106,14 +107,14 @@ class _InheritedWidgetTestContainerState extends State<MaterialPageInheritedWidg
   /// 子控件要做的事情,都放在外部,
   _incrementCount() {
     setState(() {
-//      inheritedTestModel =  InheritedTestModel(inheritedTestModel.count + 1);
+      //      inheritedTestModel =  InheritedTestModel(inheritedTestModel.count + 1);
       inheritedTestModel.count++;
     });
   }
 
   _reduceCount() {
     setState(() {
-//      inheritedTestModel =  InheritedTestModel(inheritedTestModel.count - 1);
+      //      inheritedTestModel =  InheritedTestModel(inheritedTestModel.count - 1);
       inheritedTestModel.count--;
     });
   }
@@ -122,61 +123,61 @@ class _InheritedWidgetTestContainerState extends State<MaterialPageInheritedWidg
   Widget build(BuildContext context) {
     ///MyInheritedWidget 内部有TestWidgetA 等子控件,所以子控件通过context可以获得父类MyInheritedWidget
     return MyInheritedWidget(
+      /// 这里赋值,子空间需要等到的值
+      inheritedTestModel: inheritedTestModel,
+      increment: _incrementCount,
+      reduce: _reduceCount,
+      child: Scaffold(
+        appBar: AppBar(title: Text('InheritedWidgetTest')),
+        body: Column(
+          children: <Widget>[
+            Padding(
+              padding: EdgeInsets.only(left: 10.0, top: 10.0, right: 10.0),
 
-        /// 这里赋值,子空间需要等到的值
-        inheritedTestModel: inheritedTestModel,
-        increment: _incrementCount,
-        reduce: _reduceCount,
-        child: Scaffold(
-          appBar: AppBar(
-            title: Text('InheritedWidgetTest'),
-          ),
-          body: Column(
-            children: <Widget>[
-              Padding(
-                padding: EdgeInsets.only(left: 10.0, top: 10.0, right: 10.0),
-
-                /// text 内部排版了
-                child: Text(
-//                  '我们常使用的\nTheme.of(context).textTheme\nMediaQuery.of(context).size等\n就是通过InheritedWidget实现的',
-                  '我们常使用的Theme.of(context).textThemeMediaQuery.of(context).size等就是通过InheritedWidget实现的',
-                  style: TextStyle(fontSize: 20.0),
-                  textAlign: TextAlign.left,
-                ),
+              /// text 内部排版了
+              child: Text(
+                //                  '我们常使用的\nTheme.of(context).textTheme\nMediaQuery.of(context).size等\n就是通过InheritedWidget实现的',
+                '我们常使用的Theme.of(context).textThemeMediaQuery.of(context).size等就是通过InheritedWidget实现的',
+                style: TextStyle(fontSize: 20.0),
+                textAlign: TextAlign.left,
               ),
+            ),
 
-              Padding(
-                padding: EdgeInsets.only(left: 10.0, top: 10.0, right: 10.0),
-                child: Text("MyInheritedWidget 内部有TestWidgetA 等子控件,所以子控件通过context可以获得父类MyInheritedWidget"),
+            Padding(
+              padding: EdgeInsets.only(left: 10.0, top: 10.0, right: 10.0),
+              child: Text(
+                "MyInheritedWidget 内部有TestWidgetA 等子控件,所以子控件通过context可以获得父类MyInheritedWidget",
               ),
+            ),
 
-              /// 这个 直接调用子控件,不需要传参 ,
-              /// ＋号
-              TestWidgetA(),
+            /// 这个 直接调用子控件,不需要传参 ,
+            /// ＋号
+            TestWidgetA(),
 
-              /// 文本
-              TestWidgetB(),
+            /// 文本
+            TestWidgetB(),
 
-              /// 减号
-              TestWidgetC(
-                callBack: (value) {
-                  print("value == ${value}");
-                  setState(() {
-//      inheritedTestModel =  InheritedTestModel(inheritedTestModel.count - 1);
-//                  inheritedTestModel.count--;
-                  });
-                },
-              ),
-            ],
-          ),
-        ));
+            /// 减号
+            TestWidgetC(
+              callBack: (value) {
+                print("value == ${value}");
+                setState(() {
+                  //      inheritedTestModel =  InheritedTestModel(inheritedTestModel.count - 1);
+                  //                  inheritedTestModel.count--;
+                });
+              },
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }
 
 class MyInheritedTestModel {
   int count;
 
-//  const InheritedTestModel(this.count);
+  //  const InheritedTestModel(this.count);
   MyInheritedTestModel(this.count);
 }
 
@@ -228,12 +229,16 @@ class TestWidgetA extends StatelessWidget {
     /// 根据 context 获得 TestWidgetA 包在外层的 MyInheritedWidget extends InheritedWidget
     final MyInheritedWidget? myInheritedWidget = MyInheritedWidget.of(context);
 
-    final MyInheritedTestModel? myInheritedTestModel = myInheritedWidget?.inheritedTestModel;
+    final MyInheritedTestModel? myInheritedTestModel =
+        myInheritedWidget?.inheritedTestModel;
 
     print('TestWidgetA 中count的值:  ${myInheritedTestModel?.count}');
     return Padding(
       padding: const EdgeInsets.only(left: 10.0, top: 10.0, right: 10.0),
-      child: ElevatedButton( child: Text('+ 改变model值,中间控件获取model最新值'), onPressed: myInheritedWidget?.increment),
+      child: ElevatedButton(
+        child: Text('+ 改变model值,中间控件获取model最新值'),
+        onPressed: myInheritedWidget?.increment,
+      ),
     );
   }
 }
@@ -262,15 +267,14 @@ class TestWidgetB extends StatelessWidget {
 class TestWidgetC extends StatelessWidget {
   final void Function(int value) callBack;
 
-  TestWidgetC({
-    required this.callBack,
-  });
+  TestWidgetC({required this.callBack});
 
   @override
   Widget build(BuildContext context) {
     final MyInheritedWidget? myInheritedWidget = MyInheritedWidget?.of(context);
 
-    final MyInheritedTestModel? inheritedTestModel = myInheritedWidget?.inheritedTestModel;
+    final MyInheritedTestModel? inheritedTestModel =
+        myInheritedWidget?.inheritedTestModel;
 
     print('TestWidgetC 中count的值:  ${inheritedTestModel?.count}');
 
@@ -279,7 +283,7 @@ class TestWidgetC extends StatelessWidget {
       child: ElevatedButton(
         // textColor: Colors.black,
         child: Text('- 改变model值,中间控件获取model最新值'),
-//        onPressed: myInheritedWidget.reduce,
+        //        onPressed: myInheritedWidget.reduce,
         onPressed: () {
           inheritedTestModel?.count--;
           this.callBack(inheritedTestModel?.count ?? 0);

@@ -14,44 +14,31 @@ class _ImagePickerState extends State<ImagePickerWidget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text("相机和相册"),
+      appBar: AppBar(title: Text("相机和相册")),
+      body: SingleChildScrollView(
+        child: Column(
+          children: <Widget>[
+            _ImageView(_imgPath, context),
+            SizedBox.fromSize(size: Size.fromHeight(50)),
+            ElevatedButton(onPressed: _takePhoto, child: Text("拍照")),
+            SizedBox.fromSize(size: Size.fromHeight(50)),
+            ElevatedButton(onPressed: _openGallery, child: Text("选择照片")),
+          ],
         ),
-        body: SingleChildScrollView(
-          child: Column(
-            children: <Widget>[
-              _ImageView(_imgPath, context),
-              SizedBox.fromSize(
-                size: Size.fromHeight(50),
-              ),
-              ElevatedButton(
-                onPressed: _takePhoto,
-                child: Text("拍照"),
-              ),
-              SizedBox.fromSize(
-                size: Size.fromHeight(50),
-              ),
-              ElevatedButton(
-                onPressed: _openGallery,
-                child: Text("选择照片"),
-              ),
-            ],
-          ),
-        ));
+      ),
+    );
   }
 
   /*图片控件*/
   Widget _ImageView(var imgPath, BuildContext context) {
     if (imgPath == null) {
-      return Center(
-        child: Text("请选择图片或拍照"),
-      );
+      return Center(child: Text("请选择图片或拍照"));
     } else {
       return Center(
         child: Image.file(
           imgPath,
           width: MediaQuery.of(context).size.width,
-//        height: 100,
+          //        height: 100,
         ),
       );
     }
@@ -72,11 +59,7 @@ class _ImagePickerState extends State<ImagePickerWidget> {
     }
     final List<XFile>? files = response.files;
     if (files != null) {
-
-    } else {
-
-    }
-
+    } else {}
   }
 
   /*相册*/

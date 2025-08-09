@@ -6,7 +6,10 @@ import 'sql_provider.dart';
 
 ///本地存储工具类
 
-DbTable _baseConfigTable = DbTable('t_base_config', [DbColumn('code'), DbColumn('val')]);
+DbTable _baseConfigTable = DbTable('t_base_config', [
+  DbColumn('code'),
+  DbColumn('val'),
+]);
 
 ///SharedPreferences 本地存储
 class LocalStorage {
@@ -18,7 +21,9 @@ class LocalStorage {
   }
 
   static get(String key) async {
-    Map<String, dynamic> cacheInfo = await sqlProvider.queryOne('code=?', [key]);
+    Map<String, dynamic> cacheInfo = await sqlProvider.queryOne('code=?', [
+      key,
+    ]);
     if (ObjectUtil.isNotEmpty(cacheInfo)) {
       return cacheInfo['val'];
     } else {
@@ -33,8 +38,8 @@ class LocalStorage {
 
     Database db = await sqlProvider.getDataBase();
     print("sqlProvider.dbTable.tableName == ${sqlProvider.dbTable.tableName}");
-//    db.delete(sqlProvider.dbTable.tableName, where: 'code=?', whereArgs: [key]);
-/*    SharedPreferences prefs = await SharedPreferences.getInstance();
+    //    db.delete(sqlProvider.dbTable.tableName, where: 'code=?', whereArgs: [key]);
+    /*    SharedPreferences prefs = await SharedPreferences.getInstance();
     prefs.remove(key);*/
   }
 }

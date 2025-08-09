@@ -11,7 +11,8 @@ class ContentPage extends StatefulWidget {
   }
 }
 
-class _ContentPage extends State<ContentPage> with AutomaticKeepAliveClientMixin {
+class _ContentPage extends State<ContentPage>
+    with AutomaticKeepAliveClientMixin {
   @override
   bool get wantKeepAlive => true;
 
@@ -33,9 +34,9 @@ class _ContentPage extends State<ContentPage> with AutomaticKeepAliveClientMixin
         PostEntity entity = this.dataList[index];
 
         return InkResponse(
-//            onTap: (){
-//              print("aaaaa");
-//            },
+          //            onTap: (){
+          //              print("aaaaa");
+          //            },
           child: Container(
             color: Colors.white,
             margin: EdgeInsets.all(10),
@@ -44,45 +45,44 @@ class _ContentPage extends State<ContentPage> with AutomaticKeepAliveClientMixin
                 Column(
                   children: <Widget>[
                     Image.network(entity.imageUrl),
-                    SizedBox(
-                      height: 10,
-                    ),
+                    SizedBox(height: 10),
                     Text(
                       entity.title,
-//                        style: Theme.of(context).textTheme.title,
 
+                      //                        style: Theme.of(context).textTheme.title,
                       style: TextStyle(color: Colors.black, fontSize: 20),
                     ),
                     Text(
                       entity.author,
                       // style: Theme.of(context).textTheme.subhead,
                     ),
-                    SizedBox(
-                      height: 10,
-                    ),
+                    SizedBox(height: 10),
                   ],
                 ),
 
                 /// 点击波纹效果
                 /// Positioned 充满空间的组件
                 Positioned.fill(
-                    child: Material(
-                  color: Colors.transparent,
-                  child: InkWell(
-                    splashColor: Colors.orange.withOpacity(0.3),
-                    highlightColor: Colors.white.withOpacity(0.1),
-                    onTap: () {
-                      print("bbbb");
+                  child: Material(
+                    color: Colors.transparent,
+                    child: InkWell(
+                      splashColor: Colors.orange.withOpacity(0.3),
+                      highlightColor: Colors.white.withOpacity(0.1),
+                      onTap: () {
+                        print("bbbb");
 
-                      /// CupertinoPageRoute 和 MaterialPageRoute
-                      Navigator.of(context).push(CupertinoPageRoute<bool>(builder: (context) {
-                        return DetailPage(
-                          postEntity: entity,
+                        /// CupertinoPageRoute 和 MaterialPageRoute
+                        Navigator.of(context).push(
+                          CupertinoPageRoute<bool>(
+                            builder: (context) {
+                              return DetailPage(postEntity: entity);
+                            },
+                          ),
                         );
-                      }));
-                    },
+                      },
+                    ),
                   ),
-                )),
+                ),
               ],
             ),
           ),

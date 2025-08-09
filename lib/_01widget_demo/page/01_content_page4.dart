@@ -7,7 +7,8 @@ class P01ContentPage4 extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.red,
-        title: Text('圆角设置组件'), systemOverlayStyle: SystemUiOverlayStyle.dark,
+        title: Text('圆角设置组件'),
+        systemOverlayStyle: SystemUiOverlayStyle.dark,
       ),
       body: SafeArea(
         child: SingleChildScrollView(
@@ -19,7 +20,13 @@ class P01ContentPage4 extends StatelessWidget {
                 borderRadius: BorderRadius.circular(40), //圆角度数
                 /// semanticLabel
                 ///https://weilu.blog.csdn.net/article/details/103823259
-                child: Image.asset('assets/image/headIcon.png', width: 80, height: 80, semanticLabel: 'semanticLabel', excludeFromSemantics: true),
+                child: Image.asset(
+                  'assets/image/headIcon.png',
+                  width: 80,
+                  height: 80,
+                  semanticLabel: 'semanticLabel',
+                  excludeFromSemantics: true,
+                ),
               ),
               Divider(color: Colors.red),
 
@@ -46,10 +53,11 @@ class P01ContentPage4 extends StatelessWidget {
                 width: 80.0, //100或80
                 height: 100.0,
                 decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(40),
-                    image: DecorationImage(
-                      image: AssetImage('assets/image/headIcon.png'),
-                    )),
+                  borderRadius: BorderRadius.circular(40),
+                  image: DecorationImage(
+                    image: AssetImage('assets/image/headIcon.png'),
+                  ),
+                ),
               ),
 
               Divider(color: Colors.red),

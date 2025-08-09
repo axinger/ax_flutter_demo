@@ -11,7 +11,8 @@ class P62LottiePage extends StatefulWidget {
   State<StatefulWidget> createState() => _P62LottiePage();
 }
 
-class _P62LottiePage extends State<P62LottiePage> with SingleTickerProviderStateMixin {
+class _P62LottiePage extends State<P62LottiePage>
+    with SingleTickerProviderStateMixin {
   _Controller get controller => Get.put<_Controller>(_Controller());
 
   late final AnimationController _controller;
@@ -38,9 +39,7 @@ class _P62LottiePage extends State<P62LottiePage> with SingleTickerProviderState
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Lottie动画'),
-      ),
+      appBar: AppBar(title: Text('Lottie动画')),
       body: ListView(
         children: [
           Row(
@@ -83,16 +82,19 @@ class _P62LottiePage extends State<P62LottiePage> with SingleTickerProviderState
           //   print('controller.isPlay.value=${controller.isPlay.value}');
           //
           //   return
-          Lottie.asset('assets/lottie/AndroidWave.json',
-              repeat: false,
-              // animate: controller.isPlay.value,
-              controller: _controller, onLoaded: (composition) {
-            _controller.duration = composition.duration;
+          Lottie.asset(
+            'assets/lottie/AndroidWave.json',
+            repeat: false,
+            // animate: controller.isPlay.value,
+            controller: _controller,
+            onLoaded: (composition) {
+              _controller.duration = composition.duration;
 
-            // _controller
-            //   ..duration = composition.duration
-            //   ..forward();
-          }),
+              // _controller
+              //   ..duration = composition.duration
+              //   ..forward();
+            },
+          ),
           // }),
 
           // Load an animation and its images from a zip file

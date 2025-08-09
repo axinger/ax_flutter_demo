@@ -11,10 +11,7 @@ class _P51NestedScrollViewState extends State<P51NestedScrollView> {
       title: Text('NestedScrollView'),
       expandedHeight: 200,
       flexibleSpace: FlexibleSpaceBar(
-        background: Image.asset(
-          'assets/image/A171.jpg',
-          fit: BoxFit.cover,
-        ),
+        background: Image.asset('assets/image/A171.jpg', fit: BoxFit.cover),
         collapseMode: CollapseMode.parallax,
       ),
     );
@@ -23,9 +20,7 @@ class _P51NestedScrollViewState extends State<P51NestedScrollView> {
   _myItem(int index) {
     return Container(
       color: Colors.yellow,
-      child: ListTile(
-        title: Text('List $index'),
-      ),
+      child: ListTile(title: Text('List $index')),
     );
   }
 
@@ -41,7 +36,7 @@ class _P51NestedScrollViewState extends State<P51NestedScrollView> {
             SliverOverlapAbsorber(
               handle: NestedScrollView.sliverOverlapAbsorberHandleFor(context),
               sliver: _mySliverAppBar(),
-            )
+            ),
           ];
         },
         body: Builder(
@@ -49,15 +44,17 @@ class _P51NestedScrollViewState extends State<P51NestedScrollView> {
             return CustomScrollView(
               slivers: [
                 SliverOverlapInjector(
-                  handle: NestedScrollView.sliverOverlapAbsorberHandleFor(context),
+                  handle: NestedScrollView.sliverOverlapAbsorberHandleFor(
+                    context,
+                  ),
                 ),
                 SliverList(
-                  delegate: SliverChildBuilderDelegate(
-                    (BuildContext context, int index) {
-                      return _myItem(index);
-                    },
-                    childCount: 15,
-                  ),
+                  delegate: SliverChildBuilderDelegate((
+                    BuildContext context,
+                    int index,
+                  ) {
+                    return _myItem(index);
+                  }, childCount: 15),
                 ),
               ],
             );

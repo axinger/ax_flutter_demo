@@ -8,9 +8,7 @@ class NotfoundView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("路由没有找到"),
-      ),
+      appBar: AppBar(title: Text("路由没有找到")),
       body: ListTile(
         title: Text("返回首页"),
         subtitle: Text('Get.offAllNamed(AppRoutes.Home)'),

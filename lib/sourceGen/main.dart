@@ -3,7 +3,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'RequestUtil.dart';
 
 void main() {
-//print(NetWork.instance);
+  //print(NetWork.instance);
 
   RequestUtil.sInstance.ships().then((onValue) {
     print("接口返回的数据是:onValue = $onValue");
@@ -20,4 +20,5 @@ void main() {
     print("onValue.getString(mUserName)=   ${onValue.getString(mUserName)}");
   });
 }
+
 //  prefs.setString(mUserName,"小明");

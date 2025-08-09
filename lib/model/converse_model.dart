@@ -31,16 +31,15 @@ class ConverseModel extends Object {
     this.isDisturb,
   );
 
-  factory ConverseModel.fromJson(Map<String, dynamic> srcJson) => _$ConverseModelFromJson(srcJson);
+  factory ConverseModel.fromJson(Map<String, dynamic> srcJson) =>
+      _$ConverseModelFromJson(srcJson);
 
   Map<String, dynamic> toJson() => _$ConverseModelToJson(this);
 }
 
 main() {
   test() {
-    var map = {
-      'headIcon': 'headIcon',
-    };
+    var map = {'headIcon': 'headIcon'};
 
     var model = ConverseModel.fromJson(map);
     print('model = ${model.toJson()}');

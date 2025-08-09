@@ -36,19 +36,23 @@ T? asT<T>(dynamic value) {
 
 class UserInfo {
   /// 调用方法
-//  static UserInfo sharedInstance = _instance;
+  //  static UserInfo sharedInstance = _instance;
 
   static UserInfo get sharedInstance => _instance;
 
-//  @override
-//  void initInstances() {
-//    super.initInstances();
-////    _instance = this;
-//
-//   ());
+  //  @override
+  //  void initInstances() {
+  //    super.initInstances();
+  ////    _instance = this;
+  //
+  //   ());
 
   ///当你需要构造函数不是每次都创建一个新的对象时，使用factory关键字。
-  factory UserInfo({String userName = '', String passWord = '', String token = ''}) {
+  factory UserInfo({
+    String userName = '',
+    String passWord = '',
+    String token = '',
+  }) {
     if (_instance == null) {
       _instance = UserInfo._(
         userName: userName,
@@ -76,10 +80,10 @@ class UserInfo {
   }
 
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'userName': userName,
-        'passWord': passWord,
-        'token': token,
-      };
+    'userName': userName,
+    'passWord': passWord,
+    'token': token,
+  };
 
   @override
   String toString() {

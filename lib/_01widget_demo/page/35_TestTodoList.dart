@@ -15,26 +15,23 @@ class _P35TestTodoListState extends State<P35TestTodoList> {
     return MaterialApp(
       title: _appTitle,
       home: Scaffold(
-        appBar: AppBar(
-          title: Text('aaaaa'),
-        ),
+        appBar: AppBar(title: Text('aaaaa')),
         body: Column(
           children: <Widget>[
-            TextField(
-              controller: controller,
-            ),
+            TextField(controller: controller),
             Expanded(
               child: ListView.builder(
-                  itemCount: todos.length,
-                  itemBuilder: (BuildContext context, int index) {
-                    final todo = todos[index];
-                    return Dismissible(
-                      key: Key('$todo$index'),
-                      onDismissed: (direction) => todos.removeAt(index),
-                      child: ListTile(title: Text(todo)),
-                      background: Container(color: Colors.red),
-                    );
-                  }),
+                itemCount: todos.length,
+                itemBuilder: (BuildContext context, int index) {
+                  final todo = todos[index];
+                  return Dismissible(
+                    key: Key('$todo$index'),
+                    onDismissed: (direction) => todos.removeAt(index),
+                    child: ListTile(title: Text(todo)),
+                    background: Container(color: Colors.red),
+                  );
+                },
+              ),
             ),
           ],
         ),

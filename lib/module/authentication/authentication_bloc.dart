@@ -8,7 +8,8 @@ import 'authentication_event.dart';
 import 'authentication_state.dart';
 import 'user_info.dart';
 
-class AuthenticationBloc extends Bloc<AuthenticationEvent, AuthenticationState> {
+class AuthenticationBloc
+    extends Bloc<AuthenticationEvent, AuthenticationState> {
   AuthenticationBloc(AuthenticationState initialState) : super(initialState);
 
   @override
@@ -29,10 +30,14 @@ class AuthenticationBloc extends Bloc<AuthenticationEvent, AuthenticationState> 
       String userJson = (preferences?.getString('user') ?? null)!;
       print('userJson == $userJson');
 
-      Map<String, dynamic> map = (userJson == null || userJson.length == 0) ? null : json.decode(userJson);
+      Map<String, dynamic> map = (userJson == null || userJson.length == 0)
+          ? null
+          : json.decode(userJson);
 
       UserInfo userInfo = UserInfo.fromJson(map);
-      bool isV = (userInfo?.userName?.isNotEmpty ?? false) && (userInfo?.passWord?.isNotEmpty ?? false);
+      bool isV =
+          (userInfo?.userName?.isNotEmpty ?? false) &&
+          (userInfo?.passWord?.isNotEmpty ?? false);
 
       print('isV == $isV');
 

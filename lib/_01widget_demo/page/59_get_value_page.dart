@@ -44,9 +44,10 @@ class CounterBinding extends Bindings {
 //   }
 class P59CounterGetPage extends StatelessWidget {
   /// 这个方式
-//   final CounterController2 controller = Get.put<CounterController2>(CounterController2())!;
+  //   final CounterController2 controller = Get.put<CounterController2>(CounterController2())!;
 
-  CounterController2 get controller => Get.put<CounterController2>(CounterController2());
+  CounterController2 get controller =>
+      Get.put<CounterController2>(CounterController2());
 
   // late final CounterController2 logic;
 
@@ -89,16 +90,28 @@ class P59CounterGetPage extends StatelessWidget {
               return Container(
                 color: Colors.red,
                 padding: EdgeInsets.all(padding),
-                child: Text('count ${controller.count.value}', style: TextStyle(backgroundColor: Colors.orange, fontSize: 30.0)),
+                child: Text(
+                  'count ${controller.count.value}',
+                  style: TextStyle(
+                    backgroundColor: Colors.orange,
+                    fontSize: 30.0,
+                  ),
+                ),
               );
             }),
             Obx(() {
               print('count2更新');
-              return Text('count2 ${controller.count2.value}', style: TextStyle(fontSize: 30.0));
+              return Text(
+                'count2 ${controller.count2.value}',
+                style: TextStyle(fontSize: 30.0),
+              );
             }),
             Obx(() {
               print('count 和 count2');
-              return Text('count 和 count2 ${controller.count.value} ${controller.count2.value}', style: TextStyle(fontSize: 30.0));
+              return Text(
+                'count 和 count2 ${controller.count.value} ${controller.count2.value}',
+                style: TextStyle(fontSize: 30.0),
+              );
             }),
           ],
         ),

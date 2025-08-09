@@ -13,7 +13,8 @@ class P04MaterialPageDialog extends StatefulWidget {
   }
 }
 
-class _MaterialPage1 extends State<P04MaterialPageDialog> with SingleTickerProviderStateMixin {
+class _MaterialPage1 extends State<P04MaterialPageDialog>
+    with SingleTickerProviderStateMixin {
   _TextButton(String text, VoidCallback callback) {
     return TextButton(
       child: Text(text),
@@ -26,7 +27,7 @@ class _MaterialPage1 extends State<P04MaterialPageDialog> with SingleTickerProvi
 
   final _scaffoldKey = GlobalKey<ScaffoldState>();
 
-//  var _isExpanded = false;
+  //  var _isExpanded = false;
 
   List _isExpandedList = [false, false];
 
@@ -41,31 +42,29 @@ class _MaterialPage1 extends State<P04MaterialPageDialog> with SingleTickerProvi
       duration: Duration(seconds: 1),
     );
 
-//    ClipboardData data = new ClipboardData(text: '124');
-//    Clipboard.setData(data);
+    //    ClipboardData data = new ClipboardData(text: '124');
+    //    Clipboard.setData(data);
 
-//    Clipboard.getData(format);
+    //    Clipboard.getData(format);
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       key: _scaffoldKey,
-      appBar: AppBar(
-        title: Text("按钮组件"),
-      ),
+      appBar: AppBar(title: Text("按钮组件")),
       body: Container(
         padding: EdgeInsets.all(12),
-//        color: Colors.blue,
+        //        color: Colors.blue,
         child: ListView(
           /// 垂直对齐
-//          mainAxisAlignment: MainAxisAlignment.start,
-//
-//          /// 水平对齐
-//          crossAxisAlignment: CrossAxisAlignment.start,
+          //          mainAxisAlignment: MainAxisAlignment.start,
+          //
+          //          /// 水平对齐
+          //          crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             _TextButton('Android 弹窗', () {
-//              SimpleDialogOption(
+              //              SimpleDialogOption(
               showDialog(
                 context: context,
                 builder: (BuildContext context) {
@@ -85,62 +84,62 @@ class _MaterialPage1 extends State<P04MaterialPageDialog> with SingleTickerProvi
             }),
 
             _TextButton('全屏', () {
-//            pop(context)
+              //            pop(context)
               showDialog(
-                  context: context,
-                  barrierDismissible: true,
-                  builder: (BuildContext context) {
-                    return Container(
-                      width: double.infinity,
-                      height: double.infinity,
-                      child: Padding(
-                        padding: EdgeInsets.only(left: 100, right: 100),
-                        child: Container(
-                          ///弹框背景和圆角
-                          decoration: ShapeDecoration(
-                            color: Colors.orange,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.all(
-                                Radius.circular(8.0),
-                              ),
+                context: context,
+                barrierDismissible: true,
+                builder: (BuildContext context) {
+                  return Container(
+                    width: double.infinity,
+                    height: double.infinity,
+                    child: Padding(
+                      padding: EdgeInsets.only(left: 100, right: 100),
+                      child: Container(
+                        ///弹框背景和圆角
+                        decoration: ShapeDecoration(
+                          color: Colors.orange,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(8.0),
                             ),
                           ),
-                          child: new Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: <Widget>[
-                              // new CircularProgressIndicator(),
-                              new Padding(
-                                padding: const EdgeInsets.only(
-                                  top: 20.0,
-                                ),
-                                // child: new Text(text),
-                              ),
-                            ],
-                          ),
+                        ),
+                        child: new Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: <Widget>[
+                            // new CircularProgressIndicator(),
+                            new Padding(
+                              padding: const EdgeInsets.only(top: 20.0),
+                              // child: new Text(text),
+                            ),
+                          ],
                         ),
                       ),
-                    );
-                  });
+                    ),
+                  );
+                },
+              );
             }),
 
             _TextButton('Android alert', () {
               showDialog(
-                  context: context,
-                  builder: (context) {
-                    return AlertDialog(
-                      title: Text("标题"),
-                      content: Text("是否"),
-                      actions: <Widget>[
-                        _TextButton("确定", () {
-                          Navigator.pop(context);
-                        }),
-                        _TextButton("取消", () {
-                          Navigator.pop(context);
-                        }),
-                      ],
-                    );
-                  });
+                context: context,
+                builder: (context) {
+                  return AlertDialog(
+                    title: Text("标题"),
+                    content: Text("是否"),
+                    actions: <Widget>[
+                      _TextButton("确定", () {
+                        Navigator.pop(context);
+                      }),
+                      _TextButton("取消", () {
+                        Navigator.pop(context);
+                      }),
+                    ],
+                  );
+                },
+              );
             }),
 
             _TextButton("ios alert", () {
@@ -183,35 +182,39 @@ class _MaterialPage1 extends State<P04MaterialPageDialog> with SingleTickerProvi
                 TextField(),
                 _TextButton("Toast.success", () {
                   Toast.success(
-                      context: context,
-                      dismissDuration: Duration(seconds: 10),
-                      callBack: () {
-                        print('Toast.success');
-                      });
+                    context: context,
+                    dismissDuration: Duration(seconds: 10),
+                    callBack: () {
+                      print('Toast.success');
+                    },
+                  );
                 }),
                 _TextButton("Toast.failure", () {
                   Toast.failure(
-                      context: context,
-                      dismissDuration: Duration(seconds: 3),
-                      callBack: () {
-                        print('Toast.failure');
-                      });
+                    context: context,
+                    dismissDuration: Duration(seconds: 3),
+                    callBack: () {
+                      print('Toast.failure');
+                    },
+                  );
                 }),
                 _TextButton("Toast.error", () {
                   Toast.error(
-                      context: context,
-                      callBack: () {
-                        print('Toast.error');
-                      });
+                    context: context,
+                    callBack: () {
+                      print('Toast.error');
+                    },
+                  );
                 }),
                 _TextButton("Toast.showToast-1", () {
                   Toast toast = Toast.showToast(
-                      context: context,
-                      child: Text('showToast-1'),
-                      autoDismiss: false,
-                      callBack: () {
-                        print('Toast.success');
-                      });
+                    context: context,
+                    child: Text('showToast-1'),
+                    autoDismiss: false,
+                    callBack: () {
+                      print('Toast.success');
+                    },
+                  );
 
                   Future.delayed(Duration(seconds: 3)).whenComplete(() {
                     toast.dismissToast();
@@ -219,12 +222,13 @@ class _MaterialPage1 extends State<P04MaterialPageDialog> with SingleTickerProvi
                 }),
                 _TextButton("Toast.showToast-2", () {
                   Toast toast = Toast.showToast(
-                      context: context,
-                      child: Text('showToast-2'),
-                      autoDismiss: false,
-                      callBack: () {
-                        print('Toast.success');
-                      });
+                    context: context,
+                    child: Text('showToast-2'),
+                    autoDismiss: false,
+                    callBack: () {
+                      print('Toast.success');
+                    },
+                  );
 
                   Future.delayed(Duration(seconds: 4)).whenComplete(() {
                     toast.dismissToast();
@@ -264,13 +268,15 @@ class _MaterialPage1 extends State<P04MaterialPageDialog> with SingleTickerProvi
             _ShowSnackBar(),
 
             /// 上下收缩 展开 折叠组
-//            _ExpansionPanelList(),
+            //            _ExpansionPanelList(),
 
             /// 上下收缩 展开
             ExpansionPanelList(
               expansionCallback: (int panelIndex, bool isExpanded) {
                 setState(() {
-                  debugPrint(" panelIndex = $panelIndex  isExpanded = $isExpanded");
+                  debugPrint(
+                    " panelIndex = $panelIndex  isExpanded = $isExpanded",
+                  );
                   _isExpandedList[panelIndex] = !isExpanded;
                 });
               },
@@ -344,14 +350,14 @@ class _MaterialPage1 extends State<P04MaterialPageDialog> with SingleTickerProvi
             ///不要被这个组件的名字迷惑了，它本质上是一个SlideTransition组件，
             ///从（0，1）移动到（0，0）
             CupertinoFullscreenDialogTransition(
-//              animation: _animationController,
+              //              animation: _animationController,
               linearTransition: false,
               primaryRouteAnimation: _animationController!,
               secondaryRouteAnimation: _animationController!,
               child: Container(
                 color: Colors.orange,
                 height: 300,
-//                width: double.infinity,
+                //                width: double.infinity,
               ),
             ),
           ],
@@ -400,20 +406,21 @@ class AlertDialogWidget extends StatelessWidget {
         children: <Widget>[
           Padding(
             padding: EdgeInsets.all(15),
-            child: Center(
-              child: child,
-            ),
+            child: Center(child: child),
           ),
           Divider(height: 1, color: Colors.grey),
           Container(
-            child: Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: <Widget>[
-              TextButton(
-                child: Text('我知道了'),
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-              ), // button 2
-            ]),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: <Widget>[
+                TextButton(
+                  child: Text('我知道了'),
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                ), // button 2
+              ],
+            ),
           ),
         ],
       ),

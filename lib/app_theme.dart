@@ -5,30 +5,31 @@ class AppTheme {
   static const double _titleFontSize = 20;
 
   static Color _foregroundColor(Set<MaterialState> states) {
-//      const Set<MaterialState> interactiveStates = <MaterialState>{
-//        ///按下
-//        MaterialState.pressed,
-//        ///徘徊 应该是长按
-//        MaterialState.hovered,
-//        /// 集中
-//        MaterialState.focused,
-//        MaterialState.selected,
-//      };
-//
-//      if (states == MaterialState.pressed) {
-//        return Colors.orange;
-//      }
-//      if (states == MaterialState.hovered) {
-//        return Colors.orange;
-//      }
-//      if (states == MaterialState.selected) {
-//        return Colors.purple;
-//      }
-//      if (states.any(interactiveStates.contains)) {
-//        return Colors.blue;
-//      }
-//      return Colors.red;
-    if (states.contains(MaterialState.focused) && !states.contains(MaterialState.pressed)) {
+    //      const Set<MaterialState> interactiveStates = <MaterialState>{
+    //        ///按下
+    //        MaterialState.pressed,
+    //        ///徘徊 应该是长按
+    //        MaterialState.hovered,
+    //        /// 集中
+    //        MaterialState.focused,
+    //        MaterialState.selected,
+    //      };
+    //
+    //      if (states == MaterialState.pressed) {
+    //        return Colors.orange;
+    //      }
+    //      if (states == MaterialState.hovered) {
+    //        return Colors.orange;
+    //      }
+    //      if (states == MaterialState.selected) {
+    //        return Colors.purple;
+    //      }
+    //      if (states.any(interactiveStates.contains)) {
+    //        return Colors.blue;
+    //      }
+    //      return Colors.red;
+    if (states.contains(MaterialState.focused) &&
+        !states.contains(MaterialState.pressed)) {
       ///获取焦点时的颜色
       return Colors.blue;
     } else if (states.contains(MaterialState.pressed)) {
@@ -48,24 +49,24 @@ class AppTheme {
     // return ThemeData.dark();
     return ThemeData().copyWith(
       primaryColor: themeData?.primaryColor ?? Colors.red,
-//        backgroundColor: Colors.lightBlue,
-//        scaffoldBackgroundColor: Colors.lightBlueAccent,
-      buttonTheme: ButtonThemeData(
-        buttonColor: Colors.orange,
-      ),
+      //        backgroundColor: Colors.lightBlue,
+      //        scaffoldBackgroundColor: Colors.lightBlueAccent,
+      buttonTheme: ButtonThemeData(buttonColor: Colors.orange),
 
       /// TextButton 主题
       textButtonTheme: TextButtonThemeData(
         style: ButtonStyle(
           /// foregroundColor 文字颜色
-//                  foregroundColor: MaterialStateColor.resolveWith(getColor),
+          //                  foregroundColor: MaterialStateColor.resolveWith(getColor),
           /// 这里可以控制不同状态颜色
           foregroundColor: MaterialStateColor.resolveWith(_foregroundColor),
 
           /// all 所有状态颜色
           // foregroundColor:MaterialStateProperty.all(Colors.red),
           /// 这里设置文字颜色无效
-          textStyle: MaterialStateProperty.all(TextStyle(color: Colors.white, fontSize: 16)),
+          textStyle: MaterialStateProperty.all(
+            TextStyle(color: Colors.white, fontSize: 16),
+          ),
           // minimumSize: MaterialStateProperty.all(Size(100, 30)),
           /// 如何去掉边距(padding)
           // minimumSize: MaterialStateProperty.all(Size(0, 0)),

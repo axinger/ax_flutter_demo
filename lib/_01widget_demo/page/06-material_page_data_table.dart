@@ -17,9 +17,7 @@ class _MaterialPage1 extends State<MaterialDataTablePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("DataTable"),
-      ),
+      appBar: AppBar(title: Text("DataTable")),
       body: Container(
         padding: EdgeInsets.all(10),
         child: ListView(
@@ -29,14 +27,14 @@ class _MaterialPage1 extends State<MaterialDataTablePage> {
               sortAscending: _sortAscending,
 
               /// 全选不用实现,已经实现看
-//              onSelectAll: (bool select){
-//                debugPrint("onSelectAll = $select");
-//              },
+              //              onSelectAll: (bool select){
+              //                debugPrint("onSelectAll = $select");
+              //              },
               columns: [
                 /// 头 列 ,序号,标题
-//                DataColumn(
-//                  label: Text("序号"),
-//                ),
+                //                DataColumn(
+                //                  label: Text("序号"),
+                //                ),
                 DataColumn(
                   label: Text("标题"),
                   onSort: (int columnIndex, bool ascending) {
@@ -54,9 +52,7 @@ class _MaterialPage1 extends State<MaterialDataTablePage> {
                     });
                   },
                 ),
-                DataColumn(
-                  label: Text("图片"),
-                ),
+                DataColumn(label: Text("图片")),
               ],
 
               /// 内容
@@ -64,23 +60,23 @@ class _MaterialPage1 extends State<MaterialDataTablePage> {
                 PostEntity entity = dataList[index];
 
                 return DataRow(
+                  /// 是否选择
+                  selected: entity.selected,
 
-                    /// 是否选择
-                    selected: entity.selected,
+                  /// 点击选择变化
+                  onSelectChanged: (bool? select) {
+                    setState(() {
+                      entity.selected = select ?? false;
+                    });
+                  },
 
-                    /// 点击选择变化
-                    onSelectChanged: (bool? select) {
-                      setState(() {
-                        entity.selected = select ?? false;
-                      });
-                    },
-
-                    /// cells
-                    cells: [
-//                  DataCell(Text((index + 1).toString())),
-                      DataCell(Text(entity.title)),
-                      DataCell(Image.network(entity.imageUrl)),
-                    ]);
+                  /// cells
+                  cells: [
+                    //                  DataCell(Text((index + 1).toString())),
+                    DataCell(Text(entity.title)),
+                    DataCell(Image.network(entity.imageUrl)),
+                  ],
+                );
               }).toList(),
             ),
           ],

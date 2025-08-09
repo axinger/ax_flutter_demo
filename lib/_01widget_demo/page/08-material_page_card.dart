@@ -12,9 +12,7 @@ class _MaterialPage1 extends State<MaterialPageCard> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("卡片"),
-      ),
+      appBar: AppBar(title: Text("卡片")),
       body: ListView(
         children: PostEntity.dataList.map((post) {
           /// Card 会自动圆角
@@ -31,10 +29,7 @@ class _MaterialPage1 extends State<MaterialPageCard> {
                       topLeft: Radius.circular(5),
                       topRight: Radius.circular(5),
                     ),
-                    child: Image.network(
-                      post.imageUrl,
-                      fit: BoxFit.cover,
-                    ),
+                    child: Image.network(post.imageUrl, fit: BoxFit.cover),
                   ),
                 ),
                 ListTile(
@@ -44,16 +39,11 @@ class _MaterialPage1 extends State<MaterialPageCard> {
                   title: Text(post.title),
                   subtitle: Text(post.author),
                 ),
-                Container(
-                  padding: EdgeInsets.all(10),
-                  child: Text(post.title),
-                ),
+                Container(padding: EdgeInsets.all(10), child: Text(post.title)),
 
                 /// 统一设置button ,也可以单独写子内容
                 ButtonBarTheme(
-                  data: ButtonBarThemeData(
-                    buttonMinWidth: 100,
-                  ),
+                  data: ButtonBarThemeData(buttonMinWidth: 100),
                   child: ButtonBar(
                     children: <Widget>[
                       TextButton(

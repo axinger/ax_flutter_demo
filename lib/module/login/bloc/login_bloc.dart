@@ -11,11 +11,11 @@ part 'login_event.dart';
 part 'login_state.dart';
 
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
-//  final UserRepository userRepository;
+  //  final UserRepository userRepository;
   final AuthenticationBloc authenticationBloc;
 
   LoginBloc({
-//    required this.userRepository,
+    //    required this.userRepository,
     required this.authenticationBloc,
   }) : super(LoginSuccess());
 
@@ -23,17 +23,19 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
 
   @override
   Stream<LoginState> mapEventToState(LoginEvent event) async* {
-    print("LoginButtonPressed=============authenticationBloc ${authenticationBloc}");
+    print(
+      "LoginButtonPressed=============authenticationBloc ${authenticationBloc}",
+    );
 
     if (event is LoginButtonPressedEvent) {
       print("LoginButtonPressed=============");
       yield LoginInProgress();
 
       try {
-//        final token = await userRepository.authenticate(
-//          username: event.username,
-//          password: event.password,
-//        );
+        //        final token = await userRepository.authenticate(
+        //          username: event.username,
+        //          password: event.password,
+        //        );
 
         print('event.username = ${event.username}');
         print('event.password = ${event.password}');
@@ -41,7 +43,14 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
         await Future.delayed(Duration(seconds: 3));
 
         /// 这个是告诉 main 跳转 root
-        authenticationBloc.add(AuthenticationLoggedInEvent(user: UserRepository(username: event.username, password: event.password)));
+        authenticationBloc.add(
+          AuthenticationLoggedInEvent(
+            user: UserRepository(
+              username: event.username,
+              password: event.password,
+            ),
+          ),
+        );
         yield LoginSuccess();
       } catch (error) {
         yield LoginFailure(error: error.toString());

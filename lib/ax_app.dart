@@ -26,11 +26,11 @@ import 'global_const.dart';
 import 'module/login/view/login_view.dart';
 
 class AxApp extends StatefulWidget {
-//  var adapter = Hive.registerAdapter(StudentAdapter(),0);
-//  void log(String? name){
-//print();
-//
-//  }
+  //  var adapter = Hive.registerAdapter(StudentAdapter(),0);
+  //  void log(String? name){
+  //print();
+  //
+  //  }
 
   @override
   State<StatefulWidget> createState() => _MyApp();
@@ -45,7 +45,7 @@ class _MyApp extends State<AxApp> with WidgetsBindingObserver {
 
     /// build完成
     WidgetsBinding.instance.addPostFrameCallback((callback) {
-//      _overlayEntry();
+      //      _overlayEntry();
       if (mounted) {
         _overlayEntry();
       }
@@ -55,18 +55,18 @@ class _MyApp extends State<AxApp> with WidgetsBindingObserver {
     getDeviceInfo();
     packageInfo();
 
-//    testStr = 'tom';
-//    testStr2 = 'tom';
-//window.padding;
+    //    testStr = 'tom';
+    //    testStr2 = 'tom';
+    //window.padding;
     time3 = DateTime.now();
 
     ///需要注意的是，匿名函数声明调用结束时追加了小括号（），
     ///这是因为断言只能检查布尔值，这里使用括号强制执行这个始终返回true的匿名函数，以保证函数里的代码被执行
-//    assert((1==2){
-//      // Do something for debug
-//      print('这是asset下的输出内容');
-//      return true;
-//    };
+    //    assert((1==2){
+    //      // Do something for debug
+    //      print('这是asset下的输出内容');
+    //      return true;
+    //    };
 
     if (kReleaseMode) {
       //
@@ -83,40 +83,40 @@ class _MyApp extends State<AxApp> with WidgetsBindingObserver {
     _boost();
 
     /// FlutterBoost 注册
-//    FlutterBoost.singleton.registerPageBuilders(
-//      {
-//        "route_MaterialPage1": (pageName, params, _) => MaterialPage1(),
-//      },
-//    );
+    //    FlutterBoost.singleton.registerPageBuilders(
+    //      {
+    //        "route_MaterialPage1": (pageName, params, _) => MaterialPage1(),
+    //      },
+    //    );
 
-//    FlutterBoost.singleton
-//        .addBoostNavigatorObserver(TestBoostNavigatorObserver());
+    //    FlutterBoost.singleton
+    //        .addBoostNavigatorObserver(TestBoostNavigatorObserver());
 
     /// debug 不会被打印
-//    log.Logger.level = log.Level.info;
+    //    log.Logger.level = log.Level.info;
 
-//    getTemporaryDirectory().then((value) {
-//      String tempPath = value.path;
-//    });
-//
-//    getApplicationDocumentsDirectory().then((value) {
-//      String appDocPath = value.path;
-//    });
-//
-//    accelerometerEvents.listen((AccelerometerEvent event) {
-//      print(event);
-//    });
-//// [AccelerometerEvent (x: 0.0, y: 9.8, z: 0.0)]
-//
-//    userAccelerometerEvents.listen((UserAccelerometerEvent event) {
-//      print(event);
-//    });
-//// [UserAccelerometerEvent (x: 0.0, y: 0.0, z: 0.0)]
-//
-//    gyroscopeEvents.listen((GyroscopeEvent event) {
-//      print(event);
-//    });
-// [GyroscopeEvent (x: 0.0, y: 0.0, z: 0.0)]
+    //    getTemporaryDirectory().then((value) {
+    //      String tempPath = value.path;
+    //    });
+    //
+    //    getApplicationDocumentsDirectory().then((value) {
+    //      String appDocPath = value.path;
+    //    });
+    //
+    //    accelerometerEvents.listen((AccelerometerEvent event) {
+    //      print(event);
+    //    });
+    //// [AccelerometerEvent (x: 0.0, y: 9.8, z: 0.0)]
+    //
+    //    userAccelerometerEvents.listen((UserAccelerometerEvent event) {
+    //      print(event);
+    //    });
+    //// [UserAccelerometerEvent (x: 0.0, y: 0.0, z: 0.0)]
+    //
+    //    gyroscopeEvents.listen((GyroscopeEvent event) {
+    //      print(event);
+    //    });
+    // [GyroscopeEvent (x: 0.0, y: 0.0, z: 0.0)]
   }
 
   @override
@@ -128,18 +128,20 @@ class _MyApp extends State<AxApp> with WidgetsBindingObserver {
 
   /// 监听安卓返回按键
   void _androidBack() {
-    const basicMessageChannel =
-        const BasicMessageChannel('Android_back', StringCodec());
+    const basicMessageChannel = const BasicMessageChannel(
+      'Android_back',
+      StringCodec(),
+    );
 
-//接受并回复消息
+    //接受并回复消息
 
     basicMessageChannel.setMessageHandler(
       (String? message) => Future<String>(() {
         // print('收到消息===============');
 
-//        setState(() {
-//          this.message = message;
-//        });
+        //        setState(() {
+        //          this.message = message;
+        //        });
         return "回复native消息";
       }),
     );
@@ -147,30 +149,30 @@ class _MyApp extends State<AxApp> with WidgetsBindingObserver {
 
   /// 咸鱼路由
   void _boost() {
-//    FlutterBoost.singleton.registerPageBuilders(<String, PageBuilder>{
-//      '/P28RoutePageSub1':
-//          (String pageName, Map<String, dynamic> params, String uniqueId) {
-//        print('P00ShowTestPage params:$params');
-//        return P28RoutePageSub1();
-//      },
-//
-//      ///可以在native层通过 getContainerParams 来传递参数
-//      'aa': (String pageName, Map<String, dynamic> params, String uniqueId) {
-//        print('P47RouteWidget params:$params');
-//
-//        return P47RouteWidget(map: params);
-//      },
-//
-//      ///可以在native层通过 getContainerParams 来传递参数
-//      'P47RouteWidget2':
-//          (String pageName, Map<String, dynamic> params, String uniqueId) {
-//        print('P47RouteWidget2 params:$params');
-//
-//        return P47RouteWidget2();
-//      },
-//    });
-//    FlutterBoost.singleton
-//        .addBoostNavigatorObserver(TestBoostNavigatorObserver());
+    //    FlutterBoost.singleton.registerPageBuilders(<String, PageBuilder>{
+    //      '/P28RoutePageSub1':
+    //          (String pageName, Map<String, dynamic> params, String uniqueId) {
+    //        print('P00ShowTestPage params:$params');
+    //        return P28RoutePageSub1();
+    //      },
+    //
+    //      ///可以在native层通过 getContainerParams 来传递参数
+    //      'aa': (String pageName, Map<String, dynamic> params, String uniqueId) {
+    //        print('P47RouteWidget params:$params');
+    //
+    //        return P47RouteWidget(map: params);
+    //      },
+    //
+    //      ///可以在native层通过 getContainerParams 来传递参数
+    //      'P47RouteWidget2':
+    //          (String pageName, Map<String, dynamic> params, String uniqueId) {
+    //        print('P47RouteWidget2 params:$params');
+    //
+    //        return P47RouteWidget2();
+    //      },
+    //    });
+    //    FlutterBoost.singleton
+    //        .addBoostNavigatorObserver(TestBoostNavigatorObserver());
   }
 
   /// 全局浮层
@@ -198,33 +200,36 @@ class _MyApp extends State<AxApp> with WidgetsBindingObserver {
     );
 
     double OffsetY = 200;
-    ValueNotifier<Offset> offsetNotifier =
-        ValueNotifier<Offset>(Offset(0, OffsetY));
+    ValueNotifier<Offset> offsetNotifier = ValueNotifier<Offset>(
+      Offset(0, OffsetY),
+    );
     var entry = OverlayEntry(
-        maintainState: true,
-        builder: (BuildContext context) {
-          return ValueListenableBuilder(
-            valueListenable: offsetNotifier,
-            builder: (BuildContext? context, Offset? value, Widget? child) {
-              return Positioned(
-                top: value!.dy > 0 ? value.dy : 0,
-                left: value.dx > 0 ? value.dx : 0,
-                child: Draggable(
-                    //创建可以被拖动的Widget
-                    child: btn,
-                    //拖动过程中的Widget
-                    feedback: btn,
-                    //拖动过程中，在原来位置停留的Widget，设定这个可以保留原本位置的残影，如果不需要可以直接设置为Container()
-                    childWhenDragging: Container(),
-                    //拖动结束后的Widget
-                    onDraggableCanceled: (Velocity velocity, Offset offset) {
-                      //更新位置信息
-                      offsetNotifier.value = offset;
-                    }),
-              );
-            },
-          );
-        });
+      maintainState: true,
+      builder: (BuildContext context) {
+        return ValueListenableBuilder(
+          valueListenable: offsetNotifier,
+          builder: (BuildContext? context, Offset? value, Widget? child) {
+            return Positioned(
+              top: value!.dy > 0 ? value.dy : 0,
+              left: value.dx > 0 ? value.dx : 0,
+              child: Draggable(
+                //创建可以被拖动的Widget
+                child: btn,
+                //拖动过程中的Widget
+                feedback: btn,
+                //拖动过程中，在原来位置停留的Widget，设定这个可以保留原本位置的残影，如果不需要可以直接设置为Container()
+                childWhenDragging: Container(),
+                //拖动结束后的Widget
+                onDraggableCanceled: (Velocity velocity, Offset offset) {
+                  //更新位置信息
+                  offsetNotifier.value = offset;
+                },
+              ),
+            );
+          },
+        );
+      },
+    );
     navigatorStateKey.currentState?.overlay?.insert(entry);
   }
 
@@ -244,7 +249,6 @@ class _MyApp extends State<AxApp> with WidgetsBindingObserver {
   }
 
   void packageInfo() async {
-
     PackageInfo packageInfo = await PackageInfo.fromPlatform();
 
     String appName = packageInfo.appName;
@@ -253,9 +257,9 @@ class _MyApp extends State<AxApp> with WidgetsBindingObserver {
     String buildNumber = packageInfo.buildNumber;
     if (kDebugMode) {
       print(
-          "appName = $appName packageName = $packageName version = $version buildNumber = $buildNumber");
+        "appName = $appName packageName = $packageName version = $version buildNumber = $buildNumber",
+      );
     }
-
   }
 
   @override
@@ -305,29 +309,29 @@ class _MyApp extends State<AxApp> with WidgetsBindingObserver {
 
   Widget get _rootView {
     /// 全局点击空白处隐藏键盘
-//    return GestureDetector(
-//      onTap: () {
-//        FocusScopeNode currentFocus = FocusScope.of(context);
-//        if (!currentFocus.hasPrimaryFocus &&
-//            currentFocus.focusedChild != null) {
-//          FocusManager.instance.primaryFocus.unfocus();
-//        }
-//      },
-//      child: P00ShowTestPage(),
-////      child: DismissKeyboardDemo(),
-//    );
+    //    return GestureDetector(
+    //      onTap: () {
+    //        FocusScopeNode currentFocus = FocusScope.of(context);
+    //        if (!currentFocus.hasPrimaryFocus &&
+    //            currentFocus.focusedChild != null) {
+    //          FocusManager.instance.primaryFocus.unfocus();
+    //        }
+    //      },
+    //      child: P00ShowTestPage(),
+    ////      child: DismissKeyboardDemo(),
+    //    );
 
     // return P00ShowTestPage();
     return RootPage();
     // return TestHomePage();
-//   return RootPage();
+    //   return RootPage();
   }
 
   Widget get _buildMultiProvider {
     return MultiProvider(
       providers: [
-//        ChangeNotifierProvider(create: (context) => mainConfigModel),
-        ChangeNotifierProvider.value(value: ThemeDataNotifier())
+        //        ChangeNotifierProvider(create: (context) => mainConfigModel),
+        ChangeNotifierProvider.value(value: ThemeDataNotifier()),
       ],
       child: Consumer<ThemeDataNotifier>(
         builder: (context, value, child) {
@@ -372,7 +376,8 @@ class _MyApp extends State<AxApp> with WidgetsBindingObserver {
       ],
       supportedLocales: [
         const Locale("en", ""),
-        const Locale("zh", "CN"), ...S.delegate.supportedLocales,
+        const Locale("zh", "CN"),
+        ...S.delegate.supportedLocales,
       ],
 
       builder: (context, child) => Scaffold(
@@ -386,12 +391,12 @@ class _MyApp extends State<AxApp> with WidgetsBindingObserver {
       ),
       home: _rootView,
 
-//      home: P00ShowTestPage(),
+      //      home: P00ShowTestPage(),
       /// 影响我的浮层
-//      builder: FlutterBoost.init(postPush: _onRoutePushed),
-//      builder: FlutterBoost.init(),
+      //      builder: FlutterBoost.init(postPush: _onRoutePushed),
+      //      builder: FlutterBoost.init(),
       /// 根路由,一般设置 和 onGenerateRoute 冲突,不能同时存在
-//      initialRoute: "/",
+      //      initialRoute: "/",
       routes: {
         "/Root": (context) => RootPage(),
         "/route_login": (context) => LoginView(),
@@ -404,26 +409,26 @@ class _MyApp extends State<AxApp> with WidgetsBindingObserver {
 
       /// Navigator.of(context).pushNamed('/new');  Navigator.pushNamed 时无法直接给新页面传参数
       ///和 routes 冲突 可以传参的，相比于命名路由，可以多做一些相关的拦截
-//      onGenerateRoute: (RouteSettings settings) {
-//        String routeName = settings.name;
-//        print("routeName = : $routeName");
-//        print("settings.arguments: ${settings.arguments}");
-//        switch (routeName) {
-//          case "/sub2":
-//            return MaterialPageRoute(builder: (context) {
-//              return P28RoutePageSub2(
-//                sub2Map: settings.arguments,
-//              );
-//            });
-//          default:
-//            return MaterialPageRoute(builder: (BuildContext context) {
-//              return Scaffold(
-//                  body: Center(
-//                child: Text("Page not found"),
-//              ));
-//            });
-//        }
-//      },
+      //      onGenerateRoute: (RouteSettings settings) {
+      //        String routeName = settings.name;
+      //        print("routeName = : $routeName");
+      //        print("settings.arguments: ${settings.arguments}");
+      //        switch (routeName) {
+      //          case "/sub2":
+      //            return MaterialPageRoute(builder: (context) {
+      //              return P28RoutePageSub2(
+      //                sub2Map: settings.arguments,
+      //              );
+      //            });
+      //          default:
+      //            return MaterialPageRoute(builder: (BuildContext context) {
+      //              return Scaffold(
+      //                  body: Center(
+      //                child: Text("Page not found"),
+      //              ));
+      //            });
+      //        }
+      //      },
     );
   }
 
@@ -449,7 +454,8 @@ class _MyApp extends State<AxApp> with WidgetsBindingObserver {
       ],
       supportedLocales: [
         const Locale("en", ""),
-        const Locale("zh", "CN"), ...S.delegate.supportedLocales,
+        const Locale("zh", "CN"),
+        ...S.delegate.supportedLocales,
       ],
 
       builder: (context, child) => Scaffold(
@@ -463,12 +469,12 @@ class _MyApp extends State<AxApp> with WidgetsBindingObserver {
       ),
       home: _rootView,
 
-//      home: P00ShowTestPage(),
+      //      home: P00ShowTestPage(),
       /// 影响我的浮层
-//      builder: FlutterBoost.init(postPush: _onRoutePushed),
-//      builder: FlutterBoost.init(),
+      //      builder: FlutterBoost.init(postPush: _onRoutePushed),
+      //      builder: FlutterBoost.init(),
       /// 根路由,一般设置 和 onGenerateRoute 冲突,不能同时存在
-//      initialRoute: "/",
+      //      initialRoute: "/",
       routes: {
         "/Root": (context) => RootPage(),
         "/route_login": (context) => LoginView(),
@@ -481,26 +487,26 @@ class _MyApp extends State<AxApp> with WidgetsBindingObserver {
 
       /// Navigator.of(context).pushNamed('/new');  Navigator.pushNamed 时无法直接给新页面传参数
       ///和 routes 冲突 可以传参的，相比于命名路由，可以多做一些相关的拦截
-//      onGenerateRoute: (RouteSettings settings) {
-//        String routeName = settings.name;
-//        print("routeName = : $routeName");
-//        print("settings.arguments: ${settings.arguments}");
-//        switch (routeName) {
-//          case "/sub2":
-//            return MaterialPageRoute(builder: (context) {
-//              return P28RoutePageSub2(
-//                sub2Map: settings.arguments,
-//              );
-//            });
-//          default:
-//            return MaterialPageRoute(builder: (BuildContext context) {
-//              return Scaffold(
-//                  body: Center(
-//                child: Text("Page not found"),
-//              ));
-//            });
-//        }
-//      },
+      //      onGenerateRoute: (RouteSettings settings) {
+      //        String routeName = settings.name;
+      //        print("routeName = : $routeName");
+      //        print("settings.arguments: ${settings.arguments}");
+      //        switch (routeName) {
+      //          case "/sub2":
+      //            return MaterialPageRoute(builder: (context) {
+      //              return P28RoutePageSub2(
+      //                sub2Map: settings.arguments,
+      //              );
+      //            });
+      //          default:
+      //            return MaterialPageRoute(builder: (BuildContext context) {
+      //              return Scaffold(
+      //                  body: Center(
+      //                child: Text("Page not found"),
+      //              ));
+      //            });
+      //        }
+      //      },
     );
   }
 
@@ -514,7 +520,12 @@ class _MyApp extends State<AxApp> with WidgetsBindingObserver {
   }
 
   void _onRoutePushed(
-      String pageName, String uniqueId, Map params, Route route, Future _) {
+    String pageName,
+    String uniqueId,
+    Map params,
+    Route route,
+    Future _,
+  ) {
     if (kDebugMode) {
       print('_onRoutePushed == $pageName  uniqueId = $uniqueId');
     }
@@ -575,9 +586,7 @@ class DismissKeyboardDemo2 extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      body: const Center(
-        child: TextField(),
-      ),
+      body: const Center(child: TextField()),
     );
   }
 }

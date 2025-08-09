@@ -11,9 +11,7 @@ import 'package:flutter/material.dart';
 class P47RouteWidget extends StatefulWidget {
   final Map? map;
 
-  P47RouteWidget({
-    this.map,
-  });
+  P47RouteWidget({this.map});
 
   @override
   _P47RouteWidgetState createState() => _P47RouteWidgetState();
@@ -28,13 +26,13 @@ class _P47RouteWidgetState extends State<P47RouteWidget> {
         child: TextButton(
           child: Text('下一页'),
           onPressed: () {
-//            FlutterBoost.singleton.open('P47RouteWidget2',
-//                urlParams: <String, dynamic>{
-//                  'present': true
-//                }).then((Map<dynamic, dynamic> value) {
-//              print(
-//                  'FlutterBoost =  $value');
-//            });
+            //            FlutterBoost.singleton.open('P47RouteWidget2',
+            //                urlParams: <String, dynamic>{
+            //                  'present': true
+            //                }).then((Map<dynamic, dynamic> value) {
+            //              print(
+            //                  'FlutterBoost =  $value');
+            //            });
           },
         ),
       ),
@@ -56,7 +54,7 @@ class _P47RouteWidget2State extends State<P47RouteWidget2> {
         child: TextButton(
           child: Text('返回上上一个'),
           onPressed: () {
-//            FlutterBoost.singleton.close('P00ShowTestPage');
+            //            FlutterBoost.singleton.close('P00ShowTestPage');
           },
         ),
       ),

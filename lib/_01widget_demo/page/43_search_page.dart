@@ -36,7 +36,7 @@ class _P43SearchPageState extends State<P43SearchPage> {
                 exit(0);
               }
             },
-          )
+          ),
         ],
       ),
     );
@@ -67,7 +67,10 @@ class SearchBarDelegate extends SearchDelegate<String> {
   Widget buildLeading(BuildContext context) {
     //左侧显示内容 这里放了返回按钮
     return IconButton(
-      icon: AnimatedIcon(icon: AnimatedIcons.menu_arrow, progress: transitionAnimation),
+      icon: AnimatedIcon(
+        icon: AnimatedIcons.menu_arrow,
+        progress: transitionAnimation,
+      ),
       onPressed: () {
         if (query.isEmpty) {
           close(context, '');
@@ -85,9 +88,7 @@ class SearchBarDelegate extends SearchDelegate<String> {
   @override
   Widget buildResults(BuildContext context) {
     //点击了搜索显示的页面
-    return Center(
-      child: Text('12312321'),
-    );
+    return Center(child: Text('12312321'));
   }
 
   @override
@@ -98,10 +99,8 @@ class SearchBarDelegate extends SearchDelegate<String> {
 
   @override
   ThemeData appBarTheme(BuildContext context) {
-    return ThemeData(
-      primaryColor: Colors.red,
-    );
-//    return super.appBarTheme(context);
+    return ThemeData(primaryColor: Colors.red);
+    //    return super.appBarTheme(context);
   }
 }
 
@@ -116,23 +115,15 @@ class _SearchContentViewState extends State<SearchContentView> {
     return Container(
       padding: EdgeInsets.all(10),
       child: ListView(
-//        crossAxisAlignment: CrossAxisAlignment.start,
+        //        crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          Container(
-            child: Text(
-              '大家都在搜',
-              style: TextStyle(fontSize: 16),
-            ),
-          ),
+          Container(child: Text('大家都在搜', style: TextStyle(fontSize: 16))),
           SearchItemView(),
           Container(
             margin: EdgeInsets.only(top: 20),
-            child: Text(
-              '历史记录',
-              style: TextStyle(fontSize: 16),
-            ),
+            child: Text('历史记录', style: TextStyle(fontSize: 16)),
           ),
-          SearchItemView()
+          SearchItemView(),
         ],
       ),
     );
@@ -145,7 +136,17 @@ class SearchItemView extends StatefulWidget {
 }
 
 class _SearchItemViewState extends State<SearchItemView> {
-  List<String> items = ['面试', 'Studio3', '动画dfsfds', '自定义View', '性能优化', 'gradle', 'Camera', '代码混淆 安全', '逆向加固'];
+  List<String> items = [
+    '面试',
+    'Studio3',
+    '动画dfsfds',
+    '自定义View',
+    '性能优化',
+    'gradle',
+    'Camera',
+    '代码混淆 安全',
+    '逆向加固',
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -177,7 +178,9 @@ class _SearchItemState extends State<SearchItem> {
       child: InkWell(
         child: Chip(
           label: Text(widget.title),
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10),
+          ),
           deleteIconColor: Colors.red,
           onDeleted: () {},
         ),

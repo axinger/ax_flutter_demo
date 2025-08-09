@@ -17,24 +17,20 @@ class _MaterialPage1 extends State<MaterialPageChip> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Chip"),
-      ),
+      appBar: AppBar(title: Text("Chip")),
       body: Column(
         children: <Widget>[
           Wrap(
             spacing: 20,
             runSpacing: 10,
             children: <Widget>[
-              Chip(
-                label: Text("aaa"),
-              ),
+              Chip(label: Text("aaa")),
 
               Chip(
                 label: Text("aaaaaaaaaaaaaaaaaaaaaaa"),
 
                 /// 删除icon
-//                deleteIcon: Icon(Icons.delete),
+                //                deleteIcon: Icon(Icons.delete),
                 deleteIconColor: Colors.red,
                 onDeleted: () {},
               ),
@@ -45,7 +41,7 @@ class _MaterialPage1 extends State<MaterialPageChip> {
                 avatar: CircleAvatar(
                   backgroundColor: Colors.red,
 
-//                  child: Text("头"),
+                  //                  child: Text("头"),
                   backgroundImage: AssetImage("assets/image/headIcon.png"),
                 ),
 
@@ -57,30 +53,26 @@ class _MaterialPage1 extends State<MaterialPageChip> {
               ),
 
               /// 可以控制左对齐
-              Container()
+              Container(),
             ],
           ),
-          Divider(
-            indent: 20,
-            endIndent: 20,
-            color: Colors.red,
-          ),
+          Divider(indent: 20, endIndent: 20, color: Colors.red),
           Text("删除"),
           Wrap(
-//            crossAxisAlignment: WrapCrossAlignment.end,
+            //            crossAxisAlignment: WrapCrossAlignment.end,
             spacing: 10,
             runSpacing: 10,
             children: _list.map((text) {
               return Chip(
                 label: Text(text),
                 avatar: CircleAvatar(
-//                  backgroundColor: Colors.red,
-//                  child: Text("A"),
+                  //                  backgroundColor: Colors.red,
+                  //                  child: Text("A"),
                   backgroundImage: AssetImage("assets/image/headIcon.png"),
                 ),
 
                 /// 删除icon
-//                deleteIcon: Icon(Icons.delete),
+                //                deleteIcon: Icon(Icons.delete),
                 deleteIconColor: Colors.red,
                 onDeleted: () {
                   setState(() {
@@ -90,36 +82,28 @@ class _MaterialPage1 extends State<MaterialPageChip> {
               );
             }).toList(),
           ),
-          Divider(
-            indent: 20,
-            endIndent: 20,
-            color: Colors.red,
-          ),
+          Divider(indent: 20, endIndent: 20, color: Colors.red),
           Text("点击"),
           Wrap(
-//            crossAxisAlignment: WrapCrossAlignment.end,
+            //            crossAxisAlignment: WrapCrossAlignment.end,
             spacing: 10,
             runSpacing: 10,
             children: _list.map((text) {
               return ActionChip(
                 label: Text(text),
                 avatar: CircleAvatar(
-//                  backgroundColor: Colors.red,
-//                  child: Text("A"),
+                  //                  backgroundColor: Colors.red,
+                  //                  child: Text("A"),
                   backgroundImage: AssetImage("assets/image/headIcon.png"),
                 ),
                 onPressed: () {},
               );
             }).toList(),
           ),
-          Divider(
-            indent: 20,
-            endIndent: 20,
-            color: Colors.red,
-          ),
+          Divider(indent: 20, endIndent: 20, color: Colors.red),
           Text("多选"),
           Wrap(
-//            crossAxisAlignment: WrapCrossAlignment.end,
+            //            crossAxisAlignment: WrapCrossAlignment.end,
             spacing: 10,
             runSpacing: 10,
             children: _list.map((text) {

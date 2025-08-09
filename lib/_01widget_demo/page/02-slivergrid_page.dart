@@ -44,12 +44,16 @@ class _P02SlivergridPageState extends State<P02SlivergridPage> {
             ),
           ),
           SliverList(
-              delegate: SliverChildBuilderDelegate((BuildContext context, int index) {
-            return Container(
-              height: 44,
-              color: Colors.primaries[(index % 18)],
-            );
-          }, childCount: 10)),
+            delegate: SliverChildBuilderDelegate((
+              BuildContext context,
+              int index,
+            ) {
+              return Container(
+                height: 44,
+                color: Colors.primaries[(index % 18)],
+              );
+            }, childCount: 10),
+          ),
           SliverPadding(
             padding: const EdgeInsets.all(10),
             sliver: SliverGrid(
@@ -71,7 +75,7 @@ class _P02SlivergridPageState extends State<P02SlivergridPage> {
                       child: CachedNetworkImage(
                         // width: 120,
                         fit: BoxFit.fill,
-//                              placeholder: new CircularProgressIndicator(),
+                        //                              placeholder: new CircularProgressIndicator(),
                         imageUrl: PostEntity.dataList[index].imageUrl,
                         // imageBuilder: (BuildContext context,
                         //     ImageProvider imageProvider,){
@@ -85,17 +89,18 @@ class _P02SlivergridPageState extends State<P02SlivergridPage> {
                         //   );
                         // },
                         /// 和 placeholder 只能选一个
-                        progressIndicatorBuilder: (BuildContext context, String url, progress) {
-                          return const CircularProgressIndicator(
-                            // value: progress?.progress??0,
-                            value: 0.1,
-                            // backgroundColor: Colors.pink,
-                          );
-                        },
+                        progressIndicatorBuilder:
+                            (BuildContext context, String url, progress) {
+                              return const CircularProgressIndicator(
+                                // value: progress?.progress??0,
+                                value: 0.1,
+                                // backgroundColor: Colors.pink,
+                              );
+                            },
+
                         // errorWidget:(context, url, error){
                         //  return Image.asset(KPlaceholderImageName);
                         // },
-
                         errorWidget: (context, url, error) {
                           return const Icon(
                             Icons.error,

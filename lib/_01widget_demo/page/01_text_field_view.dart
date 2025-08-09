@@ -18,9 +18,7 @@ class _DemoTextFieldState extends State<DemoTextField> {
   Widget build(BuildContext context) {
     FocusScope.of(context).requestFocus(passwordFocusNode);
     return Scaffold(
-      appBar: AppBar(
-        title: Text('TextField'),
-      ),
+      appBar: AppBar(title: Text('TextField')),
       body: SingleChildScrollView(
         physics: NeverScrollableScrollPhysics(),
         child: Column(
@@ -36,9 +34,7 @@ class _DemoTextFieldState extends State<DemoTextField> {
                 keyboardType: TextInputType.numberWithOptions(decimal: true),
               ),
             ),
-            SizedBox(
-              height: 20,
-            ),
+            SizedBox(height: 20),
             Text('flutter文本框'),
             Divider(color: Colors.red),
             Text('TextField 只能输入邮箱'),
@@ -59,32 +55,21 @@ class _DemoTextFieldState extends State<DemoTextField> {
                 ],
 
                 ///输入文本的样式
-                style: TextStyle(
-                  fontSize: 16.0,
-                  color: Colors.black,
-                ),
+                style: TextStyle(fontSize: 16.0, color: Colors.black),
 
                 decoration: InputDecoration(
                   /// 头部的图标
-                  icon: Icon(
-                    Icons.email_outlined,
-                  ),
+                  icon: Icon(Icons.email_outlined),
                   hintText: '请输入邮箱',
                   labelText: '邮箱',
-                  hintStyle: TextStyle(
-                    fontSize: 16.0,
-                    color: Colors.red,
-                  ),
+                  hintStyle: TextStyle(fontSize: 16.0, color: Colors.red),
 
                   ///输入内容距离上下左右的距离 ，可通过这个属性来控制 TextField的高度
                   contentPadding: EdgeInsets.all(10.0),
 
                   /// right 小组件
                   suffixIcon: MaterialButton(
-                    child: Text(
-                      '发送邮件',
-                      style: TextStyle(fontSize: 14.0),
-                    ),
+                    child: Text('发送邮件', style: TextStyle(fontSize: 14.0)),
                     textColor: Colors.black,
                     disabledTextColor: Colors.grey,
                     onPressed: () {},
@@ -94,21 +79,21 @@ class _DemoTextFieldState extends State<DemoTextField> {
             ),
             Divider(color: Colors.red),
             Text('TextField 只能注入数字'),
-//
+            //
             /// 手机号
             Container(
               margin: EdgeInsets.only(left: 20, right: 20),
               child: TextField(
-//                    controller: phoneTextEditingController,
-//                    focusNode: _contentFocusNode,
+                //                    controller: phoneTextEditingController,
+                //                    focusNode: _contentFocusNode,
 
                 /// 输入的文字
                 onChanged: (value) {
-//                      username = value;
-//                      print('username = ' + username);
-//
-//                      /// 强制重绘
-//                      setState(() {});
+                  //                      username = value;
+                  //                      print('username = ' + username);
+                  //
+                  //                      /// 强制重绘
+                  //                      setState(() {});
                 },
                 onEditingComplete: () {},
 
@@ -128,36 +113,25 @@ class _DemoTextFieldState extends State<DemoTextField> {
                 ],
 
                 ///输入文本的样式
-                style: TextStyle(
-                  fontSize: 16.0,
-                  color: Colors.black,
-                ),
+                style: TextStyle(fontSize: 16.0, color: Colors.black),
 
                 decoration: InputDecoration(
                   /// 头部的图标
-                  icon: Icon(
-                    Icons.phone,
-                  ),
+                  icon: Icon(Icons.phone),
                   hintText: '请输入手机号',
                   labelText: '手机号',
-                  hintStyle: TextStyle(
-                    fontSize: 16.0,
-                    color: Colors.red,
-                  ),
+                  hintStyle: TextStyle(fontSize: 16.0, color: Colors.red),
 
                   ///输入内容距离上下左右的距离 ，可通过这个属性来控制 TextField的高度
                   contentPadding: EdgeInsets.all(10.0),
                   border: OutlineInputBorder(
-//                    borderRadius: BorderRadius.circular(15),
-//                    borderSide: BorderSide.none,
-                      ),
+                    //                    borderRadius: BorderRadius.circular(15),
+                    //                    borderSide: BorderSide.none,
+                  ),
 
                   /// right 小组件
                   suffixIcon: MaterialButton(
-                    child: Text(
-                      '获取验证码5',
-                      style: TextStyle(fontSize: 14.0),
-                    ),
+                    child: Text('获取验证码5', style: TextStyle(fontSize: 14.0)),
                     textColor: Colors.black,
                     disabledTextColor: Colors.grey,
                     onPressed: () {},
@@ -165,9 +139,7 @@ class _DemoTextFieldState extends State<DemoTextField> {
                 ),
               ),
             ),
-            SizedBox(
-              height: 20,
-            ),
+            SizedBox(height: 20),
 
             Text('TextFormField'),
             ElevatedButton(
@@ -180,7 +152,7 @@ class _DemoTextFieldState extends State<DemoTextField> {
               controller: passwordTextEditingController,
               focusNode: passwordFocusNode,
               obscureText: true,
-//                keyboardType: TextInputType.number,
+              //                keyboardType: TextInputType.number,
 
               /// 输入的文字
               onChanged: (value) {
@@ -201,10 +173,7 @@ class _DemoTextFieldState extends State<DemoTextField> {
               },
 
               ///输入文本的样式
-              style: TextStyle(
-                fontSize: 16.0,
-                color: Colors.black,
-              ),
+              style: TextStyle(fontSize: 16.0, color: Colors.black),
 
               /// 限制输入类型
               inputFormatters: <TextInputFormatter>[
@@ -223,33 +192,25 @@ class _DemoTextFieldState extends State<DemoTextField> {
 
               decoration: InputDecoration(
                 /// 头部的图标
-                prefixIcon: Icon(
-                  Icons.lock,
-                ),
+                prefixIcon: Icon(Icons.lock),
                 hintText: '请输入密码',
-                hintStyle: TextStyle(
-                  fontSize: 16.0,
-                  color: Colors.red,
-                ),
+                hintStyle: TextStyle(fontSize: 16.0, color: Colors.red),
 
                 labelText: '密码',
-                labelStyle: TextStyle(
-                  fontSize: 16.0,
-                  color: Colors.black,
-                ),
+                labelStyle: TextStyle(fontSize: 16.0, color: Colors.black),
 
                 ///输入内容距离上下左右的距离 ，可通过这个属性来控制 TextField的高度
                 contentPadding: EdgeInsets.all(10.0),
                 border: OutlineInputBorder(
-//                    borderRadius: BorderRadius.circular(15),
-//                    borderSide: BorderSide.none,
-                    ),
+                  //                    borderRadius: BorderRadius.circular(15),
+                  //                    borderSide: BorderSide.none,
+                ),
               ),
             ),
             Text('TextField'),
             TextField(
-//                    controller: phoneTextEditingController,
-//                    focusNode: _contentFocusNode,
+              //                    controller: phoneTextEditingController,
+              //                    focusNode: _contentFocusNode,
 
               /// 输入的文字
               onChanged: (value) {
@@ -257,10 +218,10 @@ class _DemoTextFieldState extends State<DemoTextField> {
               },
               onEditingComplete: () {},
 
-//                    maxLength: 11,
+              //                    maxLength: 11,
 
               ///键盘类型
-//                    keyboardType: TextInputType.number,
+              //                    keyboardType: TextInputType.number,
 
               /// 右下角 键盘类型
               textInputAction: TextInputAction.send,
@@ -269,49 +230,44 @@ class _DemoTextFieldState extends State<DemoTextField> {
               },
 
               inputFormatters: <TextInputFormatter>[
-//                      WhitelistingTextInputFormatter.digitsOnly, //只输入数字
-//                      TestTextInputFormatter(),
+                //                      WhitelistingTextInputFormatter.digitsOnly, //只输入数字
+                //                      TestTextInputFormatter(),
                 FilteringTextInputFormatter(RegExp("[a-zA-Z]"), allow: true),
                 //只允许输入字母
 
-//                      WhitelistingTextInputFormatter(RegExp(r'(\d+)(.\d{0,2})?$/')),
+                //                      WhitelistingTextInputFormatter(RegExp(r'(\d+)(.\d{0,2})?$/')),
 
-//                      WhitelistingTextInputFormatter(RegExp(r'\d+'))
+                //                      WhitelistingTextInputFormatter(RegExp(r'\d+'))
 
-//                      ///零和非零开头的数字
-//                      WhitelistingTextInputFormatter(RegExp(r'^(0|[1-9][0-9]*)$'))
+                //                      ///零和非零开头的数字
+                //                      WhitelistingTextInputFormatter(RegExp(r'^(0|[1-9][0-9]*)$'))
 
                 ///有两位小数的正实数
-//                      WhitelistingTextInputFormatter(RegExp(r'^[a-zA-Z][a-zA-Z0-9_]{4,15}$'))
+                //                      WhitelistingTextInputFormatter(RegExp(r'^[a-zA-Z][a-zA-Z0-9_]{4,15}$'))
 
-//                      WhitelistingTextInputFormatterExtension.chinesePhone,
-//                      PhoneTextInputFormatter.digitsOnly,
+                //                      WhitelistingTextInputFormatterExtension.chinesePhone,
+                //                      PhoneTextInputFormatter.digitsOnly,
 
-//                          WhitelistingTextInputFormatter(
-//                            RegExp(
-//                                r'^((13[0-9])|(14[5,7,9])|(15[^4])|(18[0-9])|(17[0,1,3,5,6,7,8])|(19)[0-9])\d{8}$'),
-//                          )
+                //                          WhitelistingTextInputFormatter(
+                //                            RegExp(
+                //                                r'^((13[0-9])|(14[5,7,9])|(15[^4])|(18[0-9])|(17[0,1,3,5,6,7,8])|(19)[0-9])\d{8}$'),
+                //                          )
 
-//                      WhitelistingTextInputFormatter,
-//                  PhoneTextInputFormatter.digitsOnly,
+                //                      WhitelistingTextInputFormatter,
+                //                  PhoneTextInputFormatter.digitsOnly,
               ],
 
               ///输入文本的样式
-              style: TextStyle(
-                fontSize: 16.0,
-                color: Colors.black,
-              ),
+              style: TextStyle(fontSize: 16.0, color: Colors.black),
 
               decoration: InputDecoration(
                 /// 头部的图标
-                icon: Icon(
-                  Icons.phone,
-                ),
-//                      prefix: Text('prefix'),
-//                      prefixText: 'prefixText',
+                icon: Icon(Icons.phone),
+                //                      prefix: Text('prefix'),
+                //                      prefixText: 'prefixText',
                 prefixIcon: Text('prefixIcon'),
-//
-//                      suffix: Text('suffix'),
+                //
+                //                      suffix: Text('suffix'),
                 suffixIcon: Text('suffixIcon'),
 
                 hintText: '请输入手机号',
@@ -319,7 +275,7 @@ class _DemoTextFieldState extends State<DemoTextField> {
                 /// 左上角的标识
                 labelText: '手机号',
                 hintStyle: TextStyle(
-//                            fontSize: 16.0,
+                  //                            fontSize: 16.0,
                   color: Colors.black,
                 ),
 
@@ -335,9 +291,9 @@ class _DemoTextFieldState extends State<DemoTextField> {
                 ///选中时外边框颜色
                 focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(10),
-//                        borderSide: BorderSide(
-//                          color: Colors.red,
-//                        ),
+                  //                        borderSide: BorderSide(
+                  //                          color: Colors.red,
+                  //                        ),
 
                   /// 无边框
                   borderSide: BorderSide.none,
@@ -352,17 +308,15 @@ class _DemoTextFieldState extends State<DemoTextField> {
                 ),
               ),
             ),
-            Text('FormField\n'
-                'FormField是一个表单控件，此控件包含表单的状态，方便更新UI，'
-                '通常情况下，我们不会直接使用FormField，而是使用TextFormField。'),
+            Text(
+              'FormField\n'
+              'FormField是一个表单控件，此控件包含表单的状态，方便更新UI，'
+              '通常情况下，我们不会直接使用FormField，而是使用TextFormField。',
+            ),
             FormField(
               autovalidateMode: AutovalidateMode.always,
               builder: (FormFieldState state) {
-                return Container(
-                  width: 200,
-                  height: 100,
-                  color: Colors.red,
-                );
+                return Container(width: 200, height: 100, color: Colors.red);
               },
             ),
           ],

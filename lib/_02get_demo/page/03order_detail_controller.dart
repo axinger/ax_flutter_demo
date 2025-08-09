@@ -40,10 +40,18 @@ class OrderDetailController extends GetxController {
     once(model().price.obs, (_) => print("was changed once"));
 
     /// 更改后3秒回调
-    debounce(model().price.obs, (_) => print("debouce"), time: Duration(seconds: 3));
+    debounce(
+      model().price.obs,
+      (_) => print("debouce"),
+      time: Duration(seconds: 3),
+    );
 
     ///3秒内更新回调一次
-    interval(model().price.obs, (_) => print("interval"), time: Duration(seconds: 3));
+    interval(
+      model().price.obs,
+      (_) => print("interval"),
+      time: Duration(seconds: 3),
+    );
 
     String id = Get.arguments['id'];
 

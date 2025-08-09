@@ -45,7 +45,7 @@ class PostDataSource extends DataTableSource {
     notifyListeners();
   }
 
-/* */ /*ascending 上升 这里排序 没看懂比较的是个啥*/ /*
+  /* */ /*ascending 上升 这里排序 没看懂比较的是个啥*/ /*
   void _sort<T> (Comparable<T> getField(PostEntity d),bool ascending){
     _dataList.sort((PostEntity a, PostEntity b) {
       if (!ascending) {
@@ -70,9 +70,7 @@ class _MaterialPage1 extends State<MaterialPaginatedDataTablePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("分页DataTable"),
-      ),
+      appBar: AppBar(title: Text("分页DataTable")),
       body: Container(
         padding: EdgeInsets.all(10),
         child: ListView(
@@ -87,31 +85,27 @@ class _MaterialPage1 extends State<MaterialPaginatedDataTablePage> {
               rowsPerPage: 5,
 
               /// 全选不用实现,已经实现看
-//              onSelectAll: (bool select){
-//                debugPrint("onSelectAll = $select");
-//              },
+              //              onSelectAll: (bool select){
+              //                debugPrint("onSelectAll = $select");
+              //              },
               columns: [
                 /// 头 列 ,序号,标题
-//                DataColumn(
-//                  label: Text("序号"),
-//                ),
+                //                DataColumn(
+                //                  label: Text("序号"),
+                //                ),
                 DataColumn(
                   label: Text("标题"),
                   onSort: (int columnIndex, bool ascending) {
-                    setState(
-                      () {
-                        _sortColumnIndex = columnIndex;
-                        _sortAscending = ascending;
+                    setState(() {
+                      _sortColumnIndex = columnIndex;
+                      _sortAscending = ascending;
 
-                        /// 这里 调动 类的方法,不然不行...
-                        _postDataSource.sort(ascending);
-                      },
-                    );
+                      /// 这里 调动 类的方法,不然不行...
+                      _postDataSource.sort(ascending);
+                    });
                   },
                 ),
-                DataColumn(
-                  label: Text("图片"),
-                ),
+                DataColumn(label: Text("图片")),
               ],
 
               /// 内容

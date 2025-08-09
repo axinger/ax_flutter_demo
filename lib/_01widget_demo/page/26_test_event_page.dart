@@ -18,16 +18,14 @@ class _MaterialPage extends State<P26TestEventPage> {
 
     EVENT_BUS.on<UpdateUserInfoEvent>().listen((event) {
       print("UpdateUserInfoEvent =监听== " + event.name);
-//      EVENT_BUS.destroy();
+      //      EVENT_BUS.destroy();
     });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("event"),
-      ),
+      appBar: AppBar(title: Text("event")),
       body: Column(
         children: <Widget>[
           Row(

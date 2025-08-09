@@ -15,9 +15,7 @@ class _P58NavigationRailPageState extends State<P58NavigationRailPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('通常展示在应用程序的左边或者右边'),
-      ),
+      appBar: AppBar(title: Text('通常展示在应用程序的左边或者右边')),
       //row 做为 body 布局
       body: Row(
         children: <Widget>[
@@ -28,7 +26,10 @@ class _P58NavigationRailPageState extends State<P58NavigationRailPage> {
                 _selectedIndex = index;
               });
             },
-            selectedLabelTextStyle: TextStyle(color: Colors.red, backgroundColor: Colors.orange),
+            selectedLabelTextStyle: TextStyle(
+              color: Colors.red,
+              backgroundColor: Colors.orange,
+            ),
             labelType: NavigationRailLabelType.selected,
             destinations: [
               NavigationRailDestination(
@@ -57,10 +58,8 @@ class _P58NavigationRailPageState extends State<P58NavigationRailPage> {
           // This is the main content.
           //Expanded 占满剩下屏幕空间
           Expanded(
-            child: Center(
-              child: Text('selectedIndex: $_selectedIndex'),
-            ),
-          )
+            child: Center(child: Text('selectedIndex: $_selectedIndex')),
+          ),
         ],
       ),
     );

@@ -9,19 +9,12 @@ class P57CustomRouteSecondPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.pinkAccent,
       appBar: AppBar(
-        title: Text(
-          "Sencondpage",
-          style: TextStyle(fontSize: 36.0),
-        ),
+        title: Text("Sencondpage", style: TextStyle(fontSize: 36.0)),
         elevation: 4,
       ),
       body: Center(
         child: MaterialButton(
-          child: Icon(
-            Icons.navigate_before,
-            color: Colors.white,
-            size: 64.0,
-          ),
+          child: Icon(Icons.navigate_before, color: Colors.white, size: 64.0),
           onPressed: () {
             Navigator.of(context).pop();
           },

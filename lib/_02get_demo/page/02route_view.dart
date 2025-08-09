@@ -23,11 +23,7 @@ class _RouteDemoState extends State<RouteDemo> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('路由传参方式1'),
-      ),
-    );
+    return Scaffold(appBar: AppBar(title: Text('路由传参方式1')));
   }
 }
 
@@ -51,10 +47,6 @@ class _RouteDemoState2 extends State<RouteDemo2> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('路由传参方式1'),
-      ),
-    );
+    return Scaffold(appBar: AppBar(title: Text('路由传参方式1')));
   }
 }

@@ -5,16 +5,12 @@ import '../model/post_entity.dart';
 class DetailPage extends StatelessWidget {
   final PostEntity postEntity;
 
-  DetailPage({
-    required this.postEntity,
-  });
+  DetailPage({required this.postEntity});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(postEntity.title),
-      ),
+      appBar: AppBar(title: Text(postEntity.title)),
       body: Column(
         children: <Widget>[
           Image.network(postEntity.imageUrl),
@@ -29,7 +25,7 @@ class DetailPage extends StatelessWidget {
                 Text("作者:" + postEntity.author),
               ],
             ),
-          )
+          ),
         ],
       ),
     );

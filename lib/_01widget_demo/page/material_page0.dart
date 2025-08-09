@@ -10,10 +10,6 @@ class MaterialPage0 extends StatefulWidget {
 class _State extends State<MaterialPage0> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("按钮组件"),
-      ),
-    );
+    return Scaffold(appBar: AppBar(title: Text("按钮组件")));
   }
 }

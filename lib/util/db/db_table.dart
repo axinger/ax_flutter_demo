@@ -12,5 +12,10 @@ class DbColumn {
   String type;
   bool nullable;
 
-  DbColumn(this.code, {this.type = 'text', this.nullable = true, this.name = ''});
+  DbColumn(
+    this.code, {
+    this.type = 'text',
+    this.nullable = true,
+    this.name = '',
+  });
 }

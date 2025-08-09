@@ -6,9 +6,7 @@ class P49DismissibleWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('侧滑删除'),
-      ),
+      appBar: AppBar(title: Text('侧滑删除')),
       body: ListView.builder(
         itemCount: items.length,
         itemBuilder: (context, index) {
@@ -22,7 +20,9 @@ class P49DismissibleWidget extends StatelessWidget {
             onDismissed: (direction) {
               items.removeAt(index);
 
-              ScaffoldMessengerState().showSnackBar(SnackBar(content: Text("$item dismissed")));
+              ScaffoldMessengerState().showSnackBar(
+                SnackBar(content: Text("$item dismissed")),
+              );
             },
             // Show a red background as the item is swiped away
             background: Container(color: Colors.red),

@@ -17,14 +17,12 @@ class _State extends State<FutureAndAwaitTest> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("按钮组件"),
-      ),
+      appBar: AppBar(title: Text("按钮组件")),
       body: Column(
         children: <Widget>[
           TextButton(
             child: Text("future-异步,后面的执行"),
-//      child : Icon(Icons.add),
+            //      child : Icon(Icons.add),
             onPressed: () {
               Future.delayed(Duration(seconds: 1), () {
                 print("内部====1");

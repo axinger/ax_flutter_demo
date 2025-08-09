@@ -38,10 +38,10 @@ class _MaterialPage1 extends State<MaterialPageDate> {
       return;
     }
 
-//    MaterialLocalizations localizations = MaterialLocalizations.of(context);
-//    String formattedTime = localizations.formatFullDate(dateTime);
-//    print("formattedTime");
-//    print("formattedTime = $formattedTime");
+    //    MaterialLocalizations localizations = MaterialLocalizations.of(context);
+    //    String formattedTime = localizations.formatFullDate(dateTime);
+    //    print("formattedTime");
+    //    print("formattedTime = $formattedTime");
 
     setState(() {
       selectDateTime = dateTime;
@@ -65,7 +65,10 @@ class _MaterialPage1 extends State<MaterialPageDate> {
 
   static String formatTimeOfDayalUse24Hour(TimeOfDay timeOfDay, context) {
     MaterialLocalizations localizations = MaterialLocalizations.of(context);
-    String formattedTime = localizations.formatTimeOfDay(timeOfDay, alwaysUse24HourFormat: true);
+    String formattedTime = localizations.formatTimeOfDay(
+      timeOfDay,
+      alwaysUse24HourFormat: true,
+    );
     return formattedTime;
   }
 
@@ -76,10 +79,10 @@ class _MaterialPage1 extends State<MaterialPageDate> {
   }
 
   _getUserInfo3() async {
-//    await new Future.delayed(new Duration(seconds: 1)).then((onValue) {
-//      print("onValue = $onValue");
-//      return "异步结果--2";
-//    });
+    //    await new Future.delayed(new Duration(seconds: 1)).then((onValue) {
+    //      print("onValue = $onValue");
+    //      return "异步结果--2";
+    //    });
 
     return Future.delayed(Duration(milliseconds: 1000), () {
       return "异步结果--3";
@@ -105,18 +108,16 @@ class _MaterialPage1 extends State<MaterialPageDate> {
   @override
   Widget build(BuildContext context) {
     _loadUserInfo();
-//    _loadUserInfo2();
+    //    _loadUserInfo2();
 
     return Scaffold(
-      appBar: AppBar(
-        title: Text("按钮组件"),
-      ),
+      appBar: AppBar(title: Text("按钮组件")),
       body: Column(
         /// 垂直对齐
-//            mainAxisAlignment: MainAxisAlignment.start,
-//
-//            /// 水平对齐
-//            crossAxisAlignment: CrossAxisAlignment.start,
+        //            mainAxisAlignment: MainAxisAlignment.start,
+        //
+        //            /// 水平对齐
+        //            crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Text('比例视图'),
           Container(
@@ -127,15 +128,13 @@ class _MaterialPage1 extends State<MaterialPageDate> {
               child: SizedBox(
                 width: 10,
                 height: 10,
-                child: Container(
-                  color: Colors.orange,
-                ),
+                child: Container(color: Colors.orange),
               ),
             ),
           ),
 
           Checkbox(
-//              tristate: true,
+            //              tristate: true,
             value: _checkbox_value,
             activeColor: Colors.red,
             checkColor: Colors.orange,
@@ -276,14 +275,15 @@ class _MaterialPage1 extends State<MaterialPageDate> {
             // textColor: Colors.white,
           ),
 
-          Text(''
-//              DateFormat.yMMMd().format(selectDateTime),
+          Text(
+            '',
+            //              DateFormat.yMMMd().format(selectDateTime),
 
-//              DateFormat("yyyy-MM-dd").format(selectDateTime),
+            //              DateFormat("yyyy-MM-dd").format(selectDateTime),
 
-              // formatDate(selectDateTime, [yyyy, '-', mm, '-', dd]),
-//           DateTime.fromMillisecondsSinceEpoch(selectDateTime.millisecondsSinceEpoch).toString(),
-              ),
+            // formatDate(selectDateTime, [yyyy, '-', mm, '-', dd]),
+            //           DateTime.fromMillisecondsSinceEpoch(selectDateTime.millisecondsSinceEpoch).toString(),
+          ),
 
           TextButton(
             child: Text("时间选择"),
@@ -297,12 +297,12 @@ class _MaterialPage1 extends State<MaterialPageDate> {
 
           Text(
             selectTime.format(context),
-//           DateTime.fromMillisecondsSinceEpoch(selectDateTime.millisecondsSinceEpoch).toString(),
+            //           DateTime.fromMillisecondsSinceEpoch(selectDateTime.millisecondsSinceEpoch).toString(),
           ),
 
           Text(
             formatTimeOfDayalUse24Hour(selectTime, context),
-//           DateTime.fromMillisecondsSinceEpoch(selectDateTime.millisecondsSinceEpoch).toString(),
+            //           DateTime.fromMillisecondsSinceEpoch(selectDateTime.millisecondsSinceEpoch).toString(),
           ),
         ],
       ),

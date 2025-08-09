@@ -18,13 +18,14 @@ class _P56StatefulBuilderState extends State<P56StatefulBuilder> {
         title: Text('局部刷新'),
         actions: [
           TextButton(
-              onPressed: () {
-                _stateSetter!(() {
-                  // name1 = '${100.random}';
-                  // name2 = '${100.random}';
-                });
-              },
-              child: Text('刷新')),
+            onPressed: () {
+              _stateSetter!(() {
+                // name1 = '${100.random}';
+                // name2 = '${100.random}';
+              });
+            },
+            child: Text('刷新'),
+          ),
         ],
       ),
       body: Column(
@@ -35,11 +36,9 @@ class _P56StatefulBuilderState extends State<P56StatefulBuilder> {
               print('局部刷新 = StatefulBuilder');
 
               _stateSetter = stateSetter;
-              return Text(
-                name2,
-              );
+              return Text(name2);
             },
-          )
+          ),
         ],
       ),
     );

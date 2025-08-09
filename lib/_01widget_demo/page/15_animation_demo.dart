@@ -7,7 +7,8 @@ class P15AnimationDemo extends StatefulWidget {
   }
 }
 
-class _MaterialPage1 extends State<P15AnimationDemo> with TickerProviderStateMixin {
+class _MaterialPage1 extends State<P15AnimationDemo>
+    with TickerProviderStateMixin {
   AnimationController? _animationController;
 
   Animation? _animation;
@@ -26,26 +27,26 @@ class _MaterialPage1 extends State<P15AnimationDemo> with TickerProviderStateMix
     _animationController = AnimationController(
       duration: Duration(seconds: 3),
 
-//      /// 初始值
-//      value: 20,
-//      ///最小范围
-//      lowerBound: 20.0,
+      //      /// 初始值
+      //      value: 20,
+      //      ///最小范围
+      //      lowerBound: 20.0,
       ///最大 范围
-//      upperBound: 100,
+      //      upperBound: 100,
 
       /// 是否消耗其他资源
       vsync: this,
     );
     _animationController?.addListener(() {
-//      print("_animationController = ${_animationController.value}");
+      //      print("_animationController = ${_animationController.value}");
       setState(() {});
     });
 
     _animationController?.addStatusListener((AnimationStatus status) {
       print("_animationController.status = ${status}");
-//      setState(() {
-//
-//      });
+      //      setState(() {
+      //
+      //      });
     });
 
     /// 曲线动画
@@ -67,14 +68,11 @@ class _MaterialPage1 extends State<P15AnimationDemo> with TickerProviderStateMix
     ).animate(_animationController);*/
 
     /// 值可以任何值,比如颜色 ,放入_curvedAnimation
-    _animation = Tween<double>(
-      begin: 20,
-      end: 100,
-    ).animate(_curvedAnimation!);
+    _animation = Tween<double>(begin: 20, end: 100).animate(_curvedAnimation!);
 
     _animationColor = ColorTween(
       begin: Colors.red[50],
-//      end: Colors.red[900],
+      //      end: Colors.red[900],
       end: Colors.red[900],
     ).animate(_curvedAnimation!);
   }
@@ -89,21 +87,14 @@ class _MaterialPage1 extends State<P15AnimationDemo> with TickerProviderStateMix
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("动画"),
-      ),
+      appBar: AppBar(title: Text("动画")),
       body: ListView(
         children: [
           AnimationHeader(
-            animatedList: [
-              _animation!,
-              _animationColor!,
-            ],
+            animatedList: [_animation!, _animationColor!],
             animationController: _animationController!,
           ),
-          Divider(
-            color: Colors.red,
-          ),
+          Divider(color: Colors.red),
           AnimationDemo(),
         ],
       ),
@@ -115,7 +106,10 @@ class AnimationHeader extends AnimatedWidget {
   final List<Animation> animatedList;
   final AnimationController animationController;
 
-  AnimationHeader({required this.animatedList, required this.animationController}) : super(listenable: animationController);
+  AnimationHeader({
+    required this.animatedList,
+    required this.animationController,
+  }) : super(listenable: animationController);
 
   @override
   Widget build(BuildContext context) {
@@ -126,9 +120,9 @@ class AnimationHeader extends AnimatedWidget {
       color: animatedList[1].value,
       onPressed: () {
         /// 向前运行
-//            _animationController.forward();
+        //            _animationController.forward();
         /// 重复
-//            _animationController.repeat();
+        //            _animationController.repeat();
 
         switch (animationController.status) {
           case AnimationStatus.completed:
@@ -151,15 +145,22 @@ class AnimationDemo extends StatefulWidget {
   State<StatefulWidget> createState() => _AnimationDemo();
 }
 
-class _AnimationDemo extends State<AnimationDemo> with SingleTickerProviderStateMixin {
+class _AnimationDemo extends State<AnimationDemo>
+    with SingleTickerProviderStateMixin {
   AnimationController? _animationController;
   Animation<Color?>? _animation;
 
   @override
   void initState() {
-    _animationController = AnimationController(duration: Duration(seconds: 2), vsync: this);
+    _animationController = AnimationController(
+      duration: Duration(seconds: 2),
+      vsync: this,
+    );
 
-    _animation = ColorTween(begin: Colors.red, end: Colors.blue).animate(_animationController!);
+    _animation = ColorTween(
+      begin: Colors.red,
+      end: Colors.blue,
+    ).animate(_animationController!);
 
     _animationController?.addListener(() {
       if (_animationController!.isCompleted) {
@@ -175,19 +176,18 @@ class _AnimationDemo extends State<AnimationDemo> with SingleTickerProviderState
     return Column(
       children: [
         TextButton(
-            onPressed: () {
-              //开始动画
-              _animationController?.forward();
-            },
-            child: Text('点击变换颜色')),
+          onPressed: () {
+            //开始动画
+            _animationController?.forward();
+          },
+          child: Text('点击变换颜色'),
+        ),
         Container(
           height: 100,
           width: 100,
 
           /// 继承 AnimatedWidget
-          child: AnimatedModalBarrier(
-            color: _animation!,
-          ),
+          child: AnimatedModalBarrier(color: _animation!),
         ),
       ],
     );

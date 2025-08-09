@@ -13,13 +13,11 @@ class _WebViewPageState extends State<WebViewPage> {
 
   @override
   Widget build(BuildContext context) {
-//    String url = 'https://test-open.zking.com/app/b2c/#/particulars/ZKICATM_0101FGB/1/?token=FCE91358A310908ED1BD2CA5C44B9E42&channelCode=DP_WXMP&terminalId=APP&accountType=1&agentId=P121335g7789';
-//    String url = 'https://flutterchina.club/';
+    //    String url = 'https://test-open.zking.com/app/b2c/#/particulars/ZKICATM_0101FGB/1/?token=FCE91358A310908ED1BD2CA5C44B9E42&channelCode=DP_WXMP&terminalId=APP&accountType=1&agentId=P121335g7789';
+    //    String url = 'https://flutterchina.club/';
     String url = 'https://www.toutiao.com/';
     return Scaffold(
-      appBar: AppBar(
-        title: Text("$_title"),
-      ),
+      appBar: AppBar(title: Text("$_title")),
       body: SafeArea(
         child: SizedBox.fromSize(),
         // child: WebView(

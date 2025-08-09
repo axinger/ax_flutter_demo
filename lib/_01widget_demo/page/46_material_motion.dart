@@ -40,7 +40,11 @@ class _P46MaterialMotionState extends State<P46MaterialMotion> {
       ),
       body: GridView.builder(
         padding: EdgeInsets.all(8),
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2, crossAxisSpacing: 2, mainAxisSpacing: 4),
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 2,
+          crossAxisSpacing: 2,
+          mainAxisSpacing: 4,
+        ),
         itemBuilder: (context, index) {
           return GridTile(
             header: GridTileBar(
@@ -52,7 +56,7 @@ class _P46MaterialMotionState extends State<P46MaterialMotion> {
             ),
             child: OpenContainer(
               transitionDuration: _duration,
-//              tappable:false,
+              //              tappable:false,
               closedBuilder: (BuildContext _, VoidCallback openContainer) {
                 return Container(
                   child: Image.asset(
@@ -65,9 +69,7 @@ class _P46MaterialMotionState extends State<P46MaterialMotion> {
                 return _DetailPage();
               },
             ),
-            footer: GridTileBar(
-              title: Text('Footer'),
-            ),
+            footer: GridTileBar(title: Text('Footer')),
           );
         },
         itemCount: 50,
@@ -84,10 +86,7 @@ class _DetailPage extends StatelessWidget {
       body: Container(
         width: double.infinity,
         height: double.infinity,
-        child: Image.asset(
-          'assets/image/IMG_3601.JPG',
-          fit: BoxFit.cover,
-        ),
+        child: Image.asset('assets/image/IMG_3601.JPG', fit: BoxFit.cover),
       ),
     );
   }

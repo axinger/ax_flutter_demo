@@ -4,13 +4,17 @@ import 'package:flutter/material.dart';
 class P01ContentPage3 extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-//    return _MaterialPage22();
+    //    return _MaterialPage22();
     return _MaterialPage23();
   }
 }
 
 class _MaterialPage23 extends State<P01ContentPage3> {
-  Map<String, Text> segmentedControlData = {'0': Text('Apple'), '1': Text('Orange'), '2': Text('Banana')};
+  Map<String, Text> segmentedControlData = {
+    '0': Text('Apple'),
+    '1': Text('Orange'),
+    '2': Text('Banana'),
+  };
   String segmentedControlValue = '';
 
   @override
@@ -30,10 +34,8 @@ class _MaterialPage23 extends State<P01ContentPage3> {
     return Stack(
       children: <Widget>[
         Scaffold(
-//      backgroundColor: Colors.green,
-          appBar: AppBar(
-            title: Text('中间list适应大小'),
-          ),
+          //      backgroundColor: Colors.green,
+          appBar: AppBar(title: Text('中间list适应大小')),
           body: ConstrainedBox(
             constraints: BoxConstraints.expand(),
             child: Column(
@@ -63,13 +65,10 @@ class _MaterialPage23 extends State<P01ContentPage3> {
                     shape: BoxShape.circle,
 
                     /// 圆角
-//                    borderRadius: BorderRadius.all(Radius.circular(18)),
+                    //                    borderRadius: BorderRadius.all(Radius.circular(18)),
                   ),
                   child: Column(
-                    children: [
-                      Text('Material'),
-                      Text('Material2'),
-                    ],
+                    children: [Text('Material'), Text('Material2')],
                   ),
                 ),
                 Text('Material - StatefulWidget'),
@@ -80,7 +79,7 @@ class _MaterialPage23 extends State<P01ContentPage3> {
                   color: Colors.red,
 
                   /// 圆角
-//                   borderRadius:BorderRadius.circular(20),
+                  //                   borderRadius:BorderRadius.circular(20),
                   /// 边框 不能和圆角borderRadius 同时存在 ,圆角放shape 内部
                   shape: CircleBorder(
                     side: BorderSide(
@@ -90,15 +89,15 @@ class _MaterialPage23 extends State<P01ContentPage3> {
                     ),
                   ),
 
-//                    shape: RoundedRectangleBorder(
-//                      side: BorderSide(
-//                        width: 1,
-//                        color: Colors.green,
-//                      ),
-//
-//                      /// 圆角
-//                      borderRadius: BorderRadius.circular(20),
-//                    ),
+                  //                    shape: RoundedRectangleBorder(
+                  //                      side: BorderSide(
+                  //                        width: 1,
+                  //                        color: Colors.green,
+                  //                      ),
+                  //
+                  //                      /// 圆角
+                  //                      borderRadius: BorderRadius.circular(20),
+                  //                    ),
 
                   ///边界前景  ,超出部分是否显示
                   borderOnForeground: false,
@@ -106,18 +105,14 @@ class _MaterialPage23 extends State<P01ContentPage3> {
                   /// 超出部分剪切
                   clipBehavior: Clip.antiAlias,
                   child: Column(
-                    children: [
-                      Text('Material'),
-                      Text('Material2'),
-                    ],
+                    children: [Text('Material'), Text('Material2')],
                   ),
                 ),
                 Expanded(
-//              child: Container(
-//                height: 50,
-//                color: Colors.greenAccent,
-//              ),
-
+                  //              child: Container(
+                  //                height: 50,
+                  //                color: Colors.greenAccent,
+                  //              ),
                   child: Container(
                     color: Colors.indigoAccent,
                     child: ListView(
@@ -125,17 +120,19 @@ class _MaterialPage23 extends State<P01ContentPage3> {
                         TextButton(
                           child: Text('aa'),
                           onPressed: () {
-                            Net.post('1').success((value) {
-                              print('success = $value');
-                            }).failure((value) {
-                              print('failure = $value');
-                            });
+                            Net.post('1')
+                                .success((value) {
+                                  print('success = $value');
+                                })
+                                .failure((value) {
+                                  print('failure = $value');
+                                });
 
-//                    Future.delayed(Duration(seconds: 0),(){
-//                      return 'jim';
-//                    }).then((value){
-//                      print('failure = $value');
-//                    });
+                            //                    Future.delayed(Duration(seconds: 0),(){
+                            //                      return 'jim';
+                            //                    }).then((value){
+                            //                      print('failure = $value');
+                            //                    });
                           },
                         ),
                         CupertinoSegmentedControl<String>(
@@ -185,7 +182,7 @@ class Net {
 
   Net.post(String value) {
     if (value == '1') {
-//      successResult = '成功1';
+      //      successResult = '成功1';
 
       Future.delayed(Duration(seconds: 1), () {
         successResult = '成功2';
@@ -202,8 +199,8 @@ class Net {
     }
   }
 
-//  Future<R> then<R>(FutureOr<R> onValue(T value), {Function? onError});
-//  Net success(Function(String value) ) {
+  //  Future<R> then<R>(FutureOr<R> onValue(T value), {Function? onError});
+  //  Net success(Function(String value) ) {
   Net success(call(String value)?) {
     _successCall = call;
     if (_successCall != null && successResult != null) {
@@ -219,13 +216,16 @@ class Net {
 
   Future asyncDemo() async {
     Future<Null> future = new Future(() => null);
-    await future.then((_) {
-      print("then");
-    }).then((val) {
-      print("whenComplete");
-    }).catchError((_) {
-      print("catchError");
-    });
+    await future
+        .then((_) {
+          print("then");
+        })
+        .then((val) {
+          print("whenComplete");
+        })
+        .catchError((_) {
+          print("catchError");
+        });
   }
 }
 /*

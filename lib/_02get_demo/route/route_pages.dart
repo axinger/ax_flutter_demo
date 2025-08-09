@@ -22,25 +22,14 @@ abstract class AppRoutes {
 
 abstract class RoutePages {
   static final List<GetPage>? pages = [
-    GetPage(
-      name: AppRoutes.Home,
-      page: () => RootPage(),
-    ),
-    GetPage(
-      name: AppRoutes.route_pages,
-      page: () => RouteDemo(),
-    ),
-    GetPage(
-      name: AppRoutes.Login,
-      page: () => LoginView(),
-    ),
+    GetPage(name: AppRoutes.Home, page: () => RootPage()),
+    GetPage(name: AppRoutes.route_pages, page: () => RouteDemo()),
+    GetPage(name: AppRoutes.Login, page: () => LoginView()),
     GetPage(
       name: AppRoutes.My,
       page: () => MyView(),
       transition: Transition.downToUp,
-      middlewares: [
-        RouteAuthMiddleware(priority: 1),
-      ],
+      middlewares: [RouteAuthMiddleware(priority: 1)],
     ),
     GetPage(
       name: AppRoutes.order,
