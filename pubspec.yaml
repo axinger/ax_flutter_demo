@@ -240,6 +240,7 @@ dev_dependencies:
   #   build_runner: ^2.4.1
   json_serializable: ^6.0.1
   lints: ^2.0.0
+  msix: ^3.16.10
 #  hive_generator: ^0.7.0+2
 ##  dartx: ^0.2.0
 ##  quiver: '>=2.0.3 <2.1.0'
@@ -275,3 +276,16 @@ flutter:
 
 flutter_intl:
   enabled: true
+
+
+
+# dart run msix:create
+msix_config:
+  display_name: flutter应用
+  publisher_display_name: axinger公司
+  identity_name: com.github.axinger.app1
+  msix_version: 1.0.0.0
+#  logo_path: C:\path\to\logo.png
+  #需要权限
+  capabilities: internetClient, location, microphone, webcam
+  desktop_shortcut: true  # 启用桌面快捷方式
