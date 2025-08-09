@@ -2,13 +2,15 @@ import 'dart:async';
 
 import 'package:ax_flutter_demo/config.dart';
 import 'package:ax_flutter_demo/global_const.dart';
-import 'package:ax_flutter_util/ax_flutter_util.dart';
+// import 'package:ax_flutter_util/ax_flutter_util.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 
 class P01ContentPage extends StatefulWidget {
   @override
@@ -359,7 +361,7 @@ class _State extends State<P01ContentPage>
               TextButton(
                 child: Text('InteractiveViewer如: 平移，缩放和拖动“N”下降甚至大小调整'),
                 onPressed: () {
-                  push(context: context, widget: InteractiveViewerDemo());
+                  Get.to(InteractiveViewerDemo());
                 },
               ),
               Image.asset(

@@ -2,7 +2,6 @@ import 'dart:async';
 import 'dart:typed_data';
 import 'dart:ui';
 
-import 'package:ax_flutter_util/ax_flutter_util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 // import 'package:image_gallery_saver/image_gallery_saver.dart';
@@ -63,7 +62,7 @@ class _State extends State<P25MoreListViewPage> {
                   // showCupertinoCertainAlert(context: context, title: result['isSuccess'] ? '保存成功' : '保存失败');
                 }
               }).catchError((onError) {
-                showCupertinoCertainAlert(context: context, title: '截图失败');
+                // showCupertinoCertainAlert(context: context, title: '截图失败');
               });
             },
           ),

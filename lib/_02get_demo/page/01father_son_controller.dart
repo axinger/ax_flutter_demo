@@ -19,7 +19,7 @@ class FatherSonController extends GetxController {
     super.onInit();
 
     /// 每次更改都会回调
-    ever(count, (_) => print("$_ has been changed 1"));
+    ever(count, (_) => print("has been changed 1"));
   }
 
   ///跳转到跨页面

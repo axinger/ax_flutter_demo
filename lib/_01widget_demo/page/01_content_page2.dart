@@ -1,6 +1,6 @@
 import 'package:ax_flutter_demo/global_const.dart';
 import 'package:ax_flutter_demo/theme_data_notifier.dart';
-import 'package:ax_flutter_util/ax_flutter_util.dart';
+// import 'package:ax_flutter_util/ax_flutter_util.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -87,36 +87,40 @@ class _State extends State<P01ContentPage2> with SingleTickerProviderStateMixin,
             // color: Colors.orange,
             child: Text('改变主题色'),
             onPressed: () {
-              showCupertinoSheet(
-                context: context,
-                actions: <CupertinoActionSheetAction>[
-                  CupertinoActionSheetAction(
-                    child: Text('蓝色'),
-                    onPressed: () {
-                      Navigator.pop(context);
-//                      mainConfigModel.themeData = Theme.of(context).copyWith(
-//                        primaryColor: Colors.lightBlue,
-//                      );
-                      Provider.of<ThemeDataNotifier>(context, listen: false).themeData = Theme.of(context).copyWith(
-                        primaryColor: Colors.lightBlue,
-                      );
-                    },
-                  ),
-                  CupertinoActionSheetAction(
-                    child: Text('红色'),
-                    onPressed: () {
-                      Navigator.pop(context);
-//                      mainConfigModel.themeData = Theme.of(context).copyWith(
-//                        primaryColor: Colors.red,
-//                      );
-
-                      Provider.of<ThemeDataNotifier>(context, listen: false).themeData = Theme.of(context).copyWith(
-                        primaryColor: Colors.red,
-                      );
-                    },
-                  ),
-                ],
-              );
+//               showCupertinoSheet(
+//                 context: context,
+//                 actions: <CupertinoActionSheetAction>[
+//                   CupertinoActionSheetAction(
+//                     child: Text('蓝色'),
+//                     onPressed: () {
+//                       Navigator.pop(context);
+// //                      mainConfigModel.themeData = Theme.of(context).copyWith(
+// //                        primaryColor: Colors.lightBlue,
+// //                      );
+//                       Provider.of<ThemeDataNotifier>(context, listen: false).themeData = Theme.of(context).copyWith(
+//                         primaryColor: Colors.lightBlue,
+//                       );
+//                     },
+//                   ),
+//                   CupertinoActionSheetAction(
+//                     child: Text('红色'),
+//                     onPressed: () {
+//                       Navigator.pop(context);
+// //                      mainConfigModel.themeData = Theme.of(context).copyWith(
+// //                        primaryColor: Colors.red,
+// //                      );
+//
+//                       Provider.of<ThemeDataNotifier>(context, listen: false).themeData = Theme.of(context).copyWith(
+//                         primaryColor: Colors.red,
+//                       );
+//                     },
+//                   ),
+//                 ], pageBuilder: (BuildContext context) {
+//                   return Container(
+//                     child: Text('CupertinoActionSheet'),
+//                   );
+//               },
+//               );
             },
           ),
         ], systemOverlayStyle: SystemUiOverlayStyle.dark,

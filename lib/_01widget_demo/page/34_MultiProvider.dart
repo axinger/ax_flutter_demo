@@ -1,16 +1,12 @@
-import 'package:ax_flutter_util/ax_flutter_util.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 
 class AddModel extends ChangeNotifier {
   int _age1 = 0;
   int _age2 = 0;
 
-  AddModel({
-    int age1 = 0,
-    int age2 = 0,
-  })  : _age1 = age1,
-        _age2 = age2;
+  AddModel({int age1 = 0, int age2 = 0}) : _age1 = age1, _age2 = age2;
 
   int get age1 => _age1;
 
@@ -60,9 +56,7 @@ class _P34ProviderState extends State<P34Provider> {
     //如果状态管理放在顶层 MaterialApp 之上，它的作用域是全局，任何界面都可以获取;
 
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Provider'),
-      ),
+      appBar: AppBar(title: Text('Provider')),
       body: ChangeNotifierProvider<AddModel>.value(
         value: userModel,
         child: Column(
@@ -70,14 +64,16 @@ class _P34ProviderState extends State<P34Provider> {
             TextButton(
               child: Text('下一页'),
               onPressed: () {
-//                push(context: context, widget: NextPage());
-                push(context: context, widget: Consumer3());
+                //                push(context: context, widget: NextPage());
+                Get.to(Consumer3());
               },
             ),
 
-            Text('无论是点击那个Button都会引起Consumer1和Consumer2的重绘，'
-                '这明显与我们使用Provider的初衷是违背的。'
-                '而在实际的使用场景中，这种情况会带来比预想更差的UI表现'),
+            Text(
+              '无论是点击那个Button都会引起Consumer1和Consumer2的重绘，'
+              '这明显与我们使用Provider的初衷是违背的。'
+              '而在实际的使用场景中，这种情况会带来比预想更差的UI表现',
+            ),
             TextButton(
               child: Text('add1'),
               onPressed: () {
@@ -87,36 +83,38 @@ class _P34ProviderState extends State<P34Provider> {
             Consumer1(),
 
             ///  Selector<AddModel,int> 第一个泛型 selector ,第二个泛型 builder 的值
-            Selector<AddModel, int>(builder: (BuildContext context, int data, Widget? child) {
-              print('Selector1=============');
-              return Text(
+            Selector<AddModel, int>(
+              builder: (BuildContext context, int data, Widget? child) {
+                print('Selector1=============');
+                return Text(
                   //获取数据
-                  'Selector1 : ${data.toString()}');
-            }, selector: (BuildContext context, AddModel counterProvider) {
-              //这个地方返回具体的值，对应builder中的data
-              return counterProvider.age1;
-            }),
-            Divider(
-              color: Colors.red,
+                  'Selector1 : ${data.toString()}',
+                );
+              },
+              selector: (BuildContext context, AddModel counterProvider) {
+                //这个地方返回具体的值，对应builder中的data
+                return counterProvider.age1;
+              },
             ),
+            Divider(color: Colors.red),
 
             Consumer2(),
-            Selector<AddModel, int>(builder: (BuildContext context, int data, Widget? child) {
-              print('Selector2=========');
-              return Text(
+            Selector<AddModel, int>(
+              builder: (BuildContext context, int data, Widget? child) {
+                print('Selector2=========');
+                return Text(
                   //获取数据
-                  'Selector2 : ${data.toString()}');
-            }, selector: (BuildContext context, AddModel counterProvider) {
-              //这个地方返回具体的值，对应builder中的data
-              return counterProvider.age2;
-            }),
-            Divider(
-              color: Colors.red,
+                  'Selector2 : ${data.toString()}',
+                );
+              },
+              selector: (BuildContext context, AddModel counterProvider) {
+                //这个地方返回具体的值，对应builder中的data
+                return counterProvider.age2;
+              },
             ),
+            Divider(color: Colors.red),
 
-            Divider(
-              color: Colors.red,
-            ),
+            Divider(color: Colors.red),
           ],
         ),
       ),
@@ -132,34 +130,31 @@ class NextPage extends StatefulWidget {
 class _NextPageState extends State<NextPage> {
   @override
   Widget build(BuildContext context) {
-//    print(' context.read<AddModel>() =  ${context.read<AddModel>()}');
-//
-//    AddModel bloc = Provider.of<AddModel>(context);
-//    print('bloc =  $bloc');
+    //    print(' context.read<AddModel>() =  ${context.read<AddModel>()}');
+    //
+    //    AddModel bloc = Provider.of<AddModel>(context);
+    //    print('bloc =  $bloc');
     return Scaffold(
-      appBar: AppBar(
-        title: Text('push 子页面'),
-      ),
+      appBar: AppBar(title: Text('push 子页面')),
       body: Column(
         children: [
-//          Consumer<AddModel>(
-//            builder: (BuildContext context, AddModel value, Widget child) {
-//              return child;
-//            },
-//            child: TextButton(
-//              child: Text('add2'),
-//              onPressed: () {
-//                context.read<AddModel>().add1Age1();
-//              },
-//            ),
-//          ),
-
+          //          Consumer<AddModel>(
+          //            builder: (BuildContext context, AddModel value, Widget child) {
+          //              return child;
+          //            },
+          //            child: TextButton(
+          //              child: Text('add2'),
+          //              onPressed: () {
+          //                context.read<AddModel>().add1Age1();
+          //              },
+          //            ),
+          //          ),
           TextButton(
             child: Text('add2'),
             onPressed: () {
               print('read =  ${context.read<AddModel>()}');
-//              context?.read<AddModel>()?.add1Age1();
-//              context?.watch<AddModel>()?.add1Age1();
+              //              context?.read<AddModel>()?.add1Age1();
+              //              context?.watch<AddModel>()?.add1Age1();
             },
           ),
         ],
@@ -174,40 +169,38 @@ class Consumer1 extends StatelessWidget {
     return Column(
       children: [
         Text('Consumer1'),
-        Consumer<AddModel>(builder: (context, value, child) {
-          print('Consumer1 收到消息');
-          return Column(
-            children: [
-              Text('Consumer1 = ${value.age1}'),
-            ],
-          );
-        }),
-//        Text('局部刷新<Selector>'),
-//        Selector<UserModel, int>(
-//
-//          selector: (ctx, model) => model.age,
-//
-//          builder: (ctx, value, child) {
-//            print('Selector 1 刷新');
-//
-//            return Row(
-//              mainAxisAlignment: MainAxisAlignment.center,
-//              children: <Widget>[
-//                Text('Selector<Model,int>次数：' + value.toString()),
-//                OutlineButton(
-//                  onPressed: () {
-//                    context.read<UserModel>().add();
-//                  },
-//                  child: Icon(Icons.add),
-//                )
-//              ],
-//            );
-//          },
-//          shouldRebuild: (m1, m2) {
-//            print('s1：$m1 $m2 ${m1 != m2 ? '不相等，本次刷新' : '数据相等，本次不刷新'}');
-//            return m1 != m2;
-//          },
-//        ),
+        Consumer<AddModel>(
+          builder: (context, value, child) {
+            print('Consumer1 收到消息');
+            return Column(children: [Text('Consumer1 = ${value.age1}')]);
+          },
+        ),
+        //        Text('局部刷新<Selector>'),
+        //        Selector<UserModel, int>(
+        //
+        //          selector: (ctx, model) => model.age,
+        //
+        //          builder: (ctx, value, child) {
+        //            print('Selector 1 刷新');
+        //
+        //            return Row(
+        //              mainAxisAlignment: MainAxisAlignment.center,
+        //              children: <Widget>[
+        //                Text('Selector<Model,int>次数：' + value.toString()),
+        //                OutlineButton(
+        //                  onPressed: () {
+        //                    context.read<UserModel>().add();
+        //                  },
+        //                  child: Icon(Icons.add),
+        //                )
+        //              ],
+        //            );
+        //          },
+        //          shouldRebuild: (m1, m2) {
+        //            print('s1：$m1 $m2 ${m1 != m2 ? '不相等，本次刷新' : '数据相等，本次不刷新'}');
+        //            return m1 != m2;
+        //          },
+        //        ),
       ],
     );
   }
@@ -221,20 +214,22 @@ class Consumer2 extends StatelessWidget {
     return Column(
       children: [
         Text('Consumer2'),
-        Consumer<AddModel>(builder: (context, value, child) {
-          print('Consumer2 收到消息');
-          return Column(
-            children: [
-              TextButton(
-                child: Text('add2,在子页面中'),
-                onPressed: () {
-                  value.addAge2();
-                },
-              ),
-              Text('Consumer2 = ${value.age2}'),
-            ],
-          );
-        }),
+        Consumer<AddModel>(
+          builder: (context, value, child) {
+            print('Consumer2 收到消息');
+            return Column(
+              children: [
+                TextButton(
+                  child: Text('add2,在子页面中'),
+                  onPressed: () {
+                    value.addAge2();
+                  },
+                ),
+                Text('Consumer2 = ${value.age2}'),
+              ],
+            );
+          },
+        ),
       ],
     );
   }
@@ -249,20 +244,22 @@ class Consumer3 extends StatelessWidget {
       body: Column(
         children: [
           Text('Consumer2'),
-          Consumer<AddModel>(builder: (context, value, child) {
-            print('Consumer2 收到消息');
-            return Column(
-              children: [
-                TextButton(
-                  child: Text('add2,在子页面中'),
-                  onPressed: () {
-                    value.addAge2();
-                  },
-                ),
-                Text('Consumer2 = ${value.age2}'),
-              ],
-            );
-          }),
+          Consumer<AddModel>(
+            builder: (context, value, child) {
+              print('Consumer2 收到消息');
+              return Column(
+                children: [
+                  TextButton(
+                    child: Text('add2,在子页面中'),
+                    onPressed: () {
+                      value.addAge2();
+                    },
+                  ),
+                  Text('Consumer2 = ${value.age2}'),
+                ],
+              );
+            },
+          ),
         ],
       ),
     );
@@ -294,13 +291,13 @@ class _P34MultiProviderState extends State<P34MultiProvider> {
             TextButton(
               child: Text("单个"),
               onPressed: () {
-                push(context: context, widget: P34Provider());
+                Get.to(P34Provider());
               },
             ),
           ],
         ),
         body: Row(
-//          crossAxisAlignment: CrossAxisAlignment.center,
+          //          crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
             Column(
@@ -315,14 +312,14 @@ class _P34MultiProviderState extends State<P34MultiProvider> {
                           'userModel: ${userModel.age1.toString()}',
                           style: TextStyle(backgroundColor: Colors.red),
                         ),
-                        Text('MultiProvider 和 context.read<Counter>\n不要再同一个 widget中,会报错'),
+                        Text(
+                          'MultiProvider 和 context.read<Counter>\n不要再同一个 widget中,会报错',
+                        ),
                         Text(
                           '显示值-context.watch: ${context.watch<PlusModel>().age}',
                           style: TextStyle(backgroundColor: Colors.red),
                         ),
-                        Text(
-                          '显示值-直接取值:${value.age}',
-                        ),
+                        Text('显示值-直接取值:${value.age}'),
                         Text(
                           '显示值-Provider.of:${Provider.of<PlusModel>(context, listen: false).age.toString()}',
                           style: TextStyle(backgroundColor: Colors.red),
@@ -338,7 +335,7 @@ class _P34MultiProviderState extends State<P34MultiProvider> {
                   },
                 ),
               ],
-            )
+            ),
           ],
         ),
       ),

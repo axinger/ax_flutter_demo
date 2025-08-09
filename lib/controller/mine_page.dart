@@ -1,6 +1,7 @@
 // import 'package:ax_flutter_util/ax_flutter_util.dart';
-import 'package:ax_flutter_util/ax_flutter_util.dart';
+// import 'package:ax_flutter_util/ax_flutter_util.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../_01widget_demo/01root_test_page.dart';
 import '../global_const.dart';
@@ -44,7 +45,7 @@ class _MinePage extends State<MinePage> {
               print("========");
 //                    FlutterBoost.singleton.open("route_MaterialPage1");
 //                    Navigator.of(context).pushNamed('/route_login');
-              push(context: context, widget: LoginView());
+              Get.to(LoginView());
             },
           ),
 //          TextButton(

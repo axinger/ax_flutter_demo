@@ -1,4 +1,3 @@
-import 'package:ax_flutter_util/ax_flutter_util.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -8,7 +7,7 @@ class _CounterController extends GetxController {
   ///自增
   Future increase() {
     return Future.delayed(Duration(seconds: 1)).then((value) {
-      dataList.add(20.random);
+      dataList.add(20);
     });
   }
 }

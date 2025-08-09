@@ -5,7 +5,7 @@ import 'package:ax_flutter_demo/_01widget_demo/page/28_test_route_page.dart';
 import 'package:ax_flutter_demo/_02get_demo/demo_translations.dart';
 import 'package:ax_flutter_demo/_02get_demo/route/route_pages.dart';
 import 'package:ax_flutter_demo/theme_data_notifier.dart';
-import 'package:ax_flutter_util/ax_flutter_util.dart';
+// import 'package:ax_flutter_util/ax_flutter_util.dart';
 // import 'package:ax_flutter_util/ax_flutter_util.dart';
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter/foundation.dart';
@@ -560,7 +560,7 @@ class DismissKeyboardDemo extends StatelessWidget {
         child: TextButton(
           child: const Text('0000'),
           onPressed: () {
-            push(context: context, widget: const DismissKeyboardDemo2());
+            // push(context: context, widget: const DismissKeyboardDemo2());
           },
         ),
       ),

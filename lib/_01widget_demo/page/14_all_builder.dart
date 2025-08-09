@@ -2,8 +2,8 @@ import 'dart:async';
 import 'dart:math';
 
 import 'package:ax_flutter_demo/component/all_content_body.dart';
-import 'package:ax_flutter_util/ax_flutter_util.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:rxdart/rxdart.dart';
 
 class P14AllBuilderPage extends StatefulWidget {
@@ -196,14 +196,13 @@ class _P14AllBuilderPageState extends State<P14AllBuilderPage> {
                   TextButton(
                     child: Text('下一页'),
                     onPressed: () {
-                      push(
-                          context: context,
-                          widget: _TestPage(
-                            behaviorSubject: _behaviorSubject!,
-                            callBack: (str) {
-                              _behaviorSubject?.add('$str >> ');
-                            },
-                          ));
+
+                      Get.to(() => _TestPage(
+                        behaviorSubject: _behaviorSubject!,
+                        callBack: (str) {
+                          _behaviorSubject?.add('$str >> ');
+                        },
+                      ));
                     },
                   ),
                 ],

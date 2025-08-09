@@ -1,4 +1,3 @@
-import 'package:ax_flutter_util/ax_flutter_util.dart';
 import 'package:flutter/material.dart';
 
 class P56StatefulBuilder extends StatefulWidget {
@@ -21,8 +20,8 @@ class _P56StatefulBuilderState extends State<P56StatefulBuilder> {
           TextButton(
               onPressed: () {
                 _stateSetter!(() {
-                  name1 = '${100.random}';
-                  name2 = '${100.random}';
+                  // name1 = '${100.random}';
+                  // name2 = '${100.random}';
                 });
               },
               child: Text('刷新')),

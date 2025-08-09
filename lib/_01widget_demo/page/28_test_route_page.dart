@@ -1,5 +1,5 @@
-import 'package:ax_flutter_util/ax_flutter_util.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class P28RoutePage extends StatefulWidget {
   @override
@@ -36,13 +36,13 @@ class _MaterialPage extends State<P28RoutePage> {
           TextButton(
             child: Text('push - P28RoutePageSub1,\n方式该页面的子页面无法Navigator.popUntil'),
             onPressed: () {
-              push(context: context, widget: P28RoutePageSub1());
+               Get.to(P28RoutePageSub1());
             },
           ),
           TextButton(
             child: Text('push-P28RoutePageSub1'),
             onPressed: () {
-              push(context: context, widget: P28RoutePageSub1());
+               Get.to(P28RoutePageSub1());
             },
           ),
           TextButton(
@@ -59,16 +59,17 @@ class _MaterialPage extends State<P28RoutePage> {
           TextButton(
             child: Text('pushReplacement'),
             onPressed: () {
-              pushReplacement(context: context, widget: P28RoutePageSub1());
+              // pushReplacement(context: context, widget: P28RoutePageSub1());
+
             },
           ),
           TextButton(
             child: Text('pushAndRemoveUntil'),
             onPressed: () {
-              pushAndRemoveUntil(context: context, widget: P28RoutePageSub1());
+              // pushAndRemoveUntil(context: context, widget: P28RoutePageSub1());
 
               Future.delayed(Duration(seconds: 2), () {
-                pop(context);
+                Get.back();
               });
             },
           ),
@@ -93,9 +94,9 @@ class P28RoutePageSub1 extends StatelessWidget {
 //    print('tmp== $tmp');
 //    print('tmp2== $tmp2');
 
-    var arguments = pushNameOfArguments<Map<String, dynamic>>(context: context);
-    print('arguments== $arguments');
-    print((arguments as Map)['title']);
+    // var arguments = pushNameOfArguments<Map<String, dynamic>>(context: context);
+    // print('arguments== $arguments');
+    // print((arguments as Map)['title']);
     return Scaffold(
       appBar: AppBar(
         title: Text('P28RoutePageSub1'),
@@ -113,7 +114,7 @@ class P28RoutePageSub1 extends StatelessWidget {
           TextButton(
             child: Text('push-P28RoutePageSub2'),
             onPressed: () {
-              push(context: context, widget: P28RoutePageSub2());
+               Get.to(P28RoutePageSub2());
             },
           ),
         ],

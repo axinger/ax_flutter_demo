@@ -1,9 +1,10 @@
 import 'dart:async';
-
+//
 import 'package:ax_flutter_toast/ax_flutter_toast.dart';
-import 'package:ax_flutter_util/ax_flutter_util.dart';
+// import 'package:ax_flutter_util/ax_flutter_util.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get_core/src/get_main.dart';
 
 class P04MaterialPageDialog extends StatefulWidget {
   @override
@@ -143,38 +144,38 @@ class _MaterialPage1 extends State<P04MaterialPageDialog> with SingleTickerProvi
             }),
 
             _TextButton("ios alert", () {
-              showCupertinoAlert(context: context, title: "标题", message: "内容");
+              // showCupertinoAlert(context: context, title: "标题", message: "内容");
             }),
             _TextButton('ios sheet', () {
-              showCupertinoSheet(
-                context: context,
-                title: "标题",
-                message: "内容",
-                actions: <CupertinoActionSheetAction>[
-                  CupertinoActionSheetAction(
-                    child: Text("相机"),
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
-                  ),
-                  CupertinoActionSheetAction(
-                    child: Text("相册"),
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
-                  ),
-                ],
-              );
+              // showCupertinoSheet(
+              //   context: context,
+              //   title: "标题",
+              //   message: "内容",
+              //   actions: <CupertinoActionSheetAction>[
+              //     CupertinoActionSheetAction(
+              //       child: Text("相机"),
+              //       onPressed: () {
+              //         Navigator.pop(context);
+              //       },
+              //     ),
+              //     CupertinoActionSheetAction(
+              //       child: Text("相册"),
+              //       onPressed: () {
+              //         Navigator.pop(context);
+              //       },
+              //     ),
+              //   ],
+              // );
             }),
             _TextButton("自定义 sheet", () {
-              showContentSheet(
-                context: context,
-                content: Container(
-                    height: 100,
-                    child: Center(
-                      child: Text("自定义内容1"),
-                    )),
-              );
+              // showContentSheet(
+              //   context: context,
+              //   content: Container(
+              //       height: 100,
+              //       child: Center(
+              //         child: Text("自定义内容1"),
+              //       )),
+              // );
             }),
 
             Column(
@@ -248,7 +249,7 @@ class _MaterialPage1 extends State<P04MaterialPageDialog> with SingleTickerProvi
               ],
             ),
             _TextButton("自定义 sheet 时间", () {
-              showDateSheet(context: context);
+              // showDateSheet(context: context);
             }),
 
             _TextButton("会消失的", () {
