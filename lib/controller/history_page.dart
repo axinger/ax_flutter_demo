@@ -44,7 +44,7 @@ class _SliverListDemo extends StatelessWidget {
             ),
             background: Image.network(
               /// 1296db 背景色
-              'https://via.placeholder.com/350x160/1296db?text=cat',
+              'https://dummyimage.com/350x160/1296db?text=cat',
               fit: BoxFit.cover,
             ),
           ),

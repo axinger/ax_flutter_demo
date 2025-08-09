@@ -21,7 +21,7 @@ class CustomScrollView1State extends State<P54SliverPersisten>
               collapsedHeight: 43.0,
               expandedHeight: 220.0,
               paddingTop: 27.0,
-              // coverImgUrl: 'https://via.placeholder.com/350x160/1296db?text=cat',
+              // coverImgUrl: 'https://dummyimage.com/350x160/1296db?text=cat',
               coverImgUrl: 'https://dummyimage.com/350x160/1296db?text=cat',
               title: '标题',
             ),
