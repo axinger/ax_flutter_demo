@@ -1,3 +1,24 @@
+# gradle配置
+## android/settings.gradle.kts 配置
+```text
+ repositories {
+        maven { url = uri("https://jitpack.io") }
+        maven { url = uri("https://maven.aliyun.com/repository/releases") }
+        maven { url = uri("https://maven.aliyun.com/repository/google") }
+        maven { url = uri("https://maven.aliyun.com/repository/central") } // Central 仓库镜像
+        maven { url = uri("https://maven.aliyun.com/repository/gradle-plugin") } // Gradle 插件镜像
+        maven { url = uri("https://maven.aliyun.com/repository/public") }// 阿里云镜像
+        google()
+        mavenCentral()
+        gradlePluginPortal()
+    }
+```
+
+## android/gradle/wrapper 配置
+```text
+distributionUrl=https\://mirrors.cloud.tencent.com/gradle/gradle-8.12-all.zip
+```
+
 # 禁止安卓 alert 返回键 pop
 ```dart
 Future<bool> showPermissionAlert(BuildContext context) async {
