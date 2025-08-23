@@ -3,14 +3,14 @@ description: A new Flutter project.
 version: 1.0.0+1
 
 environment:
-  sdk: ^3.8.0
+  sdk: ^3.9.0
 
 # 告警,用这个
 publish_to: none
 
-analyzer:
-  enable-experiment:
-    - non-nullable
+#analyzer:
+#  enable-experiment:
+#    - non-nullable
 
 dependencies:
   flutter:
@@ -23,7 +23,6 @@ dependencies:
   # 渐变颜色,微光动画效果
   shimmer: ^3.0.0
   css_colors: ^1.1.1
-  #  meta: 1.3.0-nullsafety.2
   #通用提示库flutter_image_compress
   fluttertoast: ^8.2.8
   # 加载网络图片 使用 https第一次加载页面,容易卡死,改为http,就可以了;等flutter升级
@@ -40,7 +39,7 @@ dependencies:
   #  intl_utils: ^1.7.0
   #日期时间格式 另外一个库
   #  date_format: any
-  scoped_model: ^2.0.0-nullsafety.0
+#  scoped_model: ^2.0.0
   # 1.0.0
   #  cupertino_icon: ^1.0.0
   # RxDart基于ReactiveX，由Dart标准库中Stream扩展而成，是一个为Dart语言提供响应式编程的库。
@@ -190,20 +189,20 @@ dependencies:
 
     #这个Flutter插件使您可以管理应用程序的主屏幕快速动作并与之交互.
     #
-    #快速操作是指iOS上的同义概念以及Android上的App Shortcuts API（在Android 7.1 / API 25级中引入）.
+  #快速操作是指iOS上的同义概念以及Android上的App Shortcuts API（在Android 7.1 / API 25级中引入）.
   #在Android的早期版本中运行此插件是安全的，因为它将产生Noop.
   #quick_actions: 0.4.0+4
 
   ## ⏬⏬⏬⏬⏬⏬⏬⏬⏬⏬阿星组件 ⏬⏬⏬⏬⏬⏬⏬⏬⏬⏬
-#  ax_flutter_util:
+  #  ax_flutter_util:
+  #    git:
+  #      url: 'https://github.com/axinger/ax-flutter-util.git'
+  #  #  ax_flutter_plugin:
+  #  #    git:
+  #  #      url: 'https://github.com/axinger/ax-flutter-plugin.git'
+#  ax_flutter_toast:
 #    git:
-#      url: 'https://github.com/axinger/ax-flutter-util.git'
-#  #  ax_flutter_plugin:
-#  #    git:
-#  #      url: 'https://github.com/axinger/ax-flutter-plugin.git'
-  ax_flutter_toast:
-    git:
-      url: 'https://github.com/axinger/ax-flutter-toast.git'
+#      url: 'https://github.com/axinger/ax-flutter-toast.git'
 
 
   #  ax_flutter_util:
@@ -235,7 +234,7 @@ flutter_icons:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-#  flutter_lints: ^5.0.0
+  #  flutter_lints: ^5.0.0
   #这两个是dev的，不要放到上面去了哦
   #   build_runner: ^2.4.1
   json_serializable: ^6.0.1
@@ -285,7 +284,7 @@ msix_config:
   publisher_display_name: axinger公司
   identity_name: com.github.axinger.app1
   msix_version: 1.0.0.0
-#  logo_path: C:\path\to\logo.png
+  #  logo_path: C:\path\to\logo.png
   #需要权限
   capabilities: internetClient, location, microphone, webcam
   desktop_shortcut: true  # 启用桌面快捷方式

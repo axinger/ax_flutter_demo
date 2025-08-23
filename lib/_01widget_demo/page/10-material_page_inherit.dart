@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:scoped_model/scoped_model.dart';
 
 //
 //class MaterialPageInheritedWidget extends StatefulWidget {
@@ -182,16 +181,16 @@ class MyInheritedTestModel {
 }
 
 /// 使用第三方的model
-class InheritedTestModel2 extends Model {
-  int _count = 0;
-
-  int get count => _count;
-
-  addCoount() {
-    _count += 1;
-    notifyListeners();
-  }
-}
+// class InheritedTestModel2 extends Model {
+//   int _count = 0;
+//
+//   int get count => _count;
+//
+//   addCoount() {
+//     _count += 1;
+//     notifyListeners();
+//   }
+// }
 
 class MyInheritedWidget extends InheritedWidget {
   //数据
@@ -271,7 +270,7 @@ class TestWidgetC extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final MyInheritedWidget? myInheritedWidget = MyInheritedWidget?.of(context);
+    final MyInheritedWidget? myInheritedWidget = MyInheritedWidget.of(context);
 
     final MyInheritedTestModel? inheritedTestModel =
         myInheritedWidget?.inheritedTestModel;

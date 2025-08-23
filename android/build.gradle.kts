@@ -1,8 +1,13 @@
 allprojects {
     repositories {
-        maven { url 'https://maven.aliyun.com/repository/google' }
-        maven { url 'https://maven.aliyun.com/repository/public' }
-        maven { url = uri("https://mirrors.tuna.tsinghua.edu.cn/flutter/download.flutter.io") }
+        maven { url=uri ("https://jitpack.io") }
+        maven { url=uri ("https://maven.aliyun.com/repository/releases") }
+        maven { url=uri ("https://maven.aliyun.com/repository/google") }
+        maven { url=uri ("https://maven.aliyun.com/repository/central") }
+        maven { url=uri ("https://maven.aliyun.com/repository/gradle-plugin") }
+        maven { url=uri ("https://maven.aliyun.com/repository/public") }
+        google()
+        mavenCentral()
     }
 }
 

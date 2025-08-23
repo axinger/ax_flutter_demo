@@ -89,11 +89,11 @@ BEGIN
     BEGIN
         BLOCK "040904e4"
         BEGIN
-            VALUE "CompanyName", "com.example" "\0"
+            VALUE "CompanyName", "com.github.axinger" "\0"
             VALUE "FileDescription", "ax_flutter_demo" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
             VALUE "InternalName", "ax_flutter_demo" "\0"
-            VALUE "LegalCopyright", "Copyright (C) 2025 com.example. All rights reserved." "\0"
+            VALUE "LegalCopyright", "Copyright (C) 2025 com.github.axinger. All rights reserved." "\0"
             VALUE "OriginalFilename", "ax_flutter_demo.exe" "\0"
             VALUE "ProductName", "ax_flutter_demo" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
