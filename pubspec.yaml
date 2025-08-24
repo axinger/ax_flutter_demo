@@ -20,6 +20,7 @@ dependencies:
   flutter_localizations:
     sdk: flutter
 
+  window_manager: ^0.5.1
   # 渐变颜色,微光动画效果
   shimmer: ^3.0.0
   css_colors: ^1.1.1
@@ -200,9 +201,9 @@ dependencies:
   #  #  ax_flutter_plugin:
   #  #    git:
   #  #      url: 'https://github.com/axinger/ax-flutter-plugin.git'
-#  ax_flutter_toast:
-#    git:
-#      url: 'https://github.com/axinger/ax-flutter-toast.git'
+  ax_flutter_toast:
+    git:
+      url: 'https://github.com/axinger/ax-flutter-toast.git'
 
 
   #  ax_flutter_util:

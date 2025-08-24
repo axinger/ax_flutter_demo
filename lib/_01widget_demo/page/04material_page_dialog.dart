@@ -1,6 +1,6 @@
 import 'dart:async';
 //
-// import 'package:ax_flutter_toast/ax_flutter_toast.dart';
+import 'package:ax_flutter_toast/ax_flutter_toast.dart';
 // import 'package:ax_flutter_util/ax_flutter_util.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -181,74 +181,74 @@ class _MaterialPage1 extends State<P04MaterialPageDialog>
               children: <Widget>[
                 TextField(),
                 _TextButton("Toast.success", () {
-                  // Toast.success(
-                  //   context: context,
-                  //   dismissDuration: Duration(seconds: 10),
-                  //   callBack: () {
-                  //     print('Toast.success');
-                  //   },
-                  // );
+                  Toast.success(
+                    context: context,
+                    dismissDuration: Duration(seconds: 10),
+                    callBack: () {
+                      print('Toast.success');
+                    },
+                  );
                 }),
                 _TextButton("Toast.failure", () {
-                  // Toast.failure(
-                  //   context: context,
-                  //   dismissDuration: Duration(seconds: 3),
-                  //   callBack: () {
-                  //     print('Toast.failure');
-                  //   },
-                  // );
+                  Toast.failure(
+                    context: context,
+                    dismissDuration: Duration(seconds: 3),
+                    callBack: () {
+                      print('Toast.failure');
+                    },
+                  );
                 }),
                 _TextButton("Toast.error", () {
-                  // Toast.error(
-                  //   context: context,
-                  //   callBack: () {
-                  //     print('Toast.error');
-                  //   },
-                  // );
+                  Toast.error(
+                    context: context,
+                    callBack: () {
+                      print('Toast.error');
+                    },
+                  );
                 }),
                 _TextButton("Toast.showToast-1", () {
-                  // Toast toast = Toast.showToast(
-                  //   context: context,
-                  //   child: Text('showToast-1'),
-                  //   autoDismiss: false,
-                  //   callBack: () {
-                  //     print('Toast.success');
-                  //   },
-                  // );
-                  //
-                  // Future.delayed(Duration(seconds: 3)).whenComplete(() {
-                  //   toast.dismissToast();
-                  // });
+                  Toast toast = Toast.showToast(
+                    context: context,
+                    child: Text('showToast-1'),
+                    autoDismiss: false,
+                    callBack: () {
+                      print('Toast.success');
+                    },
+                  );
+
+                  Future.delayed(Duration(seconds: 3)).whenComplete(() {
+                    toast.dismissToast();
+                  });
                 }),
                 _TextButton("Toast.showToast-2", () {
-                  // Toast toast = Toast.showToast(
-                  //   context: context,
-                  //   child: Text('showToast-2'),
-                  //   autoDismiss: false,
-                  //   callBack: () {
-                  //     print('Toast.success');
-                  //   },
-                  // );
-                  //
-                  // Future.delayed(Duration(seconds: 4)).whenComplete(() {
-                  //   toast.dismissToast();
-                  // });
+                  Toast toast = Toast.showToast(
+                    context: context,
+                    child: Text('showToast-2'),
+                    autoDismiss: false,
+                    callBack: () {
+                      print('Toast.success');
+                    },
+                  );
+
+                  Future.delayed(Duration(seconds: 4)).whenComplete(() {
+                    toast.dismissToast();
+                  });
                 }),
                 _TextButton("Toast.dismissToast-1", () {}),
                 _TextButton("Toast.dismissToast-2", () {}),
                 _TextButton("Toast.loading", () {
-                  // Toast toast = Toast.loading(context: context);
-                  // double current = 0;
-                  // Timer.periodic(Duration(milliseconds: 500), (timer) {
-                  //   current += 1;
-                  //   var progress = current / 100;
-                  //   print('progress= $progress');
-                  //   toast.loadingProgress = progress;
-                  //   if (progress == 1) {
-                  //     toast.loadingPop();
-                  //     timer.cancel();
-                  //   }
-                  // });
+                  Toast toast = Toast.loading(context: context);
+                  double current = 0;
+                  Timer.periodic(Duration(milliseconds: 500), (timer) {
+                    current += 1;
+                    var progress = current / 100;
+                    print('progress= $progress');
+                    toast.loadingProgress = progress;
+                    if (progress == 1) {
+                      toast.loadingPop();
+                      timer.cancel();
+                    }
+                  });
                 }),
               ],
             ),
@@ -259,7 +259,7 @@ class _MaterialPage1 extends State<P04MaterialPageDialog>
             _TextButton("会消失的", () {
               ScaffoldMessengerState().showSnackBar(
                 SnackBar(
-                  content: Text('Are you talkin\' to me?'),
+                  content: Text('Are you talkin to me?'),
                   duration: Duration(seconds: 2),
                   action: SnackBarAction(label: "确定", onPressed: () {}),
                 ),
